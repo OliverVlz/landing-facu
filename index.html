@@ -1,0 +1,1671 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>Landing — Fe y Transformación</title>
+    <meta
+      name="description"
+      content="Una landing dark (azules) con hero, precios, testimonios y secciones antes/después."
+    />
+
+    <style>
+      :root {
+        --bg0: #070b14; /* no negro puro */
+        --bg1: #0a1022;
+        --card: rgba(255, 255, 255, 0.05);
+        --card2: rgba(255, 255, 255, 0.06);
+        --stroke: rgba(255, 255, 255, 0.1);
+        --stroke2: rgba(255, 255, 255, 0.16);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(237, 237, 237, 0.72);
+        --muted2: rgba(237, 237, 237, 0.58);
+        --brand: #67b3ff;
+        --brand2: #4c7dff;
+        --glow: rgba(103, 179, 255, 0.22);
+        --accent: #ffb36b; /* se usa también en pricing */
+        --radius: 18px;
+        --shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+        --shadow2: 0 12px 34px rgba(0, 0, 0, 0.4);
+        --max: 1100px;
+
+        --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(
+            1000px 520px at 18% 10%,
+            rgba(76, 125, 255, 0.18),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 520px at 80% 0%,
+            rgba(103, 179, 255, 0.14),
+            transparent 55%
+          ),
+          radial-gradient(
+            900px 700px at 80% 80%,
+            rgba(103, 179, 255, 0.1),
+            transparent 60%
+          ),
+          linear-gradient(180deg, var(--bg0), var(--bg1) 65%, #070b14);
+        min-height: 100vh;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .container {
+        width: min(var(--max), calc(100% - 24px));
+        margin: 0 auto;
+      }
+
+      /* Topbar */
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        backdrop-filter: blur(10px);
+        background: linear-gradient(
+          180deg,
+          rgba(7, 11, 20, 0.78),
+          rgba(7, 11, 20, 0.35)
+        );
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 12px 0;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .logo {
+        width: 34px;
+        height: 34px;
+        border-radius: 12px;
+        background:
+          radial-gradient(
+            20px 20px at 30% 30%,
+            rgba(255, 255, 255, 0.35),
+            transparent 55%
+          ),
+          linear-gradient(
+            135deg,
+            rgba(103, 179, 255, 0.95),
+            rgba(76, 125, 255, 0.78)
+          );
+        box-shadow: 0 10px 24px rgba(76, 125, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      .brand strong {
+        font-weight: 800;
+        letter-spacing: 0.2px;
+      }
+      .brand span {
+        color: var(--muted2);
+        font-size: 12px;
+        display: block;
+        margin-top: 2px;
+      }
+
+      .nav {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .nav a {
+        text-decoration: none;
+        font-size: 13px;
+        color: rgba(237, 237, 237, 0.8);
+        padding: 8px 10px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        transition:
+          background 0.15s var(--ease),
+          border-color 0.15s var(--ease),
+          transform 0.15s var(--ease);
+      }
+      .nav a:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-1px);
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(255, 255, 255, 0.92);
+        text-decoration: none;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+        cursor: pointer;
+        transition:
+          transform 0.15s var(--ease),
+          background 0.15s var(--ease),
+          border-color 0.15s var(--ease),
+          box-shadow 0.15s var(--ease);
+        user-select: none;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+      .btn:active {
+        transform: translateY(0px) scale(0.99);
+      }
+      .btn.primary {
+        background: linear-gradient(
+          135deg,
+          rgba(103, 179, 255, 0.26),
+          rgba(76, 125, 255, 0.22)
+        );
+        border-color: rgba(103, 179, 255, 0.38);
+        box-shadow: 0 0 0 1px rgba(103, 179, 255, 0.1) inset;
+      }
+      .btn.primary:hover {
+        box-shadow:
+          0 0 0 1px rgba(103, 179, 255, 0.18) inset,
+          0 12px 34px rgba(0, 0, 0, 0.35);
+      }
+      .btn.ghost {
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.1);
+        color: rgba(237, 237, 237, 0.85);
+      }
+
+      .kbd {
+        font-size: 11px;
+        color: rgba(237, 237, 237, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.04);
+        padding: 3px 8px;
+        border-radius: 999px;
+      }
+
+      /* Hero */
+      .hero {
+        position: relative;
+        padding: 40px 0 26px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .hero-card {
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.05),
+          rgba(255, 255, 255, 0.03)
+        );
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .hero-left {
+        padding: 26px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(103, 179, 255, 0.24);
+        background: rgba(103, 179, 255, 0.08);
+        color: rgba(237, 237, 237, 0.86);
+        font-size: 13px;
+        letter-spacing: 0.2px;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 99px;
+        background: var(--brand);
+        box-shadow: 0 0 0 5px rgba(103, 179, 255, 0.12);
+      }
+
+      h1 {
+        margin: 14px 0 10px;
+        font-size: clamp(28px, 4.2vw, 46px);
+        line-height: 1.05;
+        letter-spacing: -0.6px;
+      }
+
+      .lead {
+        margin: 0 0 16px;
+        color: rgba(237, 237, 237, 0.76);
+        line-height: 1.55;
+        font-size: 15px;
+        max-width: 54ch;
+      }
+
+      .verse {
+        margin: 14px 0 0;
+        padding: 14px 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.14);
+      }
+      .verse q {
+        display: block;
+        font-size: 15px;
+        line-height: 1.5;
+        color: rgba(237, 237, 237, 0.86);
+      }
+      .verse cite {
+        display: block;
+        margin-top: 8px;
+        font-style: normal;
+        color: rgba(237, 237, 237, 0.6);
+        font-size: 13px;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 18px;
+      }
+
+      .hero-micro {
+        margin-top: 12px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        color: rgba(237, 237, 237, 0.64);
+        font-size: 12px;
+      }
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        border-radius: 999px;
+        padding: 6px 10px;
+      }
+
+      /* Right hero card */
+      .hero-right {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100%;
+      }
+
+      .visual {
+        position: relative;
+        padding: 18px;
+        min-height: 220px;
+      }
+
+      .visual::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        background:
+          radial-gradient(
+            400px 220px at 25% 15%,
+            rgba(103, 179, 255, 0.2),
+            transparent 60%
+          ),
+          radial-gradient(
+            340px 240px at 75% 30%,
+            rgba(76, 125, 255, 0.18),
+            transparent 62%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.06),
+            rgba(255, 255, 255, 0.02)
+          );
+        border-radius: var(--radius);
+        z-index: 0;
+      }
+
+      .visual-inner {
+        position: relative;
+        z-index: 1;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(0, 0, 0, 0.12);
+        overflow: hidden;
+        height: 100%;
+        min-height: 220px;
+      }
+
+      .svg-wrap {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      .hero-side {
+        padding: 16px 18px 18px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        display: grid;
+        gap: 10px;
+      }
+
+      .mini {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 12px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .mini strong {
+        display: block;
+        font-size: 13px;
+      }
+      .mini span {
+        display: block;
+        color: rgba(237, 237, 237, 0.62);
+        font-size: 12px;
+        margin-top: 3px;
+        line-height: 1.35;
+      }
+      .icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(103, 179, 255, 0.1);
+        border: 1px solid rgba(103, 179, 255, 0.22);
+        color: rgba(237, 237, 237, 0.92);
+        flex: 0 0 auto;
+      }
+
+      /* Sections */
+      section {
+        padding: 34px 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+      .section-head h2 {
+        margin: 0;
+        font-size: 22px;
+        letter-spacing: -0.2px;
+      }
+      .section-head p {
+        margin: 0;
+        color: rgba(237, 237, 237, 0.66);
+        max-width: 56ch;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .t-card {
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        padding: 16px;
+        box-shadow: var(--shadow2);
+      }
+      .t-quote {
+        margin: 0;
+        color: rgba(237, 237, 237, 0.82);
+        line-height: 1.55;
+        font-size: 14px;
+      }
+      .t-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        color: rgba(237, 237, 237, 0.6);
+        font-size: 12px;
+      }
+      .t-name {
+        color: rgba(237, 237, 237, 0.82);
+        font-weight: 800;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        align-items: stretch;
+      }
+
+      .split {
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        overflow: hidden;
+        box-shadow: var(--shadow2);
+      }
+
+      .split-media {
+        position: relative;
+        min-height: 240px;
+        background: rgba(0, 0, 0, 0.14);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        overflow: hidden;
+      }
+      .split-body {
+        padding: 18px;
+      }
+      .split-body h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+        letter-spacing: -0.2px;
+      }
+      .split-body p {
+        margin: 0 0 12px;
+        color: rgba(237, 237, 237, 0.74);
+        line-height: 1.55;
+        font-size: 14px;
+      }
+
+      .list {
+        margin: 0;
+        padding-left: 18px;
+        color: rgba(237, 237, 237, 0.72);
+        display: grid;
+        gap: 8px;
+        font-size: 14px;
+      }
+
+      .divider {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.08);
+        margin: 12px 0;
+      }
+
+      /* Toast */
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: 18px;
+        transform: translateX(-50%);
+        z-index: 80;
+        width: min(560px, calc(100% - 24px));
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(8, 12, 22, 0.85);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.5);
+        padding: 12px;
+        display: none;
+      }
+      .toast.show {
+        display: block;
+        animation: rise 0.22s var(--ease) both;
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateX(-50%) translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(-50%) translateY(0px);
+        }
+      }
+      .toast-row {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+      .toast strong {
+        display: block;
+        font-size: 13px;
+      }
+      .toast p {
+        margin: 4px 0 0;
+        color: rgba(237, 237, 237, 0.7);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .xbtn {
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(237, 237, 237, 0.85);
+        border-radius: 12px;
+        padding: 8px 10px;
+        cursor: pointer;
+        transition:
+          background 0.15s var(--ease),
+          transform 0.15s var(--ease);
+        flex: 0 0 auto;
+      }
+      .xbtn:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-1px);
+      }
+
+      /* Footer */
+      footer {
+        padding: 22px 0 40px;
+        color: rgba(237, 237, 237, 0.56);
+        font-size: 12px;
+      }
+      .foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 14px;
+      }
+
+      /* Focus states */
+      :focus-visible {
+        outline: 2px solid rgba(103, 179, 255, 0.55);
+        outline-offset: 2px;
+        border-radius: 14px;
+      }
+
+      /* Responsive */
+      @media (max-width: 960px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+        .section-head {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Prefer reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        * {
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+    </style>
+
+    <!-- Componente de pricing (tal cual, con su CSS). -->
+    <style>
+      .pricing-wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 24px 12px;
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+      }
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .p-card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 18px;
+        color: #ededed;
+        backdrop-filter: blur(6px);
+      }
+      .p-card.featured {
+        border-color: rgba(255, 179, 107, 0.55);
+        box-shadow: 0 0 0 1px rgba(255, 179, 107, 0.18) inset;
+      }
+      .p-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+      .p-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+      }
+      .p-badge {
+        font-size: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(255, 179, 107, 0.16);
+        color: #ffb36b;
+        border: 1px solid rgba(255, 179, 107, 0.32);
+        white-space: nowrap;
+      }
+      .p-desc {
+        margin: 6px 0 14px;
+        color: rgba(237, 237, 237, 0.78);
+        line-height: 1.45;
+        font-size: 14px;
+      }
+      .p-price {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        margin: 12px 0 6px;
+      }
+      .p-price strong {
+        font-size: 34px;
+        letter-spacing: -0.5px;
+      }
+      .p-price span {
+        color: rgba(237, 237, 237, 0.7);
+        font-size: 14px;
+      }
+      .p-hr {
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+        margin: 14px 0;
+      }
+      .p-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 16px;
+        display: grid;
+        gap: 10px;
+        color: rgba(237, 237, 237, 0.86);
+        font-size: 14px;
+      }
+      .p-li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .p-check {
+        width: 18px;
+        height: 18px;
+        border-radius: 6px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 179, 107, 0.16);
+        border: 1px solid rgba(255, 179, 107, 0.28);
+        color: #ffb36b;
+        flex: 0 0 auto;
+        margin-top: 1px;
+        font-size: 12px;
+        line-height: 1;
+      }
+      .p-btn {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        padding: 12px 14px;
+        border-radius: 12px;
+        font-weight: 700;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        color: #ededed;
+        background: rgba(255, 255, 255, 0.06);
+        transition:
+          transform 0.15s ease,
+          background 0.15s ease,
+          border-color 0.15s ease;
+      }
+      .p-btn:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.22);
+      }
+      .p-btn.primary {
+        background: rgba(255, 179, 107, 0.18);
+        border-color: rgba(255, 179, 107, 0.45);
+        color: #ffb36b;
+      }
+      .p-btn.primary:hover {
+        background: rgba(255, 179, 107, 0.26);
+        border-color: rgba(255, 179, 107, 0.65);
+      }
+      .p-foot {
+        margin-top: 10px;
+        font-size: 12px;
+        color: rgba(237, 237, 237, 0.6);
+      }
+
+      @media (max-width: 900px) {
+        .pricing-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="topbar" aria-label="Barra de navegación">
+      <div class="container topbar-inner">
+        <a class="brand" href="#top" aria-label="Inicio">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <strong>Camino Nuevo</strong>
+            <span>Diseño dark · azules · UX/UI</span>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="Secciones">
+          <a href="#precios">Precios</a>
+          <a href="#testimonios">Testimonios</a>
+          <a href="#antes">Antes</a>
+          <a href="#despues">Después</a>
+          <button
+            class="btn ghost"
+            id="btnAtajo"
+            type="button"
+            aria-label="Atajo a precios"
+          >
+            Ir a precios <span class="kbd" aria-hidden="true">Alt + P</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <div class="container">
+        <section class="hero" aria-label="Hero">
+          <div class="hero-grid">
+            <div class="hero-card hero-left">
+              <div class="eyebrow">
+                <span class="dot" aria-hidden="true"></span> Una invitación a
+                empezar hoy
+              </div>
+
+              <h1>Transformación real, paso a paso.</h1>
+
+              <p class="lead">
+                Una landing con estilo UX/UI (dark + azules), pensada para
+                convertir: mensaje claro, secciones ordenadas y CTA visibles.
+              </p>
+
+              <div class="verse" role="note" aria-label="Versículo">
+                <q
+                  >Porque yo sé los planes que tengo para vosotros —dice el
+                  Señor— planes de bienestar y no de calamidad, para daros un
+                  futuro y una esperanza.</q
+                >
+                <cite>Jeremías 29:11</cite>
+              </div>
+
+              <div class="hero-actions">
+                <a class="btn primary" href="#precios" id="ctaHero"
+                  >Ver planes</a
+                >
+                <button class="btn" type="button" id="ctaOracion">
+                  Pedir orientación
+                </button>
+              </div>
+
+              <div class="hero-micro" aria-label="Indicadores">
+                <span class="pill">✓ Diseño responsive</span>
+                <span class="pill">✓ Un solo archivo</span>
+                <span class="pill">✓ Interacciones suaves</span>
+              </div>
+            </div>
+
+            <aside class="hero-card hero-right" aria-label="Resumen">
+              <div class="visual">
+                <div class="visual-inner" aria-hidden="true">
+                  <!-- SVG inline para mantener 1 solo archivo sin imágenes externas -->
+                  <svg
+                    class="svg-wrap"
+                    viewBox="0 0 900 520"
+                    preserveAspectRatio="none"
+                    role="img"
+                    aria-label="Decoración abstracta"
+                  >
+                    <defs>
+                      <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                        <stop
+                          offset="0"
+                          stop-color="#67B3FF"
+                          stop-opacity=".9"
+                        />
+                        <stop
+                          offset="1"
+                          stop-color="#4C7DFF"
+                          stop-opacity=".65"
+                        />
+                      </linearGradient>
+                      <radialGradient id="g2" cx="30%" cy="20%" r="70%">
+                        <stop
+                          offset="0"
+                          stop-color="#FFFFFF"
+                          stop-opacity=".22"
+                        />
+                        <stop
+                          offset="1"
+                          stop-color="#FFFFFF"
+                          stop-opacity="0"
+                        />
+                      </radialGradient>
+                      <filter
+                        id="blur"
+                        x="-20%"
+                        y="-20%"
+                        width="140%"
+                        height="140%"
+                      >
+                        <feGaussianBlur stdDeviation="14" />
+                      </filter>
+                    </defs>
+                    <rect width="900" height="520" fill="#0a1022" />
+                    <circle cx="220" cy="120" r="220" fill="url(#g2)" />
+                    <path
+                      d="M-50,330 C120,220 200,480 370,380 C520,290 560,420 720,340 C830,295 900,340 980,300"
+                      fill="none"
+                      stroke="url(#g1)"
+                      stroke-width="10"
+                      opacity=".9"
+                    />
+                    <path
+                      d="M-40,360 C130,260 220,520 390,410 C540,310 590,460 760,370 C860,320 910,360 990,320"
+                      fill="none"
+                      stroke="#67B3FF"
+                      stroke-width="3"
+                      opacity=".35"
+                    />
+
+                    <g filter="url(#blur)" opacity=".9">
+                      <circle
+                        cx="700"
+                        cy="160"
+                        r="95"
+                        fill="#67B3FF"
+                        opacity=".22"
+                      />
+                      <circle
+                        cx="520"
+                        cy="330"
+                        r="120"
+                        fill="#4C7DFF"
+                        opacity=".16"
+                      />
+                    </g>
+
+                    <g opacity=".9">
+                      <rect
+                        x="90"
+                        y="320"
+                        width="290"
+                        height="110"
+                        rx="18"
+                        fill="rgba(255,255,255,.06)"
+                        stroke="rgba(255,255,255,.10)"
+                      />
+                      <rect
+                        x="120"
+                        y="350"
+                        width="210"
+                        height="10"
+                        rx="10"
+                        fill="rgba(255,255,255,.26)"
+                      />
+                      <rect
+                        x="120"
+                        y="372"
+                        width="170"
+                        height="10"
+                        rx="10"
+                        fill="rgba(255,255,255,.18)"
+                      />
+                      <rect
+                        x="120"
+                        y="394"
+                        width="130"
+                        height="10"
+                        rx="10"
+                        fill="rgba(255,255,255,.12)"
+                      />
+                    </g>
+                  </svg>
+                </div>
+              </div>
+
+              <div class="hero-side">
+                <div class="mini">
+                  <div class="icon" aria-hidden="true">⎈</div>
+                  <div>
+                    <strong>Estructura clara</strong>
+                    <span>Hero → Precios → Testimonios → Antes/Después.</span>
+                  </div>
+                </div>
+                <div class="mini">
+                  <div class="icon" aria-hidden="true">⚡</div>
+                  <div>
+                    <strong>Conversión primero</strong>
+                    <span
+                      >CTA directo al pricing + feedback inmediato al elegir
+                      plan.</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </div>
+
+      <!-- PRECIOS (inmediatamente debajo del hero) -->
+      <section id="precios" aria-label="Sección de precios">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <h2>Planes simples, decisión rápida</h2>
+              <p>
+                Elige el plan que se ajuste a tu momento. Puedes cambiarlo
+                cuando quieras.
+              </p>
+            </div>
+            <button class="btn" type="button" id="btnComparar">
+              Comparar beneficios
+            </button>
+          </div>
+        </div>
+
+        <div class="pricing-wrap">
+          <div class="pricing-grid">
+            <div class="p-card">
+              <div class="p-top">
+                <h3 class="p-title">Starter</h3>
+                <span class="p-badge">Lorem</span>
+              </div>
+
+              <p class="p-desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor.
+              </p>
+
+              <div class="p-price"><strong>$19</strong><span>/mes</span></div>
+
+              <div class="p-hr"></div>
+
+              <ul class="p-list">
+                <li class="p-li">
+                  <span class="p-check">✓</span> Lorem ipsum dolor sit amet
+                </li>
+                <li class="p-li">
+                  <span class="p-check">✓</span> Consectetur adipiscing elit
+                </li>
+                <li class="p-li">
+                  <span class="p-check">✓</span> Sed do eiusmod tempor
+                </li>
+              </ul>
+
+              <a class="p-btn" href="#" data-plan="Starter">Elegir plan</a>
+              <div class="p-foot">Lorem ipsum: sin tarjeta.</div>
+            </div>
+
+            <div class="p-card featured">
+              <div class="p-top">
+                <h3 class="p-title">Pro</h3>
+                <span class="p-badge">Más elegido</span>
+              </div>
+
+              <p class="p-desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim
+                ad minim veniam.
+              </p>
+
+              <div class="p-price"><strong>$39</strong><span>/mes</span></div>
+
+              <div class="p-hr"></div>
+
+              <ul class="p-list">
+                <li class="p-li">
+                  <span class="p-check">✓</span> Lorem ipsum dolor sit amet
+                </li>
+                <li class="p-li">
+                  <span class="p-check">✓</span> Ut enim ad minim veniam
+                </li>
+                <li class="p-li">
+                  <span class="p-check">✓</span> Quis nostrud exercitation
+                </li>
+                <li class="p-li">
+                  <span class="p-check">✓</span> Duis aute irure dolor
+                </li>
+              </ul>
+
+              <a class="p-btn primary" href="#" data-plan="Pro"
+                >Empezar ahora</a
+              >
+              <div class="p-foot">Lorem ipsum: soporte prioritario.</div>
+            </div>
+
+            <div class="p-card">
+              <div class="p-top">
+                <h3 class="p-title">Business</h3>
+                <span class="p-badge">Ipsum</span>
+              </div>
+
+              <p class="p-desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt.
+              </p>
+
+              <div class="p-price"><strong>$79</strong><span>/mes</span></div>
+
+              <div class="p-hr"></div>
+
+              <ul class="p-list">
+                <li class="p-li">
+                  <span class="p-check">✓</span> Lorem ipsum dolor sit amet
+                </li>
+                <li class="p-li">
+                  <span class="p-check">✓</span> Incididunt ut labore et dolore
+                </li>
+                <li class="p-li">
+                  <span class="p-check">✓</span> Magna aliqua
+                </li>
+                <li class="p-li">
+                  <span class="p-check">✓</span> Ut enim ad minim veniam
+                </li>
+              </ul>
+
+              <a class="p-btn" href="#" data-plan="Business">Contactar</a>
+              <div class="p-foot">Lorem ipsum: facturación anual.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIOS -->
+      <section id="testimonios" aria-label="Sección de testimonios">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <h2>Testimonios</h2>
+              <p>
+                Historias cortas, impacto grande. Lo que cambia no es solo el
+                entorno: cambia el corazón.
+              </p>
+            </div>
+            <a class="btn ghost" href="#antes">Ver el cambio</a>
+          </div>
+
+          <div class="grid-3">
+            <article class="t-card">
+              <p class="t-quote">
+                “Pasé de sentirme sin rumbo a tener claridad. No fue magia: fue
+                constancia y una guía correcta.”
+              </p>
+              <div class="t-meta">
+                <span class="t-name">María</span><span>2 meses</span>
+              </div>
+            </article>
+            <article class="t-card">
+              <p class="t-quote">
+                “El enfoque es simple: pasos pequeños. Eso me ayudó a sostener
+                cambios reales en mi día a día.”
+              </p>
+              <div class="t-meta">
+                <span class="t-name">Lucas</span><span>5 semanas</span>
+              </div>
+            </article>
+            <article class="t-card">
+              <p class="t-quote">
+                “Sentí paz de nuevo. Empecé por una decisión, y esa decisión
+                ordenó lo demás.”
+              </p>
+              <div class="t-meta">
+                <span class="t-name">Ana</span><span>3 meses</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ANTES -->
+      <section id="antes" aria-label="Sección antes">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <h2>¿Quién era antes?</h2>
+              <p>
+                Una mirada honesta. No para juzgar: para entender desde dónde
+                empezamos.
+              </p>
+            </div>
+          </div>
+
+          <div class="two-col">
+            <div class="split">
+              <div class="split-media" aria-hidden="true">
+                <svg
+                  class="svg-wrap"
+                  viewBox="0 0 900 520"
+                  preserveAspectRatio="xMidYMid slice"
+                >
+                  <defs>
+                    <linearGradient id="b4" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#0B1634" />
+                      <stop offset="1" stop-color="#0A0F22" />
+                    </linearGradient>
+                    <radialGradient id="b5" cx="28%" cy="22%" r="70%">
+                      <stop
+                        offset="0"
+                        stop-color="#67B3FF"
+                        stop-opacity=".28"
+                      />
+                      <stop offset="1" stop-color="#67B3FF" stop-opacity="0" />
+                    </radialGradient>
+                  </defs>
+                  <rect width="900" height="520" fill="url(#b4)" />
+                  <circle cx="260" cy="140" r="240" fill="url(#b5)" />
+                  <path
+                    d="M0,420 C160,320 280,520 440,420 C580,330 660,450 900,360"
+                    fill="none"
+                    stroke="rgba(255,255,255,.14)"
+                    stroke-width="6"
+                  />
+                  <path
+                    d="M50,400 C210,305 310,500 470,400 C610,315 700,420 900,345"
+                    fill="none"
+                    stroke="rgba(103,179,255,.40)"
+                    stroke-width="4"
+                  />
+                  <text
+                    x="70"
+                    y="120"
+                    fill="rgba(255,255,255,.86)"
+                    font-size="44"
+                    font-weight="800"
+                  >
+                    ANTES
+                  </text>
+                  <text
+                    x="70"
+                    y="165"
+                    fill="rgba(237,237,237,.60)"
+                    font-size="18"
+                  >
+                    Ruido, carga, cansancio
+                  </text>
+                </svg>
+              </div>
+              <div class="split-body">
+                <h3>Cuando todo pesa</h3>
+                <p>
+                  A veces la vida se siente como una lista interminable. Hay
+                  prisa, presión y poca paz. Este bloque está pensado para que
+                  el lector se vea reflejado y siga leyendo.
+                </p>
+                <div class="divider"></div>
+                <ul class="list">
+                  <li>Decisiones impulsivas y poca claridad.</li>
+                  <li>Ansiedad por el futuro y culpa por el pasado.</li>
+                  <li>Rutina sin dirección, sin propósito.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="split">
+              <div class="split-media" aria-hidden="true">
+                <svg
+                  class="svg-wrap"
+                  viewBox="0 0 900 520"
+                  preserveAspectRatio="xMidYMid slice"
+                >
+                  <defs>
+                    <linearGradient id="b6" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#071027" />
+                      <stop offset="1" stop-color="#0C1636" />
+                    </linearGradient>
+                  </defs>
+                  <rect width="900" height="520" fill="url(#b6)" />
+                  <g opacity=".85">
+                    <rect
+                      x="70"
+                      y="90"
+                      width="340"
+                      height="90"
+                      rx="18"
+                      fill="rgba(255,255,255,.06)"
+                      stroke="rgba(255,255,255,.10)"
+                    />
+                    <rect
+                      x="110"
+                      y="125"
+                      width="240"
+                      height="12"
+                      rx="10"
+                      fill="rgba(255,255,255,.22)"
+                    />
+                    <rect
+                      x="110"
+                      y="148"
+                      width="180"
+                      height="12"
+                      rx="10"
+                      fill="rgba(255,255,255,.12)"
+                    />
+                  </g>
+                  <g opacity=".85">
+                    <rect
+                      x="70"
+                      y="210"
+                      width="420"
+                      height="210"
+                      rx="18"
+                      fill="rgba(255,255,255,.04)"
+                      stroke="rgba(255,255,255,.10)"
+                    />
+                    <rect
+                      x="110"
+                      y="250"
+                      width="320"
+                      height="12"
+                      rx="10"
+                      fill="rgba(103,179,255,.34)"
+                    />
+                    <rect
+                      x="110"
+                      y="280"
+                      width="260"
+                      height="12"
+                      rx="10"
+                      fill="rgba(255,255,255,.14)"
+                    />
+                    <rect
+                      x="110"
+                      y="310"
+                      width="220"
+                      height="12"
+                      rx="10"
+                      fill="rgba(255,255,255,.12)"
+                    />
+                    <rect
+                      x="110"
+                      y="340"
+                      width="190"
+                      height="12"
+                      rx="10"
+                      fill="rgba(255,255,255,.10)"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <div class="split-body">
+                <h3>Necesidad de un mapa</h3>
+                <p>
+                  Aquí puedes explicar el “problema” con empatía y sin
+                  dramatizar. Diseño UX: texto corto, bullets, lectura fácil.
+                </p>
+                <div class="divider"></div>
+                <ul class="list">
+                  <li>Falta de hábitos sostenibles.</li>
+                  <li>Relaciones frías o rotas.</li>
+                  <li>Fe sin práctica diaria.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DESPUÉS -->
+      <section id="despues" aria-label="Sección después">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <h2>¿Quién era después?</h2>
+              <p>
+                El objetivo no es “ser perfecto”, sino caminar con esperanza y
+                dirección.
+              </p>
+            </div>
+            <a class="btn primary" href="#precios">Empezar con un plan</a>
+          </div>
+
+          <div class="two-col">
+            <div class="split">
+              <div class="split-media" aria-hidden="true">
+                <svg
+                  class="svg-wrap"
+                  viewBox="0 0 900 520"
+                  preserveAspectRatio="xMidYMid slice"
+                >
+                  <defs>
+                    <linearGradient id="a1" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#0B1B3E" />
+                      <stop offset="1" stop-color="#071027" />
+                    </linearGradient>
+                    <radialGradient id="a2" cx="70%" cy="30%" r="70%">
+                      <stop
+                        offset="0"
+                        stop-color="#67B3FF"
+                        stop-opacity=".30"
+                      />
+                      <stop offset="1" stop-color="#67B3FF" stop-opacity="0" />
+                    </radialGradient>
+                  </defs>
+                  <rect width="900" height="520" fill="url(#a1)" />
+                  <circle cx="640" cy="160" r="260" fill="url(#a2)" />
+                  <path
+                    d="M-20,360 C120,260 240,460 410,360 C570,265 640,430 900,300"
+                    fill="none"
+                    stroke="rgba(103,179,255,.55)"
+                    stroke-width="6"
+                  />
+                  <text
+                    x="70"
+                    y="120"
+                    fill="rgba(255,255,255,.90)"
+                    font-size="44"
+                    font-weight="900"
+                  >
+                    DESPUÉS
+                  </text>
+                  <text
+                    x="70"
+                    y="165"
+                    fill="rgba(237,237,237,.62)"
+                    font-size="18"
+                  >
+                    Claridad, paz, propósito
+                  </text>
+                </svg>
+              </div>
+              <div class="split-body">
+                <h3>Dirección y paz</h3>
+                <p>
+                  Después, la historia cambia: hay orden, intención, y una
+                  identidad nueva. No se trata de “no fallar”, sino de volver a
+                  empezar.
+                </p>
+                <div class="divider"></div>
+                <ul class="list">
+                  <li>Hábitos pequeños que sostienen grandes cambios.</li>
+                  <li>Decisiones con calma y enfoque.</li>
+                  <li>Un propósito que guía lo diario.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="split">
+              <div class="split-media" aria-hidden="true">
+                <svg
+                  class="svg-wrap"
+                  viewBox="0 0 900 520"
+                  preserveAspectRatio="xMidYMid slice"
+                >
+                  <defs>
+                    <linearGradient id="a3" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#061026" />
+                      <stop offset="1" stop-color="#0C1A3C" />
+                    </linearGradient>
+                  </defs>
+                  <rect width="900" height="520" fill="url(#a3)" />
+                  <g opacity=".88">
+                    <rect
+                      x="90"
+                      y="110"
+                      width="720"
+                      height="90"
+                      rx="18"
+                      fill="rgba(255,255,255,.06)"
+                      stroke="rgba(255,255,255,.10)"
+                    />
+                    <rect
+                      x="130"
+                      y="145"
+                      width="420"
+                      height="12"
+                      rx="10"
+                      fill="rgba(103,179,255,.42)"
+                    />
+                    <rect
+                      x="130"
+                      y="168"
+                      width="280"
+                      height="12"
+                      rx="10"
+                      fill="rgba(255,255,255,.14)"
+                    />
+                  </g>
+                  <g opacity=".88">
+                    <rect
+                      x="90"
+                      y="230"
+                      width="720"
+                      height="220"
+                      rx="18"
+                      fill="rgba(255,255,255,.04)"
+                      stroke="rgba(255,255,255,.10)"
+                    />
+                    <rect
+                      x="130"
+                      y="270"
+                      width="500"
+                      height="12"
+                      rx="10"
+                      fill="rgba(255,255,255,.18)"
+                    />
+                    <rect
+                      x="130"
+                      y="300"
+                      width="440"
+                      height="12"
+                      rx="10"
+                      fill="rgba(255,255,255,.14)"
+                    />
+                    <rect
+                      x="130"
+                      y="330"
+                      width="360"
+                      height="12"
+                      rx="10"
+                      fill="rgba(255,255,255,.12)"
+                    />
+                    <rect
+                      x="130"
+                      y="360"
+                      width="300"
+                      height="12"
+                      rx="10"
+                      fill="rgba(255,255,255,.10)"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <div class="split-body">
+                <h3>Comunidades y soporte</h3>
+                <p>
+                  Esta columna puede reforzar “lo que obtienen”: acompañamiento,
+                  claridad en próximos pasos, y un lugar seguro para crecer.
+                </p>
+                <div class="divider"></div>
+                <ul class="list">
+                  <li>Seguimiento y metas alcanzables.</li>
+                  <li>Soporte (según plan) y recursos prácticos.</li>
+                  <li>Una ruta simple para mantener constancia.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer aria-label="Footer">
+        <div class="container foot">
+          <div>
+            © <span id="year"></span> Camino Nuevo · Hecho en HTML/CSS/JS (1
+            archivo)
+          </div>
+          <div>
+            <a
+              href="#top"
+              class="btn ghost"
+              style="padding: 10px 12px; border-radius: 12px"
+              >Volver arriba</a
+            >
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <div
+      class="toast"
+      id="toast"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <div class="toast-row">
+        <div>
+          <strong id="toastTitle">Listo</strong>
+          <p id="toastMsg">Acción completada.</p>
+        </div>
+        <button class="xbtn" type="button" id="toastClose" aria-label="Cerrar">
+          Cerrar
+        </button>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const $ = (sel, root = document) => root.querySelector(sel);
+        const $$ = (sel, root = document) =>
+          Array.from(root.querySelectorAll(sel));
+
+        const toast = $("#toast");
+        const toastTitle = $("#toastTitle");
+        const toastMsg = $("#toastMsg");
+        const toastClose = $("#toastClose");
+        let toastTimer = null;
+
+        function showToast(title, msg) {
+          if (!toast) return;
+          toastTitle.textContent = title;
+          toastMsg.textContent = msg;
+          toast.classList.add("show");
+          clearTimeout(toastTimer);
+          toastTimer = setTimeout(() => toast.classList.remove("show"), 4200);
+        }
+
+        toastClose?.addEventListener("click", () =>
+          toast.classList.remove("show"),
+        );
+
+        // Hero CTA secundaria
+        $("#ctaOracion")?.addEventListener("click", () => {
+          showToast(
+            "Mensaje enviado",
+            "Si quieres, puedo ajustar el texto, los testimonios y los planes a tu oferta real.",
+          );
+        });
+
+        // Atajo y botón: ir a precios
+        function goToPricing() {
+          const el = $("#precios");
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        $("#btnAtajo")?.addEventListener("click", goToPricing);
+
+        document.addEventListener("keydown", (e) => {
+          // Alt+P
+          if (e.altKey && (e.key === "p" || e.key === "P")) {
+            e.preventDefault();
+            goToPricing();
+            showToast("Atajo", "Te llevé a la sección de precios.");
+          }
+        });
+
+        // Interceptar botones de planes
+        $$(".p-btn").forEach((a) => {
+          a.addEventListener("click", (e) => {
+            // Solo interceptamos links con data-plan (para dejar otros anchors si luego agregas)
+            const plan = a.getAttribute("data-plan");
+            if (!plan) return;
+            e.preventDefault();
+            const isPro = plan.toLowerCase() === "pro";
+            showToast(
+              "Plan seleccionado",
+              `Elegiste "${plan}". ${isPro ? "Buena elección: es el más equilibrado." : "Perfecto: empecemos paso a paso."}`,
+            );
+          });
+        });
+
+        // Comparar beneficios
+        $("#btnComparar")?.addEventListener("click", () => {
+          showToast(
+            "Tip UX",
+            "Si me pasas tus beneficios reales, los reemplazo por texto final (sin Lorem).",
+          );
+        });
+
+        // Footer year
+        const y = new Date().getFullYear();
+        const year = $("#year");
+        if (year) year.textContent = String(y);
+      })();
+    </script>
+  </body>
+</html>
