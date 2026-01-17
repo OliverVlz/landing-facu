@@ -674,17 +674,19 @@
         padding: 12px 12px;
         border-radius: 14px;
         text-decoration: none;
-        border: 1px solid rgba(255, 255, 255, 0.10);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         background: rgba(255, 255, 255, 0.04);
-        color: rgba(237, 237, 237, 0.90);
-        transition: transform 0.15s var(--ease), background 0.15s var(--ease);
+        color: rgba(237, 237, 237, 0.9);
+        transition:
+          transform 0.15s var(--ease),
+          background 0.15s var(--ease);
       }
       .drawer-link:hover {
         transform: translateY(-1px);
         background: rgba(255, 255, 255, 0.07);
       }
       .drawer-hint {
-        color: rgba(237, 237, 237, 0.60);
+        color: rgba(237, 237, 237, 0.6);
         font-size: 12px;
         padding: 0 6px;
         line-height: 1.4;
@@ -988,25 +990,52 @@
 
     <div class="drawer" id="drawer" aria-hidden="true">
       <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
-      <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Menú">
+      <div
+        class="drawer-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menú"
+      >
         <div class="drawer-head">
           <div class="drawer-title">
-            <div class="logo" aria-hidden="true" style="width: 28px; height: 28px; border-radius: 10px"></div>
+            <div
+              class="logo"
+              aria-hidden="true"
+              style="width: 28px; height: 28px; border-radius: 10px"
+            ></div>
             <strong>Camino Nuevo</strong>
           </div>
-          <button class="xbtn" type="button" id="drawerClose" aria-label="Cerrar menú">
+          <button
+            class="xbtn"
+            type="button"
+            id="drawerClose"
+            aria-label="Cerrar menú"
+          >
             Cerrar
           </button>
         </div>
 
         <div class="drawer-links">
-          <a class="drawer-link" href="#precios">Precios <span aria-hidden="true">→</span></a>
-          <a class="drawer-link" href="#testimonios">Testimonios <span aria-hidden="true">→</span></a>
-          <a class="drawer-link" href="#antes">Antes <span aria-hidden="true">→</span></a>
-          <a class="drawer-link" href="#despues">Después <span aria-hidden="true">→</span></a>
-          <button class="btn primary" type="button" id="drawerCta">Ver planes</button>
+          <a class="drawer-link" href="#precios"
+            >Precios <span aria-hidden="true">→</span></a
+          >
+          <a class="drawer-link" href="#testimonios"
+            >Testimonios <span aria-hidden="true">→</span></a
+          >
+          <a class="drawer-link" href="#antes"
+            >Antes <span aria-hidden="true">→</span></a
+          >
+          <a class="drawer-link" href="#despues"
+            >Después <span aria-hidden="true">→</span></a
+          >
+          <button class="btn primary" type="button" id="drawerCta">
+            Ver planes
+          </button>
         </div>
-        <p class="drawer-hint">Tip: también puedes usar <span class="kbd" aria-hidden="true">Alt + P</span> para ir a Precios.</p>
+        <p class="drawer-hint">
+          Tip: también puedes usar
+          <span class="kbd" aria-hidden="true">Alt + P</span> para ir a Precios.
+        </p>
       </div>
     </div>
 
