@@ -157,6 +157,10 @@
         transform: translateY(-1px);
       }
 
+      #btnMenu {
+        display: none;
+      }
+
       .btn {
         display: inline-flex;
         align-items: center;
@@ -598,6 +602,94 @@
         transform: translateY(-1px);
       }
 
+      /* Drawer (menú mobile) */
+      body.no-scroll {
+        overflow: hidden;
+      }
+      .drawer {
+        position: fixed;
+        inset: 0;
+        z-index: 70;
+        display: none;
+      }
+      .drawer.open {
+        display: block;
+      }
+      .drawer-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.58);
+        backdrop-filter: blur(2px);
+      }
+      .drawer-panel {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        bottom: 12px;
+        width: min(380px, calc(100% - 24px));
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(8, 12, 22, 0.92);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 22px 80px rgba(0, 0, 0, 0.55);
+        padding: 12px;
+        transform: translateX(10px);
+        opacity: 0;
+        animation: drawerIn 0.18s var(--ease) forwards;
+      }
+      @keyframes drawerIn {
+        to {
+          transform: translateX(0px);
+          opacity: 1;
+        }
+      }
+      .drawer-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 6px 6px 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        margin-bottom: 10px;
+      }
+      .drawer-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .drawer-title strong {
+        font-size: 14px;
+        letter-spacing: 0.2px;
+      }
+      .drawer-links {
+        display: grid;
+        gap: 10px;
+        padding: 6px;
+      }
+      .drawer-link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 12px 12px;
+        border-radius: 14px;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        background: rgba(255, 255, 255, 0.04);
+        color: rgba(237, 237, 237, 0.90);
+        transition: transform 0.15s var(--ease), background 0.15s var(--ease);
+      }
+      .drawer-link:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .drawer-hint {
+        color: rgba(237, 237, 237, 0.60);
+        font-size: 12px;
+        padding: 0 6px;
+        line-height: 1.4;
+      }
+
       /* Footer */
       footer {
         padding: 22px 0 40px;
@@ -634,6 +726,62 @@
         }
         .two-col {
           grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .topbar-inner {
+          gap: 10px;
+        }
+        .nav a,
+        #btnAtajo {
+          display: none;
+        }
+        #btnMenu {
+          display: inline-flex;
+        }
+        .hero {
+          padding: 26px 0 14px;
+        }
+        section {
+          padding: 26px 0;
+        }
+        .hero-left {
+          padding: 18px;
+        }
+        .visual {
+          padding: 14px;
+        }
+        .visual-inner {
+          min-height: 200px;
+        }
+        .hero-actions .btn {
+          width: 100%;
+        }
+        .hero-actions {
+          width: 100%;
+        }
+        .section-head {
+          margin-bottom: 12px;
+        }
+        .foot {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .brand span {
+          display: none;
+        }
+        h1 {
+          letter-spacing: -0.3px;
+        }
+        .lead {
+          font-size: 14px;
+        }
+        .verse q {
+          font-size: 14px;
         }
       }
 
@@ -823,9 +971,44 @@
           >
             Ir a precios <span class="kbd" aria-hidden="true">Alt + P</span>
           </button>
+
+          <button
+            class="btn ghost"
+            id="btnMenu"
+            type="button"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            aria-controls="drawer"
+          >
+            Menú
+          </button>
         </nav>
       </div>
     </header>
+
+    <div class="drawer" id="drawer" aria-hidden="true">
+      <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+      <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Menú">
+        <div class="drawer-head">
+          <div class="drawer-title">
+            <div class="logo" aria-hidden="true" style="width: 28px; height: 28px; border-radius: 10px"></div>
+            <strong>Camino Nuevo</strong>
+          </div>
+          <button class="xbtn" type="button" id="drawerClose" aria-label="Cerrar menú">
+            Cerrar
+          </button>
+        </div>
+
+        <div class="drawer-links">
+          <a class="drawer-link" href="#precios">Precios <span aria-hidden="true">→</span></a>
+          <a class="drawer-link" href="#testimonios">Testimonios <span aria-hidden="true">→</span></a>
+          <a class="drawer-link" href="#antes">Antes <span aria-hidden="true">→</span></a>
+          <a class="drawer-link" href="#despues">Después <span aria-hidden="true">→</span></a>
+          <button class="btn primary" type="button" id="drawerCta">Ver planes</button>
+        </div>
+        <p class="drawer-hint">Tip: también puedes usar <span class="kbd" aria-hidden="true">Alt + P</span> para ir a Precios.</p>
+      </div>
+    </div>
 
     <main id="top">
       <div class="container">
@@ -1594,6 +1777,12 @@
         const $$ = (sel, root = document) =>
           Array.from(root.querySelectorAll(sel));
 
+        const btnMenu = $("#btnMenu");
+        const drawer = $("#drawer");
+        const drawerBackdrop = $("#drawerBackdrop");
+        const drawerClose = $("#drawerClose");
+        const drawerCta = $("#drawerCta");
+
         const toast = $("#toast");
         const toastTitle = $("#toastTitle");
         const toastMsg = $("#toastMsg");
@@ -1607,6 +1796,24 @@
           toast.classList.add("show");
           clearTimeout(toastTimer);
           toastTimer = setTimeout(() => toast.classList.remove("show"), 4200);
+        }
+
+        function openDrawer() {
+          if (!drawer || !btnMenu) return;
+          drawer.classList.add("open");
+          drawer.setAttribute("aria-hidden", "false");
+          btnMenu.setAttribute("aria-expanded", "true");
+          document.body.classList.add("no-scroll");
+          drawerClose?.focus();
+        }
+
+        function closeDrawer() {
+          if (!drawer || !btnMenu) return;
+          drawer.classList.remove("open");
+          drawer.setAttribute("aria-hidden", "true");
+          btnMenu.setAttribute("aria-expanded", "false");
+          document.body.classList.remove("no-scroll");
+          btnMenu.focus();
         }
 
         toastClose?.addEventListener("click", () =>
@@ -1629,7 +1836,34 @@
 
         $("#btnAtajo")?.addEventListener("click", goToPricing);
 
+        btnMenu?.addEventListener("click", () => {
+          if (!drawer) return;
+          const isOpen = drawer.classList.contains("open");
+          if (isOpen) closeDrawer();
+          else openDrawer();
+        });
+
+        drawerBackdrop?.addEventListener("click", closeDrawer);
+        drawerClose?.addEventListener("click", closeDrawer);
+        drawerCta?.addEventListener("click", () => {
+          closeDrawer();
+          goToPricing();
+        });
+
+        drawer?.addEventListener("click", (e) => {
+          const a = e.target?.closest?.("a.drawer-link");
+          if (!a) return;
+          closeDrawer();
+        });
+
         document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            if (drawer?.classList.contains("open")) {
+              e.preventDefault();
+              closeDrawer();
+            }
+            return;
+          }
           // Alt+P
           if (e.altKey && (e.key === "p" || e.key === "P")) {
             e.preventDefault();
