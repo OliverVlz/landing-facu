@@ -50,6 +50,12 @@
           Arial,
           sans-serif;
         color: var(--text);
+        min-height: 100vh;
+      }
+
+      /* Fondo SOLO para la versión standalone. En el constructor, no uses esta clase
+         y así se mantiene el background global del sitio. */
+      body.has-landing-bg {
         background:
           radial-gradient(
             1000px 520px at 18% 10%,
@@ -67,7 +73,6 @@
             transparent 60%
           ),
           linear-gradient(180deg, var(--bg0), var(--bg1) 65%, #070b14);
-        min-height: 100vh;
       }
 
       a {
@@ -949,7 +954,7 @@
     </style>
   </head>
 
-  <body>
+  <body class="has-landing-bg">
     <header class="topbar" aria-label="Barra de navegación">
       <div class="container topbar-inner">
         <a class="brand" href="#top" aria-label="Inicio">

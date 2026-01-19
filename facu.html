@@ -1,0 +1,2361 @@
+<html>
+    <head><script async="" src="//www.google-analytics.com/analytics.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>Test - FACU ZÁRATE </title> 
+
+<meta name="description" content="">
+
+<meta property="og:title" content="Test - FACU ZÁRATE ">
+
+<meta property="og:description" content="">
+
+    <link rel="icon" href="https://bu-cdn.tiendup.com/business/49614/images/favicon_687cac11de7fa_32x32.png" sizes="any"><!-- 32×32 --><link rel="apple-touch-icon" href="https://bu-cdn.tiendup.com/business/49614/images/favicon_687cac11de7fa_180x180.png"><!-- 180×180 --><link rel="manifest" href="/manifest.webmanifest">
+    
+    <link href="https://bu-cdn.tiendup.com/static/fonts/material/materialicons.min.css" rel="stylesheet">
+
+     
+ 
+
+         
+        
+    
+    
+   
+
+     <!-- Ui Payments -->
+     <link href="https://bu-cdn.tiendup.com/static/ui_payments/1.3/css/ui-payments-methods.min.css" rel="stylesheet">
+
+
+    
+    <link rel="stylesheet" type="text/css" href="https://bu-cdn.tiendup.com/business/49614/themes/lite/assets/css/metropolis.css?v=2">
+<link rel="stylesheet" type="text/css" href="https://bu-cdn.tiendup.com/business/49614/themes/lite/assets/css/uikit.lite2.min.css?v=2">
+<link rel="stylesheet" type="text/css" href="https://bu-cdn.tiendup.com/business/49614/themes/lite/assets/css/style.css?v=2">
+<link rel="stylesheet" type="text/css" href="https://bu-cdn.tiendup.com/business/49614/themes/lite/assets/css/sweetalert.css?v=2">
+<link rel="stylesheet" type="text/css" href="https://bu-cdn.tiendup.com/business/49614/themes/lite/assets/vendor/intl-tel-input-17.0.0/css/intlTelInput.min.css?v=2">
+<link rel="stylesheet" type="text/css" href="https://bu-cdn.tiendup.com/static/store/modal.min.css?v=2">
+<!-- Tiendup Tracking --><script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Asegurarse que solo se aplique en la URL específica
+    if (window.location.href.includes("/p/pagar-sala-marca-personal")) {
+      
+      // CAMBIAR "Suscribirme" por "Pagar"
+      var spansSuscribirme = document.querySelectorAll('button.uk-button-primary span[data-status="ready"]');
+      spansSuscribirme.forEach(function(span) {
+        if (span.textContent.trim() === "Suscribirme") {
+          span.textContent = "Pagar";
+        }
+      });
+
+      // CAMBIAR "cada mes", "cada tres meses", "cada seis meses" por "pago único"
+      const textosACambiar = ["cada mes", "cada tres meses", "cada seis meses"];
+      const spans = document.querySelectorAll("span");
+
+      spans.forEach(function(span) {
+        let texto = span.textContent.trim().toLowerCase();
+        if (textosACambiar.includes(texto)) {
+          span.textContent = "pago único";
+        }
+      });
+
+    }
+  });
+</script>
+
+<script>
+  window.onload = function() {
+    // Seleccionamos todos los spans que contienen la clase uk-display-block (o cualquier que creas adecuado)
+    const spans = document.querySelectorAll('span.uk-display-block');
+
+    spans.forEach(span => {
+      // Recorremos los nodos hijos de cada span
+      span.childNodes.forEach(node => {
+        // Buscamos nodos de texto (nodeType 3) que contengan "cada mes", "cada tres meses" o "cada seis meses"
+        if (node.nodeType === 3) {
+          let texto = node.textContent.trim();
+          if(texto.includes("cada mes")){
+            node.textContent = texto.replace(/cada mes/gi, "pago único");
+          }
+          else if(texto.includes("cada tres meses")){
+            node.textContent = texto.replace(/cada tres meses/gi, "pago único");
+          }
+          else if(texto.includes("cada seis meses")){
+            node.textContent = texto.replace(/cada seis meses/gi, "pago único");
+          }
+        }
+      });
+    });
+  }
+</script><style>#purchase-modal.uk-modal {z-index: 99999}</style>
+    <style type="text/css">
+         
+
+
+ 
+
+         
+
+
+
+
+
+
+
+    
+
+
+     
+/* dark */
+ 
+    :root { 
+        /* Brand  */
+        --brand-hue: 294;
+        --brand-saturation: 100%;
+        --brand-lightness: 34%;
+
+        /* On Brand  Primary */
+        --on-brand-primary-hue: 0;
+        --on-brand-primary-saturation: 0%;
+        --on-brand-primary-lightness: 100%;
+
+        
+        /* Background  */
+        --background-hue: 0;
+        --background-saturation: 0%;
+        --background-lightness: 0%;
+
+       
+        
+        /* Text  */
+        --text-hue: 0;
+        --text-saturation: 0%;
+        --text-lightness: 100%;
+
+         /* Button background  */
+         --btn-bg-hue: 294;
+         --btn-bg-saturation: 100%;
+         --btn-bg-lightness: 34%;
+ 
+         /* Button text  */
+         --btn-text-hue: 0;
+         --btn-text-saturation: 0%;
+         --btn-text-lightness: 100%;
+
+
+        /* Secondary */
+        
+        --secondary-hue: 194;
+        --secondary-saturation: 31%;
+        --secondary-lightness: 18%;
+        
+
+       
+
+        /* On Secondary */
+        
+        --on-secondary-hue: 0;
+        --on-secondary-saturation: 0%;
+        --on-secondary-lightness: 100%;
+        
+
+         /* Links */
+         
+         --link-hue: 294;
+         --link-saturation: 100%;
+         --link-lightness: 34%;
+        
+
+
+
+        /*== Composed Main Colors ==*/
+        --brand-color: hsl( var(--brand-hue) var(--brand-saturation) var(--brand-lightness));
+        --on-brand-primary-color: hsl( var(--on-brand-primary-hue) var(--on-brand-primary-saturation) var(--on-brand-primary-lightness));
+        
+        --background-color: hsl( var(--background-hue) var(--background-saturation) var(--background-lightness));
+        --text-color: hsl( var(--text-hue) var(--text-saturation) var(--text-lightness));
+        --button-background-color: hsl( var(--btn-bg-hue) var(--btn-bg-saturation) var(--btn-bg-lightness));
+        --button-text-color: hsl( var(--btn-text-hue) var(--btn-text-saturation) var(--btn-text-lightness));
+
+         
+
+         
+
+         
+        /*           */
+        --secondary-color: hsl( var(--secondary-hue) var(--secondary-saturation) var(--secondary-lightness));
+        
+        /*   */
+        --on-secondary-color: hsl( var(--on-secondary-hue) var(--on-secondary-saturation) var(--on-secondary-lightness));
+
+        /*   */
+        --link-color: hsl( var(--link-hue) var(--link-saturation) var(--link-lightness));
+
+
+         
+         
+       /*== Generation of extended colors ==*/
+       --background-muted-color: hsl( var(--background-hue) var(--background-saturation) calc( var(--background-lightness) - 4%) );             
+       --text-muted-color: hsl( var(--text-hue) var(--text-saturation) calc( var(--text-lightness) + 30%) );
+       --border-color: hsla( var(--text-hue), var(--text-saturation), var(--text-lightness), .18);        
+       --overlay-default-background-color:  hsla( var(--background-hue), var(--background-saturation), var(--background-lightness), .25);   
+    
+        /*== Fixed colors ==*/
+        --state-success-color: #13b288;
+        --state-on-success-color: #FFFFFF;
+        --state-warning-color: #EC7F4B;
+        --state-on-warning-color: #FFFFFF;
+        --state-danger-color: #eb4b48;
+        --state-on-danger-color: #FFFFFF;
+ 
+    }
+
+
+    /*== 01. General                    ==*/   
+    /*== 02. Text                       ==*/ 
+    /*== 03. Links                      ==*/
+    /*== 04. Buttons                    ==*/
+    /*== 05. Headings                   ==*/
+    /*== 06. Sections                   ==*/
+    /*== 07. Navbar                     ==*/
+    /*== 08. Cards                      ==*/
+    /*== 09. Modals                     ==*/
+    /*== 10. Close                      ==*/
+    /*== 11. Forms                      ==*/
+    /*== 12. Accordion                  ==*/
+    /*== 13. Slidenav                   ==*/
+    /*== 14. Badge                      ==*/
+    /*== 15. Overlay                    ==*/
+    /*== 16. Tabs                       ==*/
+    /*== 17. Alerts                     ==*/
+    /*== 18. Dropdowns                  ==*/
+    /*== 19. Offcanvas                  ==*/
+    /*== 20. Table                      ==*/
+    /*== 21. Breadcrumb                 ==*/
+    /*== 22. Label                      ==*/
+    /*== XX. Tiendup Custom Elements    ==*/
+
+    /*== 01. General    ==*/    
+    
+    html {
+        background: var(--background-color); /* Habria que sacar el uk-section-default de las sections o bien llevar este color ahi*/
+        color: var(--text-color);
+    }
+
+    ::selection {
+        background:var(--brand-color);
+        color:var(--on-brand-primary-color);        
+    }
+      
+    /*== 02. Text           ==*/
+      .uk-text-primary {
+          color: var(--text-primary-color, var(--brand-color))!important
+      }
+      .uk-text-muted {
+        color: var(--text-muted-color)!important;
+    }
+    .uk-text-success {
+        color: var(--state-success-color)!important;
+    }
+    .uk-text-danger {
+        color: var(--state-danger-color)!important;
+      }
+    blockquote, 
+    .uk-text-lead {
+        color: var(--text-color);
+    }
+
+
+    /*== 03. Links          ==*/
+      .uk-link, a, .uk-link-toggle:focus .uk-link, .uk-link-toggle:hover .uk-link, .uk-link:hover, a:hover {
+        color: var(--link-color, var(--brand-color));
+      }
+      .uk-link-heading a:hover, .uk-link-toggle:focus .uk-link-heading, .uk-link-toggle:hover .uk-link-heading, a.uk-link-heading:hover {
+        color: var(--link-color, var(--brand-color));
+      }
+       
+      .uk-link-muted a:hover, .uk-link-toggle:focus .uk-link-muted, .uk-link-toggle:hover .uk-link-muted, a.uk-link-muted:hover {
+        color: var(--text-muted-color);
+    }
+
+    /*== 04. Buttons        ==*/
+    .uk-button-default {
+        border-color: var(--border-color);
+        color: var(--text-color);
+    }
+    .uk-button-default:focus, .uk-button-default:hover {
+        border-color: var(--text-color);
+        color: var(--text-color);         
+    }
+
+    .uk-button-primary {
+        --button-primary-background-color: var(--button-background-color);       
+        --button-primary-text-color: var(--button-text-color);
+        
+        background-color: var(--button-primary-background-color);
+        color: var(--button-primary-text-color);
+    }
+    .uk-button-primary:focus, .uk-button-primary:hover {
+        --button-primary-background-hover-color: hsl( var(--btn-bg-hue) var(--btn-bg-saturation) calc( var(--btn-bg-lightness) - 10%) );       
+        background-color: var(--button-primary-background-hover-color);
+        color: var(--button-primary-text-color);
+        /* box-shadow: 0 0 0 1px var(--button-primary-background-hover-color); */
+    }
+
+    .uk-button-secondary {
+        --button-secondary-background-color: var(--secondary-color, #222222);       
+        --button-secondary-text-color: var(--on-secondary-color, #FFFFFF);
+        background-color: var(--button-secondary-background-color);
+        color: var(--button-secondary-text-color);
+    }
+    .uk-button-secondary:focus, .uk-button-secondary:hover {
+        --button-secondary-background-hover-color: hsl( var(--secondary-hue) var(--secondary-saturation) calc( var(--secondary-lightness) - 10%) );       
+        --button-secondary-text-color: var(--on-secondary-color, #FFFFFF);
+        background-color: var(--button-secondary-background-hover-color, #000000);
+        color: var(--button-secondary-text-color, #FFFFFF);
+        /* box-shadow: 0 0 0 1px var(--button-secondary-background-hover-color, #000000); */
+    }
+    
+    .uk-button-link {        
+        color: var(--link-color, var(--brand-color));
+    }
+    .uk-button-link:focus, .uk-button-link:hover {
+        color: var(--button-primary-background-hover-color);
+    }
+
+    .uk-button-danger {
+        background-color: var(--state-danger-color);
+        color:  var(--state-on-danger-color);         
+      }
+      .uk-button-danger:focus,.uk-button-danger:hover {
+        --button-danger-background-hover-color: var(--state-danger-color);
+        background-color: var(--state-danger-color);
+        color:  var(--state-on-danger-color);         
+      }
+
+    .uk-button-danger:disabled, .uk-button-default:disabled, .uk-button-primary:disabled, .uk-button-secondary:disabled {    
+        background: transparent;
+        color: var(--text-muted-color);
+        border-color: var(--border-color);        
+    }
+    .uk-button-danger:disabled:hover, .uk-button-default:disabled:hover, .uk-button-primary:disabled:hover, .uk-button-secondary:disabled:hover {
+        background: var(--background-muted-color);
+        box-shadow: 0 0 0 1px var(--border-color);
+    }
+
+    
+   
+      
+     /*== 05. Headings       ==*/
+     .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, .uk-heading-2xlarge, .uk-heading-large, .uk-heading-medium, .uk-heading-small, .uk-heading-xlarge, h1, h2, h3, h4, h5, h6 {
+        color: var(--heading-color ,--text-color);
+    }
+     
+      
+      /*== 06. Sections       ==*/
+      .uk-section-default,
+      .uk-background-default {
+          background-color: var(--background-color);
+          color: var(--text-color)
+      }
+
+      .uk-section-primary {
+        background-color: var(--brand-color);
+      }
+      .uk-section-primary:not(.uk-preserve-color)  {
+        color: var(--on-brand-secondary-color, var(--on-brand-primary-color))
+      }
+      .uk-background-primary {        
+          background-color: var(--brand-color);
+          color: var(--on-brand-secondary-color, var(--on-brand-primary-color))
+      }      
+      .uk-background-primary [class*="uk-heading"],
+      .uk-background-primary .uk-h1, .uk-background-primary .uk-h2, .uk-background-primary .uk-h3, .uk-background-primary .uk-h4, .uk-background-primary .uk-h5, .uk-background-primary .uk-h6,   .uk-background-primary h1, .uk-background-primary h2, .uk-background-primary h3, .uk-background-primary h4, .uk-background-primary h5, .uk-background-primary h6,
+      .uk-section-primary:not(.uk-preserve-color) .uk-h1, .uk-section-primary:not(.uk-preserve-color) .uk-h2, .uk-section-primary:not(.uk-preserve-color) .uk-h3, .uk-section-primary:not(.uk-preserve-color) .uk-h4, .uk-section-primary:not(.uk-preserve-color) .uk-h5, .uk-section-primary:not(.uk-preserve-color) .uk-h6, .uk-section-primary:not(.uk-preserve-color) .uk-heading-2xlarge, .uk-section-primary:not(.uk-preserve-color) .uk-heading-large, .uk-section-primary:not(.uk-preserve-color) .uk-heading-medium, .uk-section-primary:not(.uk-preserve-color) .uk-heading-small, .uk-section-primary:not(.uk-preserve-color) .uk-heading-xlarge, .uk-section-primary:not(.uk-preserve-color) h1, .uk-section-primary:not(.uk-preserve-color) h2, .uk-section-primary:not(.uk-preserve-color) h3, .uk-section-primary:not(.uk-preserve-color) h4, .uk-section-primary:not(.uk-preserve-color) h5, .uk-section-primary:not(.uk-preserve-color) h6 {
+            color: var(--on-brand-primary-color, #FFFFFF)
+      }
+      /* .uk-background-primary a:not(.uk-button),
+      .uk-section-primary a:not(.uk-button),
+      .uk-background-primary .uk-link,
+      .uk-section-primary .uk-link,
+      .uk-background-primary a:not(.uk-button):hover,
+      .uk-section-primary a:not(.uk-button):hover,
+      .uk-background-primary .uk-link:hover,
+      .uk-section-primary .uk-link:hover {
+            color: var(--on-brand-primary-color, #FFFFFF)
+      } */
+
+      .uk-section-primary:not(.uk-preserve-color).tdup-section a:not(.uk-button),
+      .uk-section-primary:not(.uk-preserve-color).tdup-section .uk-link {
+            color: var(--on-brand-primary-color, #FFFFFF)
+      }
+      
+
+
+      .uk-section-primary ::selection {
+            background-color: var(--background-color);
+            color: var(--text-color)    
+        }
+
+      .uk-section-muted,
+      .uk-background-muted {
+          background: var(--background-muted-color);
+          color: var(--text-color)
+      }
+
+
+      .uk-section-secondary {
+        background-color: var(--secondary-color, #222222);
+      }
+      .uk-section-secondary:not(.uk-preserve-color) {
+        color: var(--on-secondary-color, #FFFFFF)
+      }
+
+
+      
+      .uk-background-secondary {        
+          background-color: var(--secondary-color, #222222);
+          color: var(--on-secondary-color, #FFFFFF)
+      }      
+      .uk-background-secondary [class*="uk-heading"],
+      .uk-background-secondary .uk-h1, .uk-background-secondary .uk-h2, .uk-background-secondary .uk-h3, .uk-background-secondary .uk-h4, .uk-background-secondary .uk-h5, .uk-background-secondary .uk-h6,   .uk-background-secondary h1, .uk-background-secondary h2, .uk-background-secondary h3, .uk-background-secondary h4, .uk-background-secondary h5, .uk-background-secondary h6,
+      .uk-section-secondary:not(.uk-preserve-color) .uk-h1, .uk-section-secondary:not(.uk-preserve-color) .uk-h2, .uk-section-secondary:not(.uk-preserve-color) .uk-h3, .uk-section-secondary:not(.uk-preserve-color) .uk-h4, .uk-section-secondary:not(.uk-preserve-color) .uk-h5, .uk-section-secondary:not(.uk-preserve-color) .uk-h6, .uk-section-secondary:not(.uk-preserve-color) .uk-heading-2xlarge, .uk-section-secondary:not(.uk-preserve-color) .uk-heading-large, .uk-section-secondary:not(.uk-preserve-color) .uk-heading-medium, .uk-section-secondary:not(.uk-preserve-color) .uk-heading-small, .uk-section-secondary:not(.uk-preserve-color) .uk-heading-xlarge, .uk-section-secondary:not(.uk-preserve-color) h1, .uk-section-secondary:not(.uk-preserve-color) h2, .uk-section-secondary:not(.uk-preserve-color) h3, .uk-section-secondary:not(.uk-preserve-color) h4, .uk-section-secondary:not(.uk-preserve-color) h5, .uk-section-secondary:not(.uk-preserve-color) h6 {
+        color: var(--on-secondary-color, #FFFFFF)
+      }
+
+      /* .uk-background-secondary a:not(.uk-button),
+      .uk-section-secondary a:not(.uk-button),
+      .uk-background-secondary .uk-link,
+      .uk-section-secondary .uk-link,
+      .uk-background-secondary a:not(.uk-button):hover,
+      .uk-section-secondary a:not(.uk-button):hover,
+      .uk-background-secondary .uk-link:hover,
+      .uk-section-secondary .uk-link:hover {
+            color: var(--on-secondary-color, #FFFFFF)
+      } */
+      .uk-section-secondary:not(.uk-preserve-color).tdup-section a:not(.uk-button),
+      .uk-section-secondary:not(.uk-preserve-color).tdup-section .uk-link {
+            color: var(--on-secondary-color, #FFFFFF)
+      }
+   
+
+
+      /* --Buttons on section primary */
+        /* Default button */
+        .uk-section-primary:not(.uk-preserve-color) .uk-button-default {
+            border-color: var(--on-brand-primary-color, #FFFFFF);
+            color: var(--on-brand-primary-color, #FFFFFF);
+        }
+        .uk-section-primary:not(.uk-preserve-color) .uk-button-default:focus,
+        .uk-section-primary:not(.uk-preserve-color) .uk-button-default:hover {
+            border-color: var(--on-brand-primary-color, #FFFFFF);
+            color: var(--on-brand-primary-color, #FFFFFF);        
+        }
+        /* Primary button */
+        .uk-section-primary:not(.uk-preserve-color) .uk-button-primary {
+            --button-primary-background-color: var(--on-brand-primary-color);            
+            --button-primary-text-color: var(--brand-color);
+            
+            background-color: var(--button-primary-background-color);
+            color: var(--button-primary-text-color); 
+        }
+        .uk-section-primary:not(.uk-preserve-color) .uk-button-primary:focus,
+        .uk-section-primary:not(.uk-preserve-color)  .uk-button-primary:hover {
+            --button-primary-background-hover-color:  hsl( var(--on-brand-primary-hue) var(--on-brand-primary-saturation) calc( var(--on-brand-primary-lightness) - 10% ) );            
+            background-color:  var(--button-primary-background-hover-color);
+            color: var(--button-primary-text-color);
+        }
+
+          /* --Buttons on section secondary */
+        /* Default button */
+        .uk-section-secondary:not(.uk-preserve-color) .uk-button-default {
+            border-color: var(--on-secondary-color, #FFFFFF);
+            color: var(--on-secondary-color, #FFFFFF);
+        }
+        .uk-section-secondary:not(.uk-preserve-color) .uk-button-default:focus,
+        .uk-section-secondary:not(.uk-preserve-color) .uk-button-default:hover {
+            border-color: var(--on-secondary-color, #FFFFFF);
+            color: var(--on-secondary-color, #FFFFFF);        
+        }
+        /* Primary button */
+        .uk-section-secondary:not(.uk-preserve-color) .uk-button-primary {
+            --button-primary-background-color: var(--on-secondary-color);            
+            --button-primary-text-color: var(--secondary-color);            
+            background-color: var(--button-primary-background-color);
+            color: var(--button-primary-text-color); 
+        }
+        .uk-section-secondary:not(.uk-preserve-color) .uk-button-primary:focus,
+        .uk-section-secondary:not(.uk-preserve-color)  .uk-button-primary:hover {
+            --button-primary-background-hover-color:  hsl( var(--on-secondary-hue) var(--on-secondary-saturation) calc( var(--on-secondary-lightness) - 10% ) );            
+            --button-primary-text-color: var(--secondary-color);
+            background-color:  var(--button-primary-background-hover-color);
+            color: var(--button-primary-text-color);
+        }
+
+        .uk-section-secondary:not(.uk-preserve-color) .uk-card a {
+            color: var(--link-color, var(--brand-color));
+        }
+        .uk-section-secondary:not(.uk-preserve-color) .uk-card-default em,
+        .uk-section-secondary:not(.uk-preserve-color) .uk-card-default blockquote {
+            color: var(--text-color);
+        }
+
+        .uk-section-secondary:not(.uk-preserve-color) .uk-button-link {
+            --button-link-text-color: var(--on-secondary-color);
+            color: var(--button-link-text-color);
+        }
+        .uk-section-secondary:not(.uk-preserve-color) .uk-button-link:focus,
+        .uk-section-secondary:not(.uk-preserve-color) .uk-button-link:hover {
+            --button-link-text-color:  hsl( var(--on-secondary-hue) var(--on-secondary-saturation) calc( var(--on-secondary-lightness) - 10% ) );
+            color: var(--button-link-text-color);
+        }
+
+      
+      
+      /*== 07. Navbar         ==*/ 
+     
+      .uk-navbar-nav > li > a,
+      .uk-navbar-dropdown-nav > li > a,
+      .uk-navbar-toggle {
+          color: var(--text-color);
+      }
+      .uk-navbar-nav > li.uk-active > a,
+      .uk-navbar-dropdown-nav > li > a:focus, .uk-navbar-dropdown-nav > li > a:hover,
+      .uk-navbar-toggle.uk-open, .uk-navbar-toggle:focus, .uk-navbar-toggle:hover {
+          color: var(--link-color, var(--brand-color));
+      }
+      .uk-navbar-nav > li:hover > a, .uk-navbar-nav > li > a:focus, .uk-navbar-nav > li > a[aria-expanded="true"] {
+          color: var(--link-color, var(--brand-color));
+      }
+      .uk-navbar-dropdown {
+          background: var(--background-color);
+          color: var(--text-color);
+      }
+      .uk-hr, hr, .uk-heading-line > ::after, .uk-heading-line > ::before,
+      .uk-navbar-dropdown-nav .uk-nav-divider {
+          border-color: var(--border-color);
+      }
+     
+      /*== 08. Cards          ==*/
+      /* Card default */
+      .uk-card-default,
+      .uk-section-primary:not(.uk-preserve-color) .uk-card-default,
+      .uk-section-secondary:not(.uk-preserve-color) .uk-card-default,
+      .uk-background-primary .uk-card-default,
+      .uk-background-secondary .uk-card-default {
+        --card-default-background-color: var(--background-color);
+        --card-default-background-color: hsl( var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 5% ) );
+        --card-default-text-color: var(--text-color);   
+        --card-default-border-color: hsla( var(--text-hue), var(--text-saturation), var(--text-lightness), .1);
+        background-color: var(--card-default-background-color);
+        color: var(--card-default-text-color);       
+      }
+     
+      .uk-card-default .uk-card-header,
+      .uk-card-default .uk-card-footer,
+      .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-card-header,
+      .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-card-footer,
+      .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-card-header,
+      .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-card-footer,
+      .uk-background-primary .uk-card-default .uk-card-header,
+      .uk-background-secondary .uk-card-default .uk-card-footer {    
+          border-color: var(--card-default-border-color);
+      }
+      .uk-card-default .uk-card-title,
+      .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-card-title,
+      .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-card-title {
+          color: var(--text-color);
+      }
+      /* .uk-section-primary:not(.uk-preserve-color) .uk-card-default,
+      .uk-section-primary:not(.uk-preserve-color) .uk-card-default [class*="uk-heading"],
+      .uk-section-secondary:not(.uk-preserve-color) .uk-card-default,
+      .uk-section-secondary:not(.uk-preserve-color) .uk-card-default [class*="uk-heading"] {
+        color: var(--text-color);
+      } */
+
+      .uk-section-primary:not(.uk-preserve-color) .uk-card-default a:not(.uk-button),
+      .uk-section-secondary:not(.uk-preserve-color) .uk-card-default a:not(.uk-button),
+      .uk-background-primary:not(.uk-preserve-color) .uk-card-default a:not(.uk-button),
+      .uk-background-secondary:not(.uk-preserve-color) .uk-card-default a:not(.uk-button) {        
+        color: var(--link-color, var(--brand-color));      
+      }
+
+      /* Card Primary */
+      .uk-card-primary {
+        --card-primary-background-color: var(--brand-color) ;
+        --card-primary-text-color: var(--on-brand-primary-color);   
+        --card-primary-border-color: hsla( var(--on-brand-hue), var(--on-brand-saturation), var(--on-brand-lightness), .1);
+
+        background-color: var(--card-primary-background-color);
+        color: var(--card-primary-text-color);        
+      }
+      .uk-card-primary .uk-card-header,
+      .uk-card-primary .uk-card-footer {    
+          border-color: var(--card-primary-border-color);
+      }
+      .uk-card-primary .uk-card-title,
+      .uk-card.uk-card-primary a, .uk-card.uk-card-primary .uk-link {
+          color: var(--on-brand-primary-color);
+      }
+     
+      .uk-card.uk-card-primary a:hover, .uk-card.uk-card-primary .uk-link:hover,
+      .uk-card.uk-card-primary a:focus, .uk-card.uk-card-primary .uk-link:focus {
+          color: var(--on-brand-primary-color);
+      }
+      
+
+      /* Primary button */
+     .uk-card.uk-card-primary .uk-button-primary {
+        --button-primary-background-color: var(--on-brand-primary-color);            
+        --button-primary-text-color: var(--brand-color);
+        
+        background-color: var(--button-primary-background-color);
+        color: var(--button-primary-text-color); 
+        }
+       .uk-card.uk-card-primary .uk-button-primary:focus,
+       .uk-card.uk-card-primary  .uk-button-primary:hover {
+            --button-primary-background-hover-color:  hsl( var(--on-brand-primary-hue) var(--on-brand-primary-saturation) calc( var(--on-brand-primary-lightness) - 15% ) );            
+            background-color:  var(--button-primary-background-hover-color);
+            color: var(--button-primary-text-color);
+        }
+
+        
+
+      /* Primary button on card default (overrides .uk-section-primary and .uk-section-secondary context) */
+      
+      .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-button-default,
+      .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-button-default {
+        border-color: var(--border-color);
+        color: var(--text-color);
+        }
+       .uk-section-primary:not(.uk-preserve-color) .uk-card-default:focus, 
+       .uk-section-primary:not(.uk-preserve-color) .uk-card-default:hover,
+       .uk-section-secondary:not(.uk-preserve-color) .uk-card-default:focus, 
+       .uk-section-secondary:not(.uk-preserve-color) .uk-card-default:hover {
+            border-color: var(--text-color);
+            color: var(--text-color);         
+        }
+
+        .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-button-primary,
+        .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-button-primary  {
+            --button-primary-background-color: var(--button-background-color);       
+            --button-primary-text-color: var(--button-text-color);
+            
+            background-color: var(--button-primary-background-color);
+            color: var(--button-primary-text-color);
+        }
+        .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-button-primary:focus, 
+        .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-button-primary:hover,
+        .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-button-primary:focus, 
+        .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-button-primary:hover {
+            --button-primary-background-hover-color: hsl( var(--btn-bg-hue) var(--btn-bg-saturation) calc( var(--btn-bg-lightness) - 10%) );       
+            background-color: var(--button-primary-background-hover-color);
+            color: var(--button-primary-text-color);
+            
+        }
+
+        .uk-background-primary .uk-card-default .uk-h1, .uk-background-primary .uk-card-default .uk-h2, .uk-background-primary .uk-card-default .uk-h3, .uk-background-primary .uk-card-default .uk-h4, .uk-background-primary .uk-card-default .uk-h5, .uk-background-primary .uk-card-default .uk-h6,   .uk-background-primary .uk-card-default h1, .uk-background-primary .uk-card-default h2, .uk-background-primary .uk-card-default h3, .uk-background-primary .uk-card-default h4, .uk-background-primary .uk-card-default h5, .uk-background-primary .uk-card-default h6,
+        .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-h1, .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-h2, .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-h3, .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-h4, .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-h5, .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-h6, .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-heading-2xlarge, .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-heading-large, .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-heading-medium, .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-heading-small, .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-heading-xlarge, .uk-section-primary:not(.uk-preserve-color) .uk-card-default h1, .uk-section-primary:not(.uk-preserve-color) .uk-card-default h2, .uk-section-primary:not(.uk-preserve-color) .uk-card-default h3, .uk-section-primary:not(.uk-preserve-color) .uk-card-default h4, .uk-section-primary:not(.uk-preserve-color) .uk-card-default h5, .uk-section-primary:not(.uk-preserve-color) .uk-card-default h6,
+        .uk-background-secondary .uk-card-default .uk-h1, .uk-background-secondary .uk-card-default .uk-h2, .uk-background-secondary .uk-card-default .uk-h3, .uk-background-secondary .uk-card-default .uk-h4, .uk-background-secondary .uk-card-default .uk-h5, .uk-background-secondary .uk-card-default .uk-h6,   .uk-background-secondary .uk-card-default h1, .uk-background-secondary .uk-card-default h2, .uk-background-secondary .uk-card-default h3, .uk-background-secondary .uk-card-default h4, .uk-background-secondary .uk-card-default h5, .uk-background-secondary .uk-card-default h6,
+        .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-h1, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-h2, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-h3, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-h4, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-h5, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-h6, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-heading-2xlarge, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-heading-large, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-heading-medium, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-heading-small, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-heading-xlarge, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default h1, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default h2, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default h3, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default h4, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default h5, .uk-section-secondary:not(.uk-preserve-color) .uk-card-default h6 {
+            color: var(--text-color);
+        }
+
+        
+        
+      
+      /*== 09. Modals         ==*/
+      .uk-modal-header {
+          background-color: var(--background-color);
+          border-color: var(--border-color);
+      }
+      
+      .uk-modal-dialog {
+          background: var(--background-color); /* Habria que sacar el uk-section-default de las sections o bien llevar este color ahi*/
+          color: var(--text-color);
+      }
+      .uk-modal-footer {
+          background-color: var(--background-color);
+          border-color: var(--border-color);
+      }
+      .uk-modal-close-full {
+          background-color: var(--background-muted-color);
+      }
+      
+      /*== 10. Close          ==*/
+      .uk-close {
+          color: var(--text-muted-color);
+      }
+      .uk-close:focus, .uk-close:hover {
+          color: var(--text-color);
+      }
+      
+     /*== 11. Forms          ==*/
+     .uk-form-label {
+        color: var(--text-color);
+    }
+    .uk-input:not(.uk-form-danger), .uk-select:not(.uk-form-danger), .uk-textarea:not(.uk-form-danger), .uk-search-input:not(.uk-form-danger) {
+        background-color: var(--background-color);
+        border-color: var(--border-color);
+        color: var(--text-color);
+    }
+    .uk-input:focus, .uk-select:focus, .uk-textarea:focus, .uk-search-input:focus {    
+        background-color: var(--background-color);
+        color: var(--text-color);
+        border-color: var(--brand-color);
+    } 
+      .uk-search-input {
+          color: var(--text-color);
+      }
+
+    /* Form elements in .uk-card-default overrides .uk-section-secondary  */
+    .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-input:not(.uk-form-danger), 
+    .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-select:not(.uk-form-danger), 
+    .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-textarea:not(.uk-form-danger), 
+    .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-search-input:not(.uk-form-danger) {
+        background-color: var(--background-color);
+        border-color: var(--border-color);
+        color: var(--text-color);
+    }
+    .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-input:focus, 
+    .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-select:focus, 
+    .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-textarea:focus, 
+    .uk-section-secondary:not(.uk-preserve-color) .uk-card-default .uk-search-input:focus {    
+        background-color: var(--background-color);
+        color: var(--text-color);
+        border-color: var(--brand-color);
+    } 
+     /* Form elements in .uk-card-default overrides .uk-section-primary  */
+     .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-input:not(.uk-form-danger), 
+     .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-select:not(.uk-form-danger), 
+     .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-textarea:not(.uk-form-danger), 
+     .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-search-input:not(.uk-form-danger) {
+         background-color: var(--background-color);
+         border-color: var(--border-color);
+         color: var(--text-color);
+     }
+     .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-input:focus, 
+     .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-select:focus, 
+     .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-textarea:focus, 
+     .uk-section-primary:not(.uk-preserve-color) .uk-card-default .uk-search-input:focus {    
+         background-color: var(--background-color);
+         color: var(--text-color);
+         border-color: var(--brand-color);
+     } 
+     .uk-section-primary:not(.uk-preserve-color) .uk-card-default  ::selection {
+        background-color: var(--brand-color);
+        color: var(--on-brand-primary-color)    
+    }
+      
+     /*== 12. Accordion      ==*/
+      .uk-accordion-title::before {
+          /* background-color: var(--brand-color); */
+          border-radius: 50px;
+      }
+      .uk-accordion-title:focus, .uk-accordion-title:hover {
+          color: var(--text-color);
+      }
+      
+      /*== 13. Slidenav       ==*/
+      .uk-slidenav, .uk-slidenav {
+          color: var(--text-color);
+      }
+      .uk-slidenav:focus, .uk-slidenav:hover {
+          color: var(--brand-color);
+      }
+
+      .uk-section-primary:not(.uk-preserve-color).tdup-section a.uk-slidenav {         
+        color: hsla( var(--on-brand-primary-hue), var(--on-brand-primary-saturation), var(--on-brand-primary-lightness), .7);        
+      }
+      .uk-section-primary:not(.uk-preserve-color).tdup-section a.uk-slidenav:focus,
+      .uk-section-primary:not(.uk-preserve-color).tdup-section a.uk-slidenav:hover {
+        color: var(--on-brand-primary-color, #FFFFFF);
+      }
+      .uk-section-secondary:not(.uk-preserve-color).tdup-section a.uk-slidenav {         
+        color: hsla( var(--on-secondary-hue), var(--on-secondary-saturation), var(--on-secondary-lightness), .7);        
+      }
+      .uk-section-secondary:not(.uk-preserve-color).tdup-section a.uk-slidenav:focus,
+      .uk-section-secondary:not(.uk-preserve-color).tdup-section a.uk-slidenav:hover {
+        color: var(--on-secondary-color, #FFFFFF);
+      }
+      
+     /*== 14. Badge          ==*/
+      .uk-badge, .uk-card-badge {
+          background: var(--brand-color);
+          color: var(--on-brand-primary-color);
+      }
+       
+      
+      /*== 15. Overlay        ==*/
+      .uk-overlay-default {
+          background: var(--overlay-default-background-color);
+      }
+      
+      /*== 16. Tabs           ==*/
+      .uk-tab > * > a {
+          color: var(--text-color);
+      }
+      .uk-tab > .uk-active > a {
+            color: var(--link-color, var(--brand-color));
+          border-color: var(--link-color, var(--brand-color));
+      }
+      .uk-tab::before {
+          border-color: var(--border-color);
+      }
+      .uk-tab > * > a:focus, .uk-tab > * > a:hover {
+        color: var(--link-color, var(--brand-color));
+      }
+      
+     /*== 17. Alerts         ==*/
+     
+    .uk-alert {
+        background-color: var(--alert-bg-color, var(--background-muted-color));
+        color: var(--alert-text-color, var(--text-color));   
+        border-color:  var(--alert-border-color, var(--border-color));      
+    }
+
+   
+    .uk-alert.uk-alert-primary {       
+        background-color: var(--alert-primary-bg-color, hsla( var(--brand-hue), var(--brand-saturation), var(--brand-lightness), .1));
+        color: var(--alert-primary-text-color, var(--text-color));   
+        border-color:  var(--alert-primary-border-color, var(--brad-color));       
+    }
+
+    .uk-alert.uk-alert-success {
+        background-color: var(--alert-success-bg-color, #e5f7f2);
+        color: var(--alert-success-text-color, #1c1e1e);   
+        border-color:  var(--alert-success-border-color, #13b288); 
+    }
+    .uk-alert.uk-alert-danger {
+        background-color: var(--alert-danger-bg-color, #FFF2F3);
+        color: var(--alert-danger-text-color, #1c1e1e);   
+        border-color:  var(--alert-danger-border-color, #D72C0A);       
+    }
+    .uk-alert.uk-alert-warning {
+        background-color: var(--alert-warning-bg-color, #FFF5E9);
+        color: var(--alert-warning-text-color, #1c1e1e);   
+        border-color:  var(--alert-warning-border-color, #ECBD7D);       
+    }
+      
+
+     /*== 18. Dropdowns         ==*/
+      .uk-navbar-dropdown-nav .uk-nav-header {
+        color: var(--text-color); 
+      }
+
+    /*== 19. Offcanvas         ==*/
+    .uk-offcanvas-bar {
+        background: var(--background-muted-color);
+        color: var(--text-color); 
+    }
+    .uk-offcanvas-bar .uk-close,
+    .uk-offcanvas-bar .uk-nav-default > li > a,
+    .uk-offcanvas-bar .uk-nav-primary > li > a,
+    .uk-offcanvas-bar .uk-nav-primary .uk-nav-sub a,
+    .uk-offcanvas-bar .uk-nav-primary .uk-nav-header {
+        color: var(--text-color); 
+      }
+      
+      .uk-offcanvas-bar .uk-nav-default > li.uk-active > a,
+      .uk-offcanvas-bar .uk-nav-primary > li.uk-active > a,
+      .uk-offcanvas-bar .uk-nav-default > li > a:hover,
+      .uk-offcanvas-bar .uk-nav-primary > li > a:hover,
+      .uk-offcanvas-bar .uk-nav-primary .uk-nav-sub a:hover,
+      .uk-offcanvas-bar .uk-close:hover  {
+        color: var(--link-color, var(--brand-color));
+      }
+      .uk-offcanvas-bar .uk-nav-primary .uk-nav-divider {
+        border-top-color: var(--border-color);
+      }
+      
+      /*== 20. Table         ==*/
+      .uk-table th {
+        color: var(--text-muted-color);
+      }
+      .uk-table-divider > :first-child > tr:not(:first-child), .uk-table-divider > :not(:first-child) > tr, .uk-table-divider > tr:not(:first-child) {
+        border-top-color: var(--border-color);
+      }
+      .uk-table-hover tbody tr:hover, .uk-table-hover > tr:hover {
+        background: var(--background-muted-color);
+      }
+
+       /*== 21. Breadcrumb         ==*/
+
+      .uk-breadcrumb > * > *,
+      .uk-breadcrumb > :nth-child(n+2):not(.uk-first-column)::before {
+        color: var(--text-muted-color);
+      }
+      .uk-breadcrumb > :last-child > a:not([href]), .uk-breadcrumb > :last-child > span,
+      .uk-breadcrumb > * > :hover {
+        color: var(--text-color);
+      }
+
+    /*== 21. Breadcrumb         ==*/
+      .uk-label {
+        background-color: var(--brand-color);
+        color: var(--on-brand-primary-color);
+      }
+
+             
+  
+
+      
+      /*== XX. Tiendup Custom  Elements            ==*/       
+      .lessons-list li a {    
+          color: var(--text-color);
+          background-color: var(--card-default-background-color);
+      }
+      .lessons-list li a:hover {
+        color: var(--link-color, var(--brand-color));
+      }
+      
+      .ck.ck-editor__main > .ck-editor__editable {
+          background: var(--background-color)!important;
+      }
+      .ck.ck-editor__editable:not(.ck-editor__nested-editable).ck-focused {
+        border-color:  var(--brand-color)!important;
+      }
+
+      /*== XX. Lite header            ==*/ 
+      .separator-nav > li:not(:last-child)::after,
+      .bottom-mobile-navbar::before,
+      .user-profile-nav::after {
+        background-color: var(--text-color);
+      }
+     
+
+       /*== XX. Quizz            ==*/ 
+      .quiz-results-success-icon {
+        color: var(--brand-color);
+      }
+
+      /*== XX.  Modal cart */
+      #store-modal .sfy-modal-dialog {
+        background: var(--background-color)
+      }
+
+      .tiendup-link path {
+        fill: var(--text-muted-color);
+        }
+      .tiendup-link:hover path {
+        fill: var(--link-color, var(--brand-color));
+        }
+
+         /*== XX. Lessons list */
+        .lessons-list ul li {       
+            --lesson-list-border-color: hsla( var(--text-hue), var(--text-saturation), var(--text-saturation), .08 );   
+            border-bottom-color:var(--lesson-list-border-color)
+        }
+     
+      
+          :root { 
+    --default-border-rounded-radius:  5px;   
+    --default-button-font-weight: bold;
+    --default-button-text-transform: none;
+    --default-heading-weight: bold
+    }
+
+    .uk-h1, .uk-h2, .uk-h3, .uk-h4, .uk-h5, .uk-h6, .uk-heading-2xlarge, .uk-heading-large, .uk-heading-medium, .uk-heading-small, .uk-heading-xlarge, h1, h2, h3, h4, h5, h6 {
+        font-weight: var(--default-heading-weight);
+    }
+
+.uk-border-rounded {
+    border-radius: var(--global-border-rounded-radius, var(--default-border-rounded-radius));
+}
+
+.uk-button {
+    border-radius: var(--global-border-rounded-radius, var(--default-border-rounded-radius));
+    font-weight: var(--global-button-font-weight, var(--default-button-font-weight));
+    text-transform: var(--global-button-text-transform, var(--default-button-text-transform));
+}
+
+.uk-button-default:focus, .uk-button-default:hover {    
+    box-shadow: 0 0 0 1px currentColor;       
+}
+.uk-button-primary:focus, .uk-button-primary:hover {    
+    box-shadow: 0 0 0 1px var(--button-primary-background-hover-color);
+}
+.uk-button-secondary:focus, .uk-button-secondary:hover {    
+    box-shadow: 0 0 0 1px var(--button-secondary-background-hover-color);
+}
+.uk-button-danger:focus, .uk-button-danger:hover {    
+    box-shadow: 0 0 0 1px var(--button-danger-background-hover-color);
+}
+
+.uk-badge {
+    border-radius: var(--global-border-rounded-radius, var(--default-border-rounded-radius));
+    font-weight: bold
+}
+
+.uk-checkbox, .uk-input, .uk-radio, .uk-select, .uk-textarea {
+    border-radius: var(--global-border-rounded-radius, var(--default-border-rounded-radius));
+}
+
+.uk-card {
+    border-radius: var(--global-border-rounded-radius, var(--default-border-rounded-radius));
+}
+
+.uk-alert {
+    border-radius: var(--global-border-rounded-radius, var(--default-border-rounded-radius));
+    border-style: solid;
+    border-width: 1px;
+}
+ 
+
+.uk-modal-dialog {
+    overflow: hidden;
+    border-radius: var(--global-border-rounded-radius, var(--default-border-rounded-radius));
+}
+
+#store-modal .sfy-modal-dialog {
+    border-radius: var(--global-border-rounded-radius, var(--default-border-rounded-radius));
+    box-shadow: none;   
+}
+
+.user-profile-nav:hover span span {
+    box-shadow: 0 0 0 1px var(--brand-color);
+  }
+
+  .sweet-alert {
+    border-radius: var(--global-border-rounded-radius, var(--default-border-rounded-radius));
+    font-family: inherit;
+  }
+
+  .uk-navbar-dropdown,
+  .uk-dropdown {
+    border-radius: var(--global-border-rounded-radius, var(--default-border-rounded-radius));
+  }
+ 
+
+  .uk-section-primary:not(.uk-preserve-color).tdup-section a:not(.uk-button),
+  .uk-section-primary:not(.uk-preserve-color).tdup-section .uk-link,
+  .uk-section-secondary:not(.uk-preserve-color).tdup-section a:not(.uk-button),
+  .uk-section-secondary:not(.uk-preserve-color).tdup-section .uk-link {
+    text-decoration-style: dotted;
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px; 
+         
+  }
+  .uk-section-primary:not(.uk-preserve-color).tdup-section a:not(.uk-button):hover,
+  .uk-section-primary:not(.uk-preserve-color).tdup-section .uk-link:hover,
+  .uk-section-secondary:not(.uk-preserve-color).tdup-section a:not(.uk-button):hover,
+  .uk-section-secondary:not(.uk-preserve-color).tdup-section .uk-link:hover {
+    text-decoration-style: solid;          
+  }
+   
+     </style>
+
+    
+    <style>
+             
+     
+        @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+
+
+
+
+
+
+html,
+h1,
+.uk-h1,
+h2,
+.uk-h2,
+h3,
+.uk-h3,
+h4,
+.uk-h4,
+h5,
+.uk-h5,
+h6,
+.uk-h6,
+.uk-heading-small,
+.uk-heading-medium,
+.uk-heading-large,
+.uk-heading-xlarge,
+.uk-heading-2xlarge,
+.uk-navbar-nav > li > a,
+.uk-navbar-item,
+.uk-navbar-toggle,
+.uk-logo
+{
+font-family: Roboto}
+
+    </style>
+    
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://bu-cdn.tiendup.com/business/49614/themes/lite/assets/js/uikit.min.js?v10"></script>
+    <script type="text/javascript" src="https://bu-cdn.tiendup.com/business/49614/themes/lite/assets/js/uikit-icons.min.js?v10"></script>
+    
+    
+</head>
+
+<body>
+
+     
+
+    <div id="page-loading" style="display: none" class="uk-text-center">
+		<div class="uk-margin-large-top">
+                            <img src="https://bu-cdn.tiendup.com/business/49614/images/logo_687caa58da9b6_small.png">
+                    </div>
+		<h3 data-loading-message=""></h3>
+		<span uk-spinner="ratio: 3" class="uk-icon uk-spinner"><svg width="90" height="90" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><circle fill="none" stroke="#000" cx="15" cy="15" r="14" style="stroke-width: 0.333333px;"></circle></svg></span>
+	</div>
+       
+    <div id="page-content" class="uk-offcanvas-content">
+
+                    
+            
+
+ 
+
+            
+            <div>
+                 
+
+
+
+
+<div class="single-page">
+    
+                        <div> 
+                                    <div id="custom_page_75729_custom_code_1768611912824" class="page-section uk-section uk-section-default ">
+    <div class="uk-container uk-width-5-6@l">
+       <div class="uk-width-1-1 custom-code-container">
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Landing — Fe y Transformación</title>
+  <meta name="description" content="Una landing dark (azules) con hero, precios, testimonios y secciones antes/después.">
+
+  <style>
+    :root{
+      --bg0:#070b14;          /* no negro puro */
+      --bg1:#0a1022;
+      --card: rgba(255,255,255,.05);
+      --card2: rgba(255,255,255,.06);
+      --stroke: rgba(255,255,255,.10);
+      --stroke2: rgba(255,255,255,.16);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(237,237,237,.72);
+      --muted2: rgba(237,237,237,.58);
+      --brand: #67B3FF;
+      --brand2:#4C7DFF;
+      --glow: rgba(103,179,255,.22);
+      --accent: #FFB36B; /* se usa también en pricing */
+      --radius: 18px;
+      --shadow: 0 22px 60px rgba(0,0,0,.45);
+      --shadow2: 0 12px 34px rgba(0,0,0,.40);
+      --max: 1100px;
+
+      --ease: cubic-bezier(.2,.8,.2,1);
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(1000px 520px at 18% 10%, rgba(76,125,255,.18), transparent 60%),
+        radial-gradient(900px 520px at 80% 0%, rgba(103,179,255,.14), transparent 55%),
+        radial-gradient(900px 700px at 80% 80%, rgba(103,179,255,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 65%, #070b14);
+      min-height:100vh;
+    }
+
+    a{ color:inherit; }
+
+    .container{
+      width: min(var(--max), calc(100% - 24px));
+      margin: 0 auto;
+    }
+
+    /* Topbar */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(7,11,20,.78), rgba(7,11,20,.35));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      padding: 12px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      text-decoration:none;
+    }
+    .logo{
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background:
+        radial-gradient(20px 20px at 30% 30%, rgba(255,255,255,.35), transparent 55%),
+        linear-gradient(135deg, rgba(103,179,255,.95), rgba(76,125,255,.78));
+      box-shadow: 0 10px 24px rgba(76,125,255,.20);
+      border: 1px solid rgba(255,255,255,.14);
+    }
+    .brand strong{ font-weight:800; letter-spacing:.2px; }
+    .brand span{ color: var(--muted2); font-size: 12px; display:block; margin-top:2px; }
+
+    .nav{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+    }
+    .nav a{
+      text-decoration:none;
+      font-size: 13px;
+      color: rgba(237,237,237,.80);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: background .15s var(--ease), border-color .15s var(--ease), transform .15s var(--ease);
+    }
+    .nav a:hover{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.10);
+      transform: translateY(-1px);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.92);
+      text-decoration:none;
+      font-weight: 800;
+      letter-spacing: .2px;
+      cursor: pointer;
+      transition: transform .15s var(--ease), background .15s var(--ease), border-color .15s var(--ease), box-shadow .15s var(--ease);
+      user-select:none;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.20); }
+    .btn:active{ transform: translateY(0px) scale(.99); }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(103,179,255,.26), rgba(76,125,255,.22));
+      border-color: rgba(103,179,255,.38);
+      box-shadow: 0 0 0 1px rgba(103,179,255,.10) inset;
+    }
+    .btn.primary:hover{ box-shadow: 0 0 0 1px rgba(103,179,255,.18) inset, 0 12px 34px rgba(0,0,0,.35); }
+    .btn.ghost{
+      background: transparent;
+      border-color: rgba(255,255,255,.10);
+      color: rgba(237,237,237,.85);
+    }
+
+    .kbd{
+      font-size: 11px;
+      color: rgba(237,237,237,.65);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      padding: 3px 8px;
+      border-radius: 999px;
+    }
+
+    /* Hero */
+    .hero{
+      position: relative;
+      padding: 40px 0 26px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .hero-card{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-left{
+      padding: 26px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(103,179,255,.24);
+      background: rgba(103,179,255,.08);
+      color: rgba(237,237,237,.86);
+      font-size: 13px;
+      letter-spacing: .2px;
+    }
+    .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 99px;
+      background: var(--brand);
+      box-shadow: 0 0 0 5px rgba(103,179,255,.12);
+    }
+
+    h1{
+      margin: 14px 0 10px;
+      font-size: clamp(28px, 4.2vw, 46px);
+      line-height: 1.05;
+      letter-spacing: -.6px;
+    }
+
+    .lead{
+      margin: 0 0 16px;
+      color: rgba(237,237,237,.76);
+      line-height: 1.55;
+      font-size: 15px;
+      max-width: 54ch;
+    }
+
+    .verse{
+      margin: 14px 0 0;
+      padding: 14px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+    }
+    .verse q{ display:block; font-size: 15px; line-height: 1.5; color: rgba(237,237,237,.86); }
+    .verse cite{ display:block; margin-top: 8px; font-style: normal; color: rgba(237,237,237,.60); font-size: 13px; }
+
+    .hero-actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items:center;
+      margin-top: 18px;
+    }
+
+    .hero-micro{
+      margin-top: 12px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: rgba(237,237,237,.64);
+      font-size: 12px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius: 999px;
+      padding: 6px 10px;
+    }
+
+    /* Right hero card */
+    .hero-right{
+      padding: 0;
+      display:flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .visual{
+      position: relative;
+      padding: 18px;
+      min-height: 220px;
+    }
+
+    .visual::before{
+      content:"";
+      position:absolute;
+      inset: -1px;
+      background:
+        radial-gradient(400px 220px at 25% 15%, rgba(103,179,255,.20), transparent 60%),
+        radial-gradient(340px 240px at 75% 30%, rgba(76,125,255,.18), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      z-index: 0;
+    }
+
+    .visual-inner{
+      position: relative;
+      z-index: 1;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.12);
+      overflow:hidden;
+      height: 100%;
+      min-height: 220px;
+    }
+
+    .svg-wrap{
+      width: 100%;
+      height: 100%;
+      display:block;
+    }
+
+    .hero-side{
+      padding: 16px 18px 18px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      display:grid;
+      gap: 10px;
+    }
+
+    .mini{
+      display:flex;
+      align-items:flex-start;
+      gap: 12px;
+      padding: 12px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .mini strong{ display:block; font-size: 13px; }
+    .mini span{ display:block; color: rgba(237,237,237,.62); font-size: 12px; margin-top: 3px; line-height:1.35; }
+    .icon{
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: rgba(103,179,255,.10);
+      border: 1px solid rgba(103,179,255,.22);
+      color: rgba(237,237,237,.92);
+      flex: 0 0 auto;
+    }
+
+    /* Sections */
+    section{
+      padding: 34px 0;
+    }
+
+    .section-head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size: 22px;
+      letter-spacing: -.2px;
+    }
+    .section-head p{
+      margin: 0;
+      color: rgba(237,237,237,.66);
+      max-width: 56ch;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 14px;
+    }
+
+    .t-card{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      padding: 16px;
+      box-shadow: var(--shadow2);
+    }
+    .t-quote{
+      margin:0;
+      color: rgba(237,237,237,.82);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+    .t-meta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: rgba(237,237,237,.60);
+      font-size: 12px;
+    }
+    .t-name{ color: rgba(237,237,237,.82); font-weight: 800; }
+
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .split{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      overflow:hidden;
+      box-shadow: var(--shadow2);
+    }
+
+    .split-media{
+      position: relative;
+      min-height: 240px;
+      background: rgba(0,0,0,.14);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      overflow:hidden;
+    }
+    .split-body{
+      padding: 18px;
+    }
+    .split-body h3{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: -.2px;
+    }
+    .split-body p{
+      margin: 0 0 12px;
+      color: rgba(237,237,237,.74);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+
+    .list{
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(237,237,237,.72);
+      display:grid;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(255,255,255,.08);
+      margin: 12px 0;
+    }
+
+    /* Toast */
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      z-index: 80;
+      width: min(560px, calc(100% - 24px));
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(8,12,22,.85);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 60px rgba(0,0,0,.50);
+      padding: 12px;
+      display:none;
+    }
+    .toast.show{ display:block; animation: rise .22s var(--ease) both; }
+    @keyframes rise{
+      from{ opacity: 0; transform: translateX(-50%) translateY(12px); }
+      to{ opacity: 1; transform: translateX(-50%) translateY(0px); }
+    }
+    .toast-row{ display:flex; gap: 10px; align-items:flex-start; justify-content:space-between; }
+    .toast strong{ display:block; font-size: 13px; }
+    .toast p{ margin: 4px 0 0; color: rgba(237,237,237,.70); font-size: 12px; line-height:1.35; }
+
+    .xbtn{
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: rgba(237,237,237,.85);
+      border-radius: 12px;
+      padding: 8px 10px;
+      cursor:pointer;
+      transition: background .15s var(--ease), transform .15s var(--ease);
+      flex: 0 0 auto;
+    }
+    .xbtn:hover{ background: rgba(255,255,255,.08); transform: translateY(-1px); }
+
+    /* Footer */
+    footer{
+      padding: 22px 0 40px;
+      color: rgba(237,237,237,.56);
+      font-size: 12px;
+    }
+    .foot{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 14px;
+    }
+
+    /* Focus states */
+    :focus-visible{
+      outline: 2px solid rgba(103,179,255,.55);
+      outline-offset: 2px;
+      border-radius: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .section-head{ flex-direction: column; align-items:flex-start; }
+      .grid-3{ grid-template-columns: 1fr; }
+      .two-col{ grid-template-columns: 1fr; }
+    }
+
+    /* Prefer reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      *{ transition: none !important; animation: none !important; }
+    }
+  </style>
+
+  <!-- Componente de pricing (tal cual, con su CSS). -->
+  <style>
+    .pricing-wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:24px 12px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .pricing-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:16px;
+    }
+    .p-card{
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      padding: 18px;
+      color: #EDEDED;
+      backdrop-filter: blur(6px);
+    }
+    .p-card.featured{
+      border-color: rgba(255,179,107,.55);
+      box-shadow: 0 0 0 1px rgba(255,179,107,.18) inset;
+    }
+    .p-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:10px;
+    }
+    .p-title{
+      margin:0;
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .p-badge{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(255,179,107,.16);
+      color:#FFB36B;
+      border:1px solid rgba(255,179,107,.32);
+      white-space:nowrap;
+    }
+    .p-desc{
+      margin: 6px 0 14px;
+      color: rgba(237,237,237,.78);
+      line-height:1.45;
+      font-size:14px;
+    }
+    .p-price{
+      display:flex;
+      align-items:baseline;
+      gap:8px;
+      margin: 12px 0 6px;
+    }
+    .p-price strong{
+      font-size:34px;
+      letter-spacing:-.5px;
+    }
+    .p-price span{
+      color: rgba(237,237,237,.70);
+      font-size:14px;
+    }
+    .p-hr{
+      height:1px;
+      background: rgba(255,255,255,.10);
+      margin: 14px 0;
+    }
+    .p-list{
+      list-style:none;
+      padding:0;
+      margin:0 0 16px;
+      display:grid;
+      gap:10px;
+      color: rgba(237,237,237,.86);
+      font-size:14px;
+    }
+    .p-li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .p-check{
+      width:18px;
+      height:18px;
+      border-radius:6px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background: rgba(255,179,107,.16);
+      border:1px solid rgba(255,179,107,.28);
+      color:#FFB36B;
+      flex: 0 0 auto;
+      margin-top:1px;
+      font-size:12px;
+      line-height:1;
+    }
+    .p-btn{
+      display:block;
+      text-align:center;
+      text-decoration:none;
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,.14);
+      color:#EDEDED;
+      background: rgba(255,255,255,.06);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .p-btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.22);
+    }
+    .p-btn.primary{
+      background: rgba(255,179,107,.18);
+      border-color: rgba(255,179,107,.45);
+      color:#FFB36B;
+    }
+    .p-btn.primary:hover{
+      background: rgba(255,179,107,.26);
+      border-color: rgba(255,179,107,.65);
+    }
+    .p-foot{
+      margin-top:10px;
+      font-size:12px;
+      color: rgba(237,237,237,.60);
+    }
+
+    @media (max-width: 900px){
+      .pricing-grid{ grid-template-columns: 1fr; }
+    }
+  </style>
+
+
+
+  <header class="topbar" aria-label="Barra de navegación">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top" aria-label="Inicio">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <strong>Camino Nuevo</strong>
+          <span>Diseño dark · azules · UX/UI</span>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Secciones">
+        <a href="#precios">Precios</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#antes">Antes</a>
+        <a href="#despues">Después</a>
+        <button class="btn ghost" id="btnAtajo" type="button" aria-label="Atajo a precios">
+          Ir a precios <span class="kbd" aria-hidden="true">Alt + P</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="container">
+      <section class="hero" aria-label="Hero">
+        <div class="hero-grid">
+          <div class="hero-card hero-left">
+            <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Una invitación a empezar hoy</div>
+
+            <h1>
+              Transformación real,
+              paso a paso.
+            </h1>
+
+            <p class="lead">
+              Una landing con estilo UX/UI (dark + azules), pensada para convertir:
+              mensaje claro, secciones ordenadas y CTA visibles.
+            </p>
+
+            <div class="verse" role="note" aria-label="Versículo">
+              <q>Porque yo sé los planes que tengo para vosotros —dice el Señor— planes de bienestar y no de calamidad, para daros un futuro y una esperanza.</q>
+              <cite>Jeremías 29:11</cite>
+            </div>
+
+            <div class="hero-actions">
+              <a class="btn primary" href="#precios" id="ctaHero">Ver planes</a>
+              <button class="btn" type="button" id="ctaOracion">Pedir orientación</button>
+            </div>
+
+            <div class="hero-micro" aria-label="Indicadores">
+              <span class="pill">✓ Diseño responsive</span>
+              <span class="pill">✓ Un solo archivo</span>
+              <span class="pill">✓ Interacciones suaves</span>
+            </div>
+          </div>
+
+          <aside class="hero-card hero-right" aria-label="Resumen">
+            <div class="visual">
+              <div class="visual-inner" aria-hidden="true">
+                <!-- SVG inline para mantener 1 solo archivo sin imágenes externas -->
+                <svg class="svg-wrap" viewBox="0 0 900 520" preserveAspectRatio="none" role="img" aria-label="Decoración abstracta">
+                  <defs>
+                    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#67B3FF" stop-opacity=".9"></stop>
+                      <stop offset="1" stop-color="#4C7DFF" stop-opacity=".65"></stop>
+                    </linearGradient>
+                    <radialGradient id="g2" cx="30%" cy="20%" r="70%">
+                      <stop offset="0" stop-color="#FFFFFF" stop-opacity=".22"></stop>
+                      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"></stop>
+                    </radialGradient>
+                    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+                      <feGaussianBlur stdDeviation="14"></feGaussianBlur>
+                    </filter>
+                  </defs>
+                  <rect width="900" height="520" fill="#0a1022"></rect>
+                  <circle cx="220" cy="120" r="220" fill="url(#g2)"></circle>
+                  <path d="M-50,330 C120,220 200,480 370,380 C520,290 560,420 720,340 C830,295 900,340 980,300" fill="none" stroke="url(#g1)" stroke-width="10" opacity=".9"></path>
+                  <path d="M-40,360 C130,260 220,520 390,410 C540,310 590,460 760,370 C860,320 910,360 990,320" fill="none" stroke="#67B3FF" stroke-width="3" opacity=".35"></path>
+
+                  <g filter="url(#blur)" opacity=".9">
+                    <circle cx="700" cy="160" r="95" fill="#67B3FF" opacity=".22"></circle>
+                    <circle cx="520" cy="330" r="120" fill="#4C7DFF" opacity=".16"></circle>
+                  </g>
+
+                  <g opacity=".9">
+                    <rect x="90" y="320" width="290" height="110" rx="18" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.10)"></rect>
+                    <rect x="120" y="350" width="210" height="10" rx="10" fill="rgba(255,255,255,.26)"></rect>
+                    <rect x="120" y="372" width="170" height="10" rx="10" fill="rgba(255,255,255,.18)"></rect>
+                    <rect x="120" y="394" width="130" height="10" rx="10" fill="rgba(255,255,255,.12)"></rect>
+                  </g>
+                </svg>
+              </div>
+            </div>
+
+            <div class="hero-side">
+              <div class="mini">
+                <div class="icon" aria-hidden="true">⎈</div>
+                <div>
+                  <strong>Estructura clara</strong>
+                  <span>Hero → Precios → Testimonios → Antes/Después.</span>
+                </div>
+              </div>
+              <div class="mini">
+                <div class="icon" aria-hidden="true">⚡</div>
+                <div>
+                  <strong>Conversión primero</strong>
+                  <span>CTA directo al pricing + feedback inmediato al elegir plan.</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </div>
+
+    <!-- PRECIOS (inmediatamente debajo del hero) -->
+    <section id="precios" aria-label="Sección de precios">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Planes simples, decisión rápida</h2>
+            <p>Elige el plan que se ajuste a tu momento. Puedes cambiarlo cuando quieras.</p>
+          </div>
+          <button class="btn" type="button" id="btnComparar">Comparar beneficios</button>
+        </div>
+      </div>
+
+      <div class="pricing-wrap">
+        <div class="pricing-grid">
+
+          <div class="p-card">
+            <div class="p-top">
+              <h3 class="p-title">Starter</h3>
+              <span class="p-badge">Lorem</span>
+            </div>
+
+            <p class="p-desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor.
+            </p>
+
+            <div class="p-price">
+              <strong>$19</strong><span>/mes</span>
+            </div>
+
+            <div class="p-hr"></div>
+
+            <ul class="p-list">
+              <li class="p-li"><span class="p-check">✓</span> Lorem ipsum dolor sit amet</li>
+              <li class="p-li"><span class="p-check">✓</span> Consectetur adipiscing elit</li>
+              <li class="p-li"><span class="p-check">✓</span> Sed do eiusmod tempor</li>
+            </ul>
+
+            <a class="p-btn" href="#" data-plan="Starter">Elegir plan</a>
+            <div class="p-foot">Lorem ipsum: sin tarjeta.</div>
+          </div>
+
+          <div class="p-card featured">
+            <div class="p-top">
+              <h3 class="p-title">Pro</h3>
+              <span class="p-badge">Más elegido</span>
+            </div>
+
+            <p class="p-desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam.
+            </p>
+
+            <div class="p-price">
+              <strong>$39</strong><span>/mes</span>
+            </div>
+
+            <div class="p-hr"></div>
+
+            <ul class="p-list">
+              <li class="p-li"><span class="p-check">✓</span> Lorem ipsum dolor sit amet</li>
+              <li class="p-li"><span class="p-check">✓</span> Ut enim ad minim veniam</li>
+              <li class="p-li"><span class="p-check">✓</span> Quis nostrud exercitation</li>
+              <li class="p-li"><span class="p-check">✓</span> Duis aute irure dolor</li>
+            </ul>
+
+            <a class="p-btn primary" href="#" data-plan="Pro">Empezar ahora</a>
+            <div class="p-foot">Lorem ipsum: soporte prioritario.</div>
+          </div>
+
+          <div class="p-card">
+            <div class="p-top">
+              <h3 class="p-title">Business</h3>
+              <span class="p-badge">Ipsum</span>
+            </div>
+
+            <p class="p-desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+            </p>
+
+            <div class="p-price">
+              <strong>$79</strong><span>/mes</span>
+            </div>
+
+            <div class="p-hr"></div>
+
+            <ul class="p-list">
+              <li class="p-li"><span class="p-check">✓</span> Lorem ipsum dolor sit amet</li>
+              <li class="p-li"><span class="p-check">✓</span> Incididunt ut labore et dolore</li>
+              <li class="p-li"><span class="p-check">✓</span> Magna aliqua</li>
+              <li class="p-li"><span class="p-check">✓</span> Ut enim ad minim veniam</li>
+            </ul>
+
+            <a class="p-btn" href="#" data-plan="Business">Contactar</a>
+            <div class="p-foot">Lorem ipsum: facturación anual.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios" aria-label="Sección de testimonios">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Testimonios</h2>
+            <p>Historias cortas, impacto grande. Lo que cambia no es solo el entorno: cambia el corazón.</p>
+          </div>
+          <a class="btn ghost" href="#antes">Ver el cambio</a>
+        </div>
+
+        <div class="grid-3">
+          <article class="t-card">
+            <p class="t-quote">“Pasé de sentirme sin rumbo a tener claridad. No fue magia: fue constancia y una guía correcta.”</p>
+            <div class="t-meta"><span class="t-name">María</span><span>2 meses</span></div>
+          </article>
+          <article class="t-card">
+            <p class="t-quote">“El enfoque es simple: pasos pequeños. Eso me ayudó a sostener cambios reales en mi día a día.”</p>
+            <div class="t-meta"><span class="t-name">Lucas</span><span>5 semanas</span></div>
+          </article>
+          <article class="t-card">
+            <p class="t-quote">“Sentí paz de nuevo. Empecé por una decisión, y esa decisión ordenó lo demás.”</p>
+            <div class="t-meta"><span class="t-name">Ana</span><span>3 meses</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANTES -->
+    <section id="antes" aria-label="Sección antes">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>¿Quién era antes?</h2>
+            <p>Una mirada honesta. No para juzgar: para entender desde dónde empezamos.</p>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="split">
+            <div class="split-media" aria-hidden="true">
+              <svg class="svg-wrap" viewBox="0 0 900 520" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                  <linearGradient id="b4" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#0B1634"></stop>
+                    <stop offset="1" stop-color="#0A0F22"></stop>
+                  </linearGradient>
+                  <radialGradient id="b5" cx="28%" cy="22%" r="70%">
+                    <stop offset="0" stop-color="#67B3FF" stop-opacity=".28"></stop>
+                    <stop offset="1" stop-color="#67B3FF" stop-opacity="0"></stop>
+                  </radialGradient>
+                </defs>
+                <rect width="900" height="520" fill="url(#b4)"></rect>
+                <circle cx="260" cy="140" r="240" fill="url(#b5)"></circle>
+                <path d="M0,420 C160,320 280,520 440,420 C580,330 660,450 900,360" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="6"></path>
+                <path d="M50,400 C210,305 310,500 470,400 C610,315 700,420 900,345" fill="none" stroke="rgba(103,179,255,.40)" stroke-width="4"></path>
+                <text x="70" y="120" fill="rgba(255,255,255,.86)" font-size="44" font-weight="800">ANTES</text>
+                <text x="70" y="165" fill="rgba(237,237,237,.60)" font-size="18">Ruido, carga, cansancio</text>
+              </svg>
+            </div>
+            <div class="split-body">
+              <h3>Cuando todo pesa</h3>
+              <p>
+                A veces la vida se siente como una lista interminable. Hay prisa, presión y poca paz.
+                Este bloque está pensado para que el lector se vea reflejado y siga leyendo.
+              </p>
+              <div class="divider"></div>
+              <ul class="list">
+                <li>Decisiones impulsivas y poca claridad.</li>
+                <li>Ansiedad por el futuro y culpa por el pasado.</li>
+                <li>Rutina sin dirección, sin propósito.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="split">
+            <div class="split-media" aria-hidden="true">
+              <svg class="svg-wrap" viewBox="0 0 900 520" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                  <linearGradient id="b6" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#071027"></stop>
+                    <stop offset="1" stop-color="#0C1636"></stop>
+                  </linearGradient>
+                </defs>
+                <rect width="900" height="520" fill="url(#b6)"></rect>
+                <g opacity=".85">
+                  <rect x="70" y="90" width="340" height="90" rx="18" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.10)"></rect>
+                  <rect x="110" y="125" width="240" height="12" rx="10" fill="rgba(255,255,255,.22)"></rect>
+                  <rect x="110" y="148" width="180" height="12" rx="10" fill="rgba(255,255,255,.12)"></rect>
+                </g>
+                <g opacity=".85">
+                  <rect x="70" y="210" width="420" height="210" rx="18" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.10)"></rect>
+                  <rect x="110" y="250" width="320" height="12" rx="10" fill="rgba(103,179,255,.34)"></rect>
+                  <rect x="110" y="280" width="260" height="12" rx="10" fill="rgba(255,255,255,.14)"></rect>
+                  <rect x="110" y="310" width="220" height="12" rx="10" fill="rgba(255,255,255,.12)"></rect>
+                  <rect x="110" y="340" width="190" height="12" rx="10" fill="rgba(255,255,255,.10)"></rect>
+                </g>
+              </svg>
+            </div>
+            <div class="split-body">
+              <h3>Necesidad de un mapa</h3>
+              <p>
+                Aquí puedes explicar el “problema” con empatía y sin dramatizar. Diseño UX: texto corto,
+                bullets, lectura fácil.
+              </p>
+              <div class="divider"></div>
+              <ul class="list">
+                <li>Falta de hábitos sostenibles.</li>
+                <li>Relaciones frías o rotas.</li>
+                <li>Fe sin práctica diaria.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESPUÉS -->
+    <section id="despues" aria-label="Sección después">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>¿Quién era después?</h2>
+            <p>El objetivo no es “ser perfecto”, sino caminar con esperanza y dirección.</p>
+          </div>
+          <a class="btn primary" href="#precios">Empezar con un plan</a>
+        </div>
+
+        <div class="two-col">
+          <div class="split">
+            <div class="split-media" aria-hidden="true">
+              <svg class="svg-wrap" viewBox="0 0 900 520" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                  <linearGradient id="a1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#0B1B3E"></stop>
+                    <stop offset="1" stop-color="#071027"></stop>
+                  </linearGradient>
+                  <radialGradient id="a2" cx="70%" cy="30%" r="70%">
+                    <stop offset="0" stop-color="#67B3FF" stop-opacity=".30"></stop>
+                    <stop offset="1" stop-color="#67B3FF" stop-opacity="0"></stop>
+                  </radialGradient>
+                </defs>
+                <rect width="900" height="520" fill="url(#a1)"></rect>
+                <circle cx="640" cy="160" r="260" fill="url(#a2)"></circle>
+                <path d="M-20,360 C120,260 240,460 410,360 C570,265 640,430 900,300" fill="none" stroke="rgba(103,179,255,.55)" stroke-width="6"></path>
+                <text x="70" y="120" fill="rgba(255,255,255,.90)" font-size="44" font-weight="900">DESPUÉS</text>
+                <text x="70" y="165" fill="rgba(237,237,237,.62)" font-size="18">Claridad, paz, propósito</text>
+              </svg>
+            </div>
+            <div class="split-body">
+              <h3>Dirección y paz</h3>
+              <p>
+                Después, la historia cambia: hay orden, intención, y una identidad nueva.
+                No se trata de “no fallar”, sino de volver a empezar.
+              </p>
+              <div class="divider"></div>
+              <ul class="list">
+                <li>Hábitos pequeños que sostienen grandes cambios.</li>
+                <li>Decisiones con calma y enfoque.</li>
+                <li>Un propósito que guía lo diario.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="split">
+            <div class="split-media" aria-hidden="true">
+              <svg class="svg-wrap" viewBox="0 0 900 520" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                  <linearGradient id="a3" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#061026"></stop>
+                    <stop offset="1" stop-color="#0C1A3C"></stop>
+                  </linearGradient>
+                </defs>
+                <rect width="900" height="520" fill="url(#a3)"></rect>
+                <g opacity=".88">
+                  <rect x="90" y="110" width="720" height="90" rx="18" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.10)"></rect>
+                  <rect x="130" y="145" width="420" height="12" rx="10" fill="rgba(103,179,255,.42)"></rect>
+                  <rect x="130" y="168" width="280" height="12" rx="10" fill="rgba(255,255,255,.14)"></rect>
+                </g>
+                <g opacity=".88">
+                  <rect x="90" y="230" width="720" height="220" rx="18" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.10)"></rect>
+                  <rect x="130" y="270" width="500" height="12" rx="10" fill="rgba(255,255,255,.18)"></rect>
+                  <rect x="130" y="300" width="440" height="12" rx="10" fill="rgba(255,255,255,.14)"></rect>
+                  <rect x="130" y="330" width="360" height="12" rx="10" fill="rgba(255,255,255,.12)"></rect>
+                  <rect x="130" y="360" width="300" height="12" rx="10" fill="rgba(255,255,255,.10)"></rect>
+                </g>
+              </svg>
+            </div>
+            <div class="split-body">
+              <h3>Comunidades y soporte</h3>
+              <p>
+                Esta columna puede reforzar “lo que obtienen”: acompañamiento, claridad en próximos pasos,
+                y un lugar seguro para crecer.
+              </p>
+              <div class="divider"></div>
+              <ul class="list">
+                <li>Seguimiento y metas alcanzables.</li>
+                <li>Soporte (según plan) y recursos prácticos.</li>
+                <li>Una ruta simple para mantener constancia.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer aria-label="Footer">
+      <div class="container foot">
+        <div>© <span id="year">2026</span> Camino Nuevo · Hecho en HTML/CSS/JS (1 archivo)</div>
+        <div>
+          <a href="#top" class="btn ghost" style="padding:10px 12px; border-radius: 12px;">Volver arriba</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+    <div class="toast-row">
+      <div>
+        <strong id="toastTitle">Plan seleccionado</strong>
+        <p id="toastMsg">Elegiste "Pro". Buena elección: es el más equilibrado.</p>
+      </div>
+      <button class="xbtn" type="button" id="toastClose" aria-label="Cerrar">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const $ = (sel, root=document) => root.querySelector(sel);
+      const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+      const toast = $('#toast');
+      const toastTitle = $('#toastTitle');
+      const toastMsg = $('#toastMsg');
+      const toastClose = $('#toastClose');
+      let toastTimer = null;
+
+      function showToast(title, msg){
+        if(!toast) return;
+        toastTitle.textContent = title;
+        toastMsg.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 4200);
+      }
+
+      toastClose?.addEventListener('click', () => toast.classList.remove('show'));
+
+      // Hero CTA secundaria
+      $('#ctaOracion')?.addEventListener('click', () => {
+        showToast('Mensaje enviado', 'Si quieres, puedo ajustar el texto, los testimonios y los planes a tu oferta real.');
+      });
+
+      // Atajo y botón: ir a precios
+      function goToPricing(){
+        const el = $('#precios');
+        if(el) el.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }
+
+      $('#btnAtajo')?.addEventListener('click', goToPricing);
+
+      document.addEventListener('keydown', (e) => {
+        // Alt+P
+        if(e.altKey && (e.key === 'p' || e.key === 'P')){
+          e.preventDefault();
+          goToPricing();
+          showToast('Atajo', 'Te llevé a la sección de precios.');
+        }
+      });
+
+      // Interceptar botones de planes
+      $$('.p-btn').forEach(a => {
+        a.addEventListener('click', (e) => {
+          // Solo interceptamos links con data-plan (para dejar otros anchors si luego agregas)
+          const plan = a.getAttribute('data-plan');
+          if(!plan) return;
+          e.preventDefault();
+          const isPro = plan.toLowerCase() === 'pro';
+          showToast(
+            'Plan seleccionado',
+            `Elegiste "${plan}". ${isPro ? 'Buena elección: es el más equilibrado.' : 'Perfecto: empecemos paso a paso.'}`
+          );
+        });
+      });
+
+      // Comparar beneficios
+      $('#btnComparar')?.addEventListener('click', () => {
+        showToast('Tip UX', 'Si me pasas tus beneficios reales, los reemplazo por texto final (sin Lorem).');
+      });
+
+      // Footer year
+      const y = new Date().getFullYear();
+      const year = $('#year');
+      if(year) year.textContent = String(y);
+    })();
+  </script>
+
+
+</div>
+    </div>
+</div>
+<style type="text/css">.custom-code-container > iframe {width:100%}</style>                            </div>
+                 
+</div>
+
+
+
+  
+
+	 
+		<a title="" uk-tooltip="" target="_blank" href="https://api.whatsapp.com/send?phone=34617099963" class="whatsapp-contact-float-button" aria-expanded="false">
+    <span uk-icon="icon: whatsapp; ratio:1.5" class="uk-icon"><svg width="30" height="30" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M16.7,3.3c-1.8-1.8-4.1-2.8-6.7-2.8c-5.2,0-9.4,4.2-9.4,9.4c0,1.7,0.4,3.3,1.3,4.7l-1.3,4.9l5-1.3c1.4,0.8,2.9,1.2,4.5,1.2 l0,0l0,0c5.2,0,9.4-4.2,9.4-9.4C19.5,7.4,18.5,5,16.7,3.3 M10.1,17.7L10.1,17.7c-1.4,0-2.8-0.4-4-1.1l-0.3-0.2l-3,0.8l0.8-2.9 l-0.2-0.3c-0.8-1.2-1.2-2.7-1.2-4.2c0-4.3,3.5-7.8,7.8-7.8c2.1,0,4.1,0.8,5.5,2.3c1.5,1.5,2.3,3.4,2.3,5.5 C17.9,14.2,14.4,17.7,10.1,17.7 M14.4,11.9c-0.2-0.1-1.4-0.7-1.6-0.8c-0.2-0.1-0.4-0.1-0.5,0.1c-0.2,0.2-0.6,0.8-0.8,0.9 c-0.1,0.2-0.3,0.2-0.5,0.1c-0.2-0.1-1-0.4-1.9-1.2c-0.7-0.6-1.2-1.4-1.3-1.6c-0.1-0.2,0-0.4,0.1-0.5C8,8.8,8.1,8.7,8.2,8.5 c0.1-0.1,0.2-0.2,0.2-0.4c0.1-0.2,0-0.3,0-0.4C8.4,7.6,7.9,6.5,7.7,6C7.5,5.5,7.3,5.6,7.2,5.6c-0.1,0-0.3,0-0.4,0 c-0.2,0-0.4,0.1-0.6,0.3c-0.2,0.2-0.8,0.8-0.8,2c0,1.2,0.8,2.3,1,2.4c0.1,0.2,1.7,2.5,4,3.5c0.6,0.2,1,0.4,1.3,0.5 c0.6,0.2,1.1,0.2,1.5,0.1c0.5-0.1,1.4-0.6,1.6-1.1c0.2-0.5,0.2-1,0.1-1.1C14.8,12.1,14.6,12,14.4,11.9"></path></svg></span>
+</a>
+	 
+
+ 
+
+
+            </div>
+
+            
+            <div class="uk-background-muted from-tiendup-footer">
+                <div class="uk-container uk-section-xsmall uk-width-5-6@m uk-text-center">
+                    <div class="uk-text-small uk-text-muted">
+                        <span id="by-tiendup"><span>Realizado con</span> <a class="tiendup-link" href="http://www.tiendup.com?utm_source=facu-zarate"><svg width="70" height="16" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M6.294 5.963c.57-.2 1.193-.2 1.763 0L14.24 8.13a7.158 7.158 0 0 1-7.095 6.155A7.158 7.158 0 0 1 .052 8.153ZM7.144 0c3.772 0 6.863 2.908 7.142 6.599L8.057 4.414c-.57-.2-1.192-.2-1.763 0L0 6.622C.268 2.92 3.364 0 7.144 0Z" fill="#E62464"></path><g fill-rule="nonzero"><path d="M23.252 11.916v-1.861h-.955c-.747 0-1.066-.334-1.066-1.114V5.457h1.99V3.643h-1.99v-2.18H19.18v2.18h-1.432v1.814h1.352v3.946c0 1.543.828 2.513 2.594 2.513h1.56ZM25.344 2.608c.827 0 1.32-.477 1.32-1.304 0-.78-.493-1.273-1.32-1.273-.876 0-1.321.493-1.321 1.273 0 .827.445 1.304 1.32 1.304Zm1.05 9.308V3.643h-2.132v8.273h2.132ZM31.047 12.06c1.034 0 1.877-.255 2.53-.764.668-.525 1.066-1.177 1.177-1.957H32.67c-.207.636-.748.955-1.623.955-1.193 0-1.798-.732-1.814-1.926h5.633v-.827c0-1.162-.35-2.132-1.035-2.896-.684-.764-1.623-1.146-2.816-1.146-1.273 0-2.26.414-2.944 1.226-.684.811-1.018 1.83-1.018 3.07 0 1.242.35 2.26 1.066 3.071.716.796 1.687 1.194 2.928 1.194Zm-1.798-5.108c.048-1.002.62-1.67 1.766-1.67 1.066 0 1.623.668 1.67 1.67H29.25ZM37.8 11.916V7.334c0-1.161.685-1.893 1.703-1.893s1.527.557 1.527 1.654v4.821h2.132V6.491c0-1.83-1.177-2.992-3.007-2.992-1.034 0-1.814.366-2.355 1.082h-.063l-.16-.938h-1.909v8.273H37.8ZM47.227 12.06c.986 0 1.75-.35 2.275-1.035h.064l.223.891h1.909V.142h-2.132v4.392h-.064c-.525-.684-1.289-1.035-2.275-1.035-1.066 0-1.894.398-2.498 1.194-.605.795-.907 1.83-.907 3.087 0 1.288.302 2.323.907 3.102.62.78 1.448 1.178 2.498 1.178Zm-1.241-4.28c0-1.448.557-2.403 1.83-2.403 1.273 0 1.83.986 1.83 2.403 0 1.416-.573 2.402-1.83 2.402-1.257 0-1.83-.986-1.83-2.402Z" fill="#364A5E"></path><path d="M57.974 8.368c0 1.13-.51 1.703-1.527 1.703-1.035 0-1.544-.573-1.544-1.703V3.643h-2.132v5.06c0 .954.318 1.75.939 2.402.62.636 1.527.955 2.72.955h.017c1.193 0 2.1-.319 2.72-.955.621-.652.94-1.448.94-2.403v-5.06h-2.133v4.726ZM63.47 15.56v-4.535h.064c.525.685 1.289 1.035 2.291 1.035 1.05 0 1.878-.398 2.483-1.194.604-.795.907-1.814.907-3.07 0-1.29-.303-2.324-.923-3.103-.62-.796-1.432-1.194-2.467-1.194-1.002 0-1.766.35-2.29 1.035h-.064l-.223-.891h-1.91V15.56h2.133Zm3.58-7.765c0 1.417-.556 2.387-1.83 2.387-.636 0-1.097-.223-1.4-.652-.286-.446-.429-1.019-.429-1.735 0-.716.143-1.288.446-1.734.302-.461.763-.684 1.384-.684 1.273 0 1.83.97 1.83 2.418Z" fill="#E62464"></path></g></g></svg></a></span>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+   
+
+    <input type="hidden" id="payment_url" value="https://payments.tiendup.com/checkout/49614/">
+
+    
+				        
+	         
+    
+                    
+     
+        
+    <div id="store-modal" class="sfy-modal">
+    <!-- <div class="sfy-modal-overlay"> -->
+    <!-- <div class="sfy-modal-inner"> -->
+    <div class="sfy-modal-dialog">
+        <span class="sfy-modal-close" data-st-close-modal="">Cerrar X</span>
+        <div id="cart-modal-content" class="sfy-modal-content">
+
+        </div>
+        <div class="sfy-modal-spinner"></div>
+    </div>
+    <!-- </div> -->
+    <!-- </div> -->
+</div><div st-gpdr-compliance="" id="cookie-consent-banner" class="uk-section-default uk-box-shadow-small uk-padding-small uk-position-bottom-left uk-position-fixed uk-position-z-index uk-width-large@m" style="display: none;">
+    <div class="uk-margin-small-bottom uk-text-small">Utilizamos cookies propias y de terceros para mejorar la experiencia del usuario a través de su navegación. Si continúas navegando aceptas su uso.</div>
+    <button type="button" st-gpdr-compliance-button="" class="uk-button uk-button-primary uk-button-small">Entendido</button>
+</div>
+
+<style type="text/css">
+        @media screen and (max-width:480px) {
+            #cookie-consent-banner {bottom:60px}
+        }
+        @media screen and (min-width:481px) and (max-width:960px) {
+            #cookie-consent-banner {bottom:80px}
+        }
+</style><script type="text/javascript">
+            var ST_params = { "domain": "https:\/\/facuzarate.com\/", "assets_url": "https:\/\/bu-cdn.tiendup.com\/business\/49614\/themes\/lite\/assets\/", "sales_channel_id": "44567", "sales_channel_slug": "facu-zarate", "business_id": "49614", "environment": "production", "google_analytics_id": "UA-73394188-7", "google_analytics_domain": "http:\/\/facuzarate.com\/", "lang": { "name": "Nombre", "last_name": "Apellido", "email": "E-mail", "message": "Mensaje", "send": "Enviar", "sending": "Enviando", "address": "Dirección", "phone": "Teléfono", "contact_us": "Escribinos", "contact_success_message": "Mensaje fue enviado con exito!<br\/> En breve nos pondremos en contacto", "welcome_to": "Te damos la bienvenida a", "you_successfully_registered": "Te registraste exitosamente", "start": "Comenzar", "go_to_my_profile": "Ir a mi perfil", "my_profile": "Mi perfil", "log_in": "Iniciar sesión", "log_in_with_facebook": "Ingresar con Facebook", "user_email": "Usuario (E-mail)", "password": "Contraseña", "confirm_password": "Confirmar contraseña", "success": "Éxito!", "subscribed_to_mailing_list": "Estas suscripto a nuestra lista de correo", "enter": "Ingresar", "password_recovery": "Recuperar contraseña", "back_to_log_in": "Volver a ingresar", "password_recovery_check_your_inbox": "Revisa tu bandeja de entrada", "password_recovery_message": "Hemos enviado un correo a %email_placeholder% con instrucciones para configurar tu nueva contraseña", "thanks": "Gracias", "you_already_have_your_free_access_to_the_course": "Ya tienes tu acceso gratuito al curso", "your_purchase_was_confirmed": "Tu compra fue confirmada", "we_are_processing_your_payment": "Estamos procesando tu pago", "we_will_notify_you_when_your_payment_is_confirmed": "Te notificaremos cuando tu pago sea confirmado", "order_number": "Identificador de la compra", "free_exclamation": "¡Gratis!", "discount": "Descuento", "total": "Total", "access_to_downloadable_content": "Acceso al contenido descargable", "access_to_downloadable_content_message": "Una vez acreditado el pago, recibirás en los próximos minutos un mail con el link de descarga. Puede demorarse entre 5 y 10 minutos.", "payment_info": "Información de pago", "type": "Tipo", "status": "Estado", "instructions": "Instrucciones", "shipping": "Entrega", "shipping_info": "Datos de entrega", "shipping_method": "Modalidad", "recipient_name": "Destinatario\/a", "preferred_date": "Fecha preferida", "go_to_course": "Ir al curso", "log_out": "Cerrar sesión", "orders_history": "Historial de compras", "date": "Fecha", "payment_status": "Estado de pago", "view_details": "Ver detalles", "no_purchase_has_been_made_yet": "Aún no has realizado ninguna compra", "sing_up": "Registrarse", "sign_up_in": "Regisrate en %store_name%", "sign_up_title_without_social": "Completá los siguientes datos", "sign_up_title_with_social": "Ó completá los siguientes datos", "email_it_will_be_your_username_to_log_in": "Será tu nombre de usuario para iniciar sesión", "write_your_password": "Escribe una contraseña", "confirm_your_password": "Confirma la contraseña", "confirm": "Confirmar", "check_your_email": "Revisa tu correo", "sign_up_confirmation_message": "Hemos enviado un email a %email_placeholder% para que completes el registro", "check_spam_folder": "No olvides revisar tu carpeta de SPAM", "resend_confirmation_email": "ó podes %open_a_tag%hacer click aca%close_a_tag% para que te volvamos a enviar el correo de confirmación.", "password_recovery_code_is_invalid": "La clave para restaurar su contraseña ya no es válida", "re_enter_your_email": "Reingresa tu email", "password_recovery_enter_new_password": "Ingresa una nueva contraseña para tu cuenta", "new_password": "Contraseña nueva", "your_password_was_successfully_updated": "Contraseña actualizada con exito", "404_page_not_found": "Parece que la página que buscas no existe", "go_to_home_page": "Ir a la página de início", "home": "Inicio", "it_may_interest_you": "Te puede interesar", "blog": "Blog", "posted_on": "Publicado el", "blog_articles": "Artículos del blog", "blog_no_articles": "No hay artículos en esta sección", "your_cart_is_empty": "Tu carrito esta vacio", "your_cart": "Tu carrito de compras", "navigate_store": "Recorrer la tienda", "summary": "Resumen", "articles": "Artículos", "subtotal": "Subtotal", "go_to_pay": "Ir a pagar", "shipping_cost_in_payment_message": "En caso de aplicar costos de envíos, estos serán calculados en la pantalla de pago.", "download": "Descargar", "download_file": "Descargar el archivo", "download_files": "Descargar los archivos", "give_away": "Regalar", "buy_as_a_gift": "Comprar como regalo", "buy_as_a_gift_suggestion_message": "¿Te ha gustado? Regalaselo a alguien", "buy": "Comprar", "buy_your_gift": "Compra tu regalo", "files_included": "Archivos incluidos", "it_includes": "Incluye", "join": "Inscribirme", "spots_available": "Cupos disponibles", "sold_out_spots": "Cupos agotados", "free_event_exclamation": "¡Evento gratuito!", "event_ended": "Evento finalizado", "ask_for_more_information": "Hacer una consulta", "online_event": "Evento online", "day_and_time_options": "Opciones de días y horarios", "date_and_time": "Fecha y hora", "location": "Ubicación", "sessions": "encuentros", "view_in_map": "Ver en el mapa", "select_tickets": "Seleccionar entradas", "select_currency": "Elige la moneda", "select_group": "Elige el grupo", "select_group_validation": "Debes elegir un grupo para poder reservar tu lugar", "last_available_spot": "Último cupo disponible", "sales_start": "Comienzo de ventas", "sales_end": "Las ventas finalizan el", "starts_on": "Comienza el", "start_at": "Inicia", "ends": "Finaliza", "schedule": "Horario", "save_your_spot": "Reservá tu lugar", "spots": "Lugares", "select": "Elegir", "choose_an_option": "Elige una opción", "choose_an_option_details": "Debes elegir una opción para poder continuar con la compra", "back_to_options_list": "Volver al listado de opciones", "save_my_spot": "Reservar mi lugar", "listing_category_not_found": "No hay productos en esta categoría", "listing_brand_not_found": "No hay productos en esta marca", "listing_search_not_found": "No se encontró ningún resultado", "listing_search_results": "Resultados para \"%search_term%\"", "search_results": "Resultados de búsqueda", "all_products": "Todos los productos", "not_products_to_show": "No hay productos para mostrar", "buy_for_me": "Comprar para mi", "add_to_cart": "Agregar al carrito", "free_download": "Descargar gratis", "free": "Gratis", "price_expressed_in": "Precio expresado en", "price_expressed_in_currency_label": "Precio expresado en %currency_label%", "view_more_details": "Ver más detalles", "more_details": "Más detalles", "out_of_stock": "Sin stock", "need_help": "¿Necesitas Ayuda?", "access_the_free_content": "Accede al contenido gratuito", "register": "Registrarse", "register_with_facebook": "Registrarse con Facebook", "or_also": "ó también", "do_you_have_account": "¿Ya tienes cuenta?", "free_content_not_payment_info_required_message": "No es necesario ingresar ninguna tarjeta de crédito ni información de pago", "site_out_of_service": "El sitio %store_name% se encuentra fuera de servicio", "promotion": "Promoción", "loading": "Cargando", "buy_in": "Comprar en ", "remove_from_cart": "Eliminar del carrito", "remove_one_item": "Quitar 1 item", "add_one_item": "Agregar 1 item", "problem_encounter": "Ups! Tuvimos un problema", "delete_cart_item_confirmation": "¿De verdad no queres este producto?", "we_will_contact_you_shortly": "Envianos tu consulta y a la brevedad te contactaremos", "remove_it": "Quitarlo", "removed": "Eliminado", "error": "Error!", "done": "Listo!", "profile_image_updated": "Tu imágen de perfil se actualizo con exito", "something_important_before": "Algo importante antes", "create_password": "Crear contraseña", "define_a_password_for_your_account": "%name%, define una contraseña para tu cuenta", "continue": "Continuar", "made_with": "Realizado con", "my_courses": "Mis cursos", "course_progress": "Tu progreso en este curso", "my_courses_empty": "Aún no has participado de ningún curso", "your_courses": "Tus cursos", "view_all_my_courses": "Ver todos mis cursos", "cart": "Carrito", "search": "Buscar", "menu": "Menú", "available_payment_methods": "Medios de pagos disponibles", "accepted_payment_methods": "Formas de pago aceptadas", "see_payment_methods": "Ver medios de pago", "product": "Producto", "product_code": "Código del producto", "quantity": "Cantidad", "status_of_your_purchase": "Estado de tu compra", "delete": "Eliminar", "delete_this_item": "Eliminar este item", "keep_buying": "Seguir comprando", "finish_the_purchase": "Finalizar la compra", "join_free": "Inscribite gratis", "frequently_asked_questions": "Preguntas más frecuentes", "to": "a", "back_to_course": "Volver al curso", "back_to_my_courses": "Volver a mis cursos", "provide_your_answer": "Aporta tu respuesta", "your_answer": "Tu respuesta", "answer": "respuesta", "answers": "respuestas", "to_see_answers_log_in": "Para ver las %answers% respuestas iniciá sesión", "register_with_my_email": "Registrarme con mi email", "access_the_free_content_of_this_course": "Accede al contenido gratuito de este curso", "instructor": "Instructor", "instructors": "Instructores", "free_content": "Contenido gratuito", "course_topics": "Temario del curso", "requirements": "Requerimientos", "target_students": "Orientado para", "learning_goals": "Con este curso aprenderás", "view_reviews": "Ver opiniones", "reviews_for_this_course": "Opiniones sobre este curso", "course_no_reviews_yet": "Aún no hay opiniones sobre este curso", "courses": "Cursos", "course": "Curso", "reviews": "Opiniones", "review": "Opinion", "review_saved_successfully": "Tu opinión se guardó con exito", "message_published": "Mensaje publicado", "message_published_successfully": "Tu mensaje fue publicado con exito", "complete_previous_lessons_to_watch_content": "Para acceder a este contenido debes completar las clases anteriores", "sorry_content_not_available": "Lo sentimos pero no puedes acceder a este contenido", "view_first_lesson": "Ver primera clase", "continue_lesson": "Continuar con la clase", "download_certificate": "Descargar certificado", "rate_this_course": "Evalua este curso", "about_the_course": "Sobre el curso", "rete_course_plhaceholder": "Cuentanos que te ha parecido hasta ahora este curso", "courses_on": "Cursos en", "lesson_viewed": "Lección vista", "courses_of": "Cursos de", "instructor_not_have_courses_yey": "%instructor_name% aún no participó en ningún curso", "no_instructors_yet": "No hay ningún instructor disponible", "content_not_available": "Contenido no disponible", "previous_lesson": "Clase anterior", "view_next_lesson": "Ver la próxima clase", "next_lesson": "Próxima clase", "next_lesson_start_in": "La próxima clase comienza en", "cancel": "Cancelar", "about_this_lesson": "Sobre esta clase", "about_this_quizz": "Sobre este cuestionario", "info": "Info", "lessons": "Clases", "forum": "Foro", "file": "Archivo", "files": "Archivos", "more_lessons_from": "Más clases de", "leave_your_question": "Escribe tu comentario o pregunta", "use_this_field_to_write": "Utiliza este campo para escibrir", "lesson_forum_answers_and_questions": "Preguntas y respuestas de los participantes de esta clase", "course_forum_answers_and_questions": "Preguntas y respuestas de los participantes de este curso", "reply": "Responder", "replies": "respuestas", "log_in_to_see": "Inicia sesión para ver", "no_answers": "Sin respuestas", "hide": "Ocultar", "forum_lesson_without_threads": "Aún no hay preguntas o debates en esta clase", "forum_course_without_threads": "Aún no hay preguntas o debates en este curso", "more_resources": "Más recursos", "no_resources": "No hay recursos para esta clase", "course_home_page": "Pagina principal del curso", "a_while_ago": "Hace un momento", "now": "Ahora", "free_course_exclamation": "¡Curso gratuito!", "course_not_available": "Curso no disponible", "more_info": "Más información", "acquire_your_access_to_the_course_to_continue": "Adquiere tu acceso al curso para continuar", "acquire_your_access": "Adquiere tu acceso", "acquire_your_access_to_the_course": "Adquiere tu acceso al curso", "lesson_sequential_progress_blocked": "Debes haber completado las clases anteriores para poder acceder al contenido", "content_blocked": "Contenido bloqueado", "lesson_content_blocked": "Por alguna razón, el contenido de esta clase se encuentra bloqueado", "quiz": "Cuestionario", "resume_quiz": "Reanudar cuestionario", "start_quiz": "Empezar el cuestionario", "skip_quiz": "Saltar el cuestionario", "question": "pregunta", "questions": "preguntas", "checking_answer": "Comprobando respuesta", "send_answer": "Enviar respuesta", "send_question": "Enviar pregunta", "characters_remaining": "caracteres restantes", "previous_question": "Pregunta anterior", "next_question": "Siguiente pregunta", "view_results": "Ver resultados", "skip_question": "Saltar la pregunta", "previous": "Anterior", "next": "Siguiente", "retry": "Reintentar", "check_answer": "Revisar respuesta", "quiz_pending_review": "Cuestionario pendiente de revisión", "quiz_reviewed": "Cuestionario evaluado", "clomplete_and_continue": "Completar y continuar", "of": "de", "got_it": "Has acertado", "on_first_attempt": "al primer intento", "completed_on": "Completado el", "view": "Ver", "completed": "completado", "quiz_locked": "Cuestionario bloqueado", "quiz_unlocked": "Cuestionario desbloqueado", "quiz_no_more_questions": "Ya no quedan más preguntas", "answer_sent": "¡Respuesta enviada!", "answer_pending_review": "Algunas de tus respuestas requieren revisión por parte del instructor. Te notificaremos por email cuando hayan sido evaluadas.", "answer_unlocked": "El instructor ha desbloqueado tus respuestas. Puedes revisarlas y volverlas a enviar.", "correct_answers_will_be_available": "Las respuestas correctas estarán disponibles", "remaining_attempts_message": "Has llegado al límite de los intentos permitidos para responder la pregunta", "question_blocked_to_answer": "Esta pregunta se encuentra bloqueada para responder", "limit_attempts_to_quiz_reached": "Has alcanzado el límite máximo de intentos para hacer esta evaluación", "limit_attempts_to_question_reached": "Has alcanzado el límite máximo de intentos para responder esta pregunta", "question_unresolved_warning": "Al continuar, esta pregunta quedará en blanco. <br\/> ¿Estás seguro que deseas continuar?", "only_attemp_warning": "No podrás hacer esta pregunta nuevamente.<br\/> ¿Estás seguro que deseas dejarla en blanco?", "last_question_warning": "Es la última pregunta: al enviar tu respuesta estarás dando por finalizada la evaluación<br\/><br\/>¿Deseas continuar?", "leave_blank": "Dejar en blanco", "from_date": "desde el", "to_date": "hasta el", "not_yet_qualified": "Aún no calificada", "points": "puntos", "correct": "Correcta", "incorrect": "Incorrecta", "correct_answer": "Respuesta correcta", "incorrect_answer": "Respuesta incorrecta", "answered": "Respondido", "question_not_answered": "Esta pregunta no fue respondida", "pending_review": "Pendiente de revisión", "instructor_comment": "Comentario del instructor", "quiz_check_course_materials_message": "Revisá los materiales del curso para ampliar tu aprendizaje", "quiz_good_job": "¡Buen trabajo! Ya estás listo para pasar a la siguiente clase.", "community_tile": "Se parte de nuestra comunidad exclusiva para estudiantes de la Escuela Online!!", "community_text": "Grupo privado de Facebook en el que puedes publicar todas tus dudas acerca del oficio de una forma más interactiva, acompañando tus publicaciones con fotos o videos de ser necesario! <br> Por favor, contesta las dos preguntas que te solicitará Facebook para tu ingreso al grupo!! De esa forma podemos aprobar rápido tu solicitud! <br> Solo te pedimos que al ingresar en Facebook, leas las reglas del grupo! Son super sencillas y claras, para que la experiencia dentro de nuestra comunidad sea agradable y dinámica para tod@s! <br> Dentro del grupo también realizaremos eventos exclusivos y tendrás acceso a más material de estudio! <br> Te esperamos!", "community_link": "https:\/\/www.facebook.com\/groups\/eduardotarrico\/", "community_link_button": "Unirse a la comunidad", "write_us_on_whatsapp": "Contactar por Whatsapp", "hi_again": "Hola de nuevo", "start_course": "Empezar curso", "view_course": "Ver curso", "paying_with": "Pagando con", "redirecting_to_payment_screen": "Redirigiendo a la pantalla de pago", "redirecting_to_the_course": "Redirigiendo al curso", "business_delivery": "Envio tradicional", "authorized": "Autorizado", "pending": "pendiente", "paid": "pagado", "refunded": "reintegrado", "voided": "anulado", "cancelled": "cancelado", "rejected": "rechazado", "on_hold": "en espera", "in_process": "en proceso de revisión", "branch_pickup": "retira por sucursal", "shipped": "enviado", "unshipped": "no enviado", "credit_card": "Tarjeta de credito", "payment_type_ticket": "Efectivo en puntos de pago", "payment_type_credit_card": "Tarjeta de crédito", "payment_type_debit_card": "Tarjeta de débito", "payment_type_atm": "Cajero automático", "payment_type_etf": "ETF - Transferencia electrónica", "payment_type_bank_transfer": "Transferencia bancaria", "and": "y", "and_one_more_method": "Y un método más", "and_x_more_methods": "Y %quantity% métodos más", "one_more_method": "un método más", "x_more_methods": "%quantity% métodos más", "included_in_this_pack": "Incluido en este combo", "not_available": "No disponible", "free_pack": "Combo Gratuito", "payment_type_wallet": "Billetera virtual", "event": "Evento", "session": "Sesión", "elearning": "Curso Online", "downloadable": "Descargable", "subscription": "Suscripción", "bundle": "Combo" }, "customer_json": null, "geolocation": { "currency": "", "city": "", "state": "", "country": "Colombia", "country_code": "CO" }, "current_page": "page", "facebook_app_id": null, "facebook_pixel_exclude_pending_orders": false, "payment_url": "https:\/\/payments.tiendup.com\/checkout\/49614\/", "mercadopago_public_key": null, "google_optimize_id": null, "sdk_modules": [ "https:\/\/bu-cdn.tiendup.com\/static\/store_js_sdk\/learning-module-sdk.min.js?v=29102020" ] };
+        </script><script src="https://bu-cdn.tiendup.com/static/store_js_sdk/sdk.min.js?v=26122025"></script><script type="text/javascript">                      
+                var STModal = new ST.plugins.modal("#store-modal");
+            </script><script type="text/javascript" src="https://bu-cdn.tiendup.com/business/49614/themes/lite/assets/js/sweetalert.min.js?v=2"></script>
+<script type="text/javascript" src="https://bu-cdn.tiendup.com/business/49614/themes/lite/assets/js/scripts.js?v=2"></script>
+<script type="text/javascript" src="https://bu-cdn.tiendup.com/business/49614/themes/lite/assets/js/validate.min.js?v=2"></script>
+<script type="text/javascript" src="https://bu-cdn.tiendup.com/business/49614/themes/lite/assets/js/form_validations.js?v=2"></script>
+<script type="text/javascript" src="https://bu-cdn.tiendup.com/business/49614/themes/lite/assets/vendor/intl-tel-input-17.0.0/js/intlTelInput-jquery.min.js?v=2"></script>
+ 
+
+
+
+</body>
+</html>
