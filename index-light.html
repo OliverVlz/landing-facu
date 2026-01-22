@@ -129,6 +129,16 @@
         box-shadow: 0 14px 34px rgba(31, 123, 255, 0.22);
         border: 1px solid rgba(12, 22, 40, 0.12);
       }
+
+      .store-logo {
+        height: 34px;
+        width: auto;
+        display: block;
+        border-radius: 12px;
+        box-shadow: 0 14px 34px rgba(20, 40, 90, 0.12);
+        border: 1px solid rgba(12, 22, 40, 0.12);
+        background: rgba(255, 255, 255, 0.8);
+      }
       .brand strong {
         font-weight: 900;
         letter-spacing: 0.2px;
@@ -1094,27 +1104,19 @@
     <header class="topbar" aria-label="Barra de navegación">
       <div class="container topbar-inner">
         <a class="brand" href="#top" aria-label="Inicio">
-          <div class="logo" aria-hidden="true"></div>
+          <img
+            class="store-logo"
+            src="https://bu-cdn.tiendup.com/business/49614/images/logo_687caa58da9b6_medium.png"
+            alt="FACU ZÁRATE"
+          />
           <div>
-            <strong>Camino Nuevo</strong>
-            <span>Light · azules · UX/UI</span>
+            <strong>FACU ZÁRATE</strong>
+            <span>Acceso alumnos</span>
           </div>
         </a>
 
-        <nav class="nav" aria-label="Secciones">
-          <a href="#precios">Precios</a>
-          <a href="#testimonios">Testimonios</a>
-          <a href="#antes">Antes</a>
-          <a href="#despues">Después</a>
-          <button
-            class="btn ghost"
-            id="btnAtajo"
-            type="button"
-            aria-label="Atajo a precios"
-          >
-            Ir a precios <span class="kbd" aria-hidden="true">Alt + P</span>
-          </button>
-
+        <nav class="nav" aria-label="Accesos">
+          <a href="https://facu-zarate.tiendup.com/login">Acceso alumnos</a>
           <button
             class="btn ghost"
             id="btnMenu"
@@ -1139,12 +1141,14 @@
       >
         <div class="drawer-head">
           <div class="drawer-title">
-            <div
-              class="logo"
+            <img
+              class="store-logo"
               aria-hidden="true"
-              style="width: 28px; height: 28px; border-radius: 10px"
-            ></div>
-            <strong>Camino Nuevo</strong>
+              src="https://bu-cdn.tiendup.com/business/49614/images/logo_687caa58da9b6_medium.png"
+              alt=""
+              style="height: 28px; border-radius: 10px"
+            />
+            <strong>FACU ZÁRATE</strong>
           </div>
           <button
             class="xbtn"
@@ -1157,26 +1161,13 @@
         </div>
 
         <div class="drawer-links">
-          <a class="drawer-link" href="#precios"
-            >Precios <span aria-hidden="true">→</span></a
-          >
-          <a class="drawer-link" href="#testimonios"
-            >Testimonios <span aria-hidden="true">→</span></a
-          >
-          <a class="drawer-link" href="#antes"
-            >Antes <span aria-hidden="true">→</span></a
-          >
-          <a class="drawer-link" href="#despues"
-            >Después <span aria-hidden="true">→</span></a
+          <a class="drawer-link" href="https://facu-zarate.tiendup.com/login"
+            >Acceso alumnos <span aria-hidden="true">→</span></a
           >
           <button class="btn primary" type="button" id="drawerCta">
             Ver planes
           </button>
         </div>
-        <p class="drawer-hint">
-          Tip: también puedes usar
-          <span class="kbd" aria-hidden="true">Alt + P</span> para ir a Precios.
-        </p>
       </div>
     </div>
 
