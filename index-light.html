@@ -857,59 +857,77 @@
     <!-- Componente de pricing (tal cual, con su CSS) adaptado a light. -->
     <style>
       .pricing-wrap {
-        max-width: 1100px;
+        width: min(var(--max), calc(100% - 24px));
         margin: 0 auto;
-        padding: 24px 12px;
-        font-family:
-          system-ui,
-          -apple-system,
-          Segoe UI,
-          Roboto,
-          Arial,
-          sans-serif;
+        padding: 8px 0 18px;
       }
       .pricing-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
+        gap: 18px;
+        align-items: stretch;
       }
       .p-card {
-        background: rgba(255, 255, 255, 0.86);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px;
+        border-radius: var(--radius);
         border: 1px solid rgba(12, 22, 40, 0.12);
-        border-radius: 16px;
-        padding: 18px;
         color: rgba(12, 22, 40, 0.92);
-        backdrop-filter: blur(6px);
-        box-shadow: 0 14px 40px rgba(20, 40, 90, 0.12);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.92),
+          rgba(255, 255, 255, 0.74)
+        );
+        backdrop-filter: blur(8px);
+        box-shadow: var(--shadow2);
+        overflow: hidden;
+        transition:
+          transform 0.18s var(--ease),
+          box-shadow 0.18s var(--ease),
+          border-color 0.18s var(--ease),
+          background 0.18s var(--ease);
+      }
+      .p-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(12, 22, 40, 0.22);
+        box-shadow: 0 18px 56px rgba(20, 40, 90, 0.16);
       }
       .p-card.featured {
-        border-color: rgba(31, 123, 255, 0.38);
+        border-color: rgba(31, 123, 255, 0.34);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.96),
+          rgba(255, 255, 255, 0.76)
+        );
         box-shadow:
-          0 0 0 1px rgba(31, 123, 255, 0.18) inset,
-          0 18px 52px rgba(31, 123, 255, 0.14);
+          0 0 0 1px rgba(31, 123, 255, 0.16) inset,
+          0 18px 60px rgba(31, 123, 255, 0.16);
       }
       .p-top {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        margin-bottom: 10px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 10px;
       }
       .p-title {
         margin: 0;
         font-size: 18px;
         font-weight: 900;
-        letter-spacing: 0.2px;
-        text-align: center;
+        letter-spacing: 0.1px;
+        text-align: left;
       }
       .p-badge {
         font-size: 12px;
         padding: 6px 10px;
         border-radius: 999px;
-        background: rgba(31, 123, 255, 0.05);
-        color: rgba(12, 22, 40, 0.5);
-        border: 1px solid rgba(31, 123, 255, 0.1);
+        font-weight: 900;
+        background: rgba(31, 123, 255, 0.08);
+        color: rgba(12, 22, 40, 0.68);
+        border: 1px solid rgba(31, 123, 255, 0.16);
         white-space: nowrap;
       }
       .p-badge.active {
@@ -920,47 +938,55 @@
       /* Switch de duración */
       .p-switch {
         display: flex;
-        gap: 8px;
+        gap: 6px;
         align-items: center;
         flex-wrap: wrap;
+        padding: 6px;
+        border-radius: 999px;
+        border: 1px solid rgba(12, 22, 40, 0.12);
+        background: rgba(255, 255, 255, 0.6);
       }
       .p-term-btn {
         font-size: 12px;
-        padding: 6px 10px;
+        padding: 7px 10px;
         border-radius: 999px;
-        background: rgba(31, 123, 255, 0.1);
-        color: rgba(12, 22, 40, 0.86);
-        border: 1px solid rgba(31, 123, 255, 0.22);
+        background: transparent;
+        color: rgba(12, 22, 40, 0.78);
+        border: 1px solid transparent;
         cursor: pointer;
         transition:
-          transform 0.15s ease,
-          background 0.15s ease,
-          border-color 0.15s ease;
+          transform 0.15s var(--ease),
+          background 0.15s var(--ease),
+          border-color 0.15s var(--ease),
+          box-shadow 0.15s var(--ease);
       }
       .p-term-btn:hover {
         transform: translateY(-1px);
-        background: rgba(31, 123, 255, 0.16);
-        border-color: rgba(31, 123, 255, 0.28);
+        background: rgba(12, 22, 40, 0.06);
+        border-color: rgba(12, 22, 40, 0.12);
       }
       .p-term-btn.active {
-        background: rgba(31, 123, 255, 0.22);
-        border-color: rgba(31, 123, 255, 0.4);
+        background: rgba(31, 123, 255, 0.18);
+        border-color: rgba(31, 123, 255, 0.32);
+        color: rgba(12, 22, 40, 0.92);
+        box-shadow: 0 10px 26px rgba(31, 123, 255, 0.14);
       }
       .p-desc {
-        margin: 6px 0 14px;
+        margin: 0;
         color: rgba(12, 22, 40, 0.72);
-        line-height: 1.45;
+        line-height: 1.55;
         font-size: 14px;
       }
       .p-price {
         display: flex;
         align-items: baseline;
         gap: 8px;
-        margin: 12px 0 6px;
+        margin: 2px 0 0;
       }
       .p-price strong {
-        font-size: 34px;
-        letter-spacing: -0.5px;
+        font-size: clamp(34px, 3.6vw, 44px);
+        letter-spacing: -0.6px;
+        line-height: 1.05;
       }
       .p-price span {
         color: rgba(12, 22, 40, 0.64);
@@ -969,16 +995,17 @@
       .p-hr {
         height: 1px;
         background: rgba(12, 22, 40, 0.1);
-        margin: 14px 0;
+        margin: 10px 0 0;
       }
       .p-list {
         list-style: none;
         padding: 0;
-        margin: 0 0 16px;
+        margin: 0;
         display: grid;
         gap: 10px;
         color: rgba(12, 22, 40, 0.86);
         font-size: 14px;
+        flex: 1 1 auto;
       }
       .p-li {
         display: flex;
@@ -1011,11 +1038,12 @@
         color: rgba(12, 22, 40, 0.92);
         background: rgba(255, 255, 255, 0.8);
         transition:
-          transform 0.15s ease,
-          background 0.15s ease,
-          border-color 0.15s ease,
-          box-shadow 0.15s ease;
+          transform 0.15s var(--ease),
+          background 0.15s var(--ease),
+          border-color 0.15s var(--ease),
+          box-shadow 0.15s var(--ease);
         box-shadow: 0 10px 26px rgba(20, 40, 90, 0.1);
+        margin-top: 6px;
       }
       .p-btn:hover {
         transform: translateY(-1px);
@@ -1038,11 +1066,25 @@
         margin-top: 10px;
         font-size: 12px;
         color: rgba(12, 22, 40, 0.62);
+        line-height: 1.45;
       }
 
-      @media (max-width: 900px) {
+      @media (max-width: 1024px) {
+        .pricing-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 720px) {
+        .pricing-wrap {
+          padding: 6px 0 14px;
+        }
         .pricing-grid {
           grid-template-columns: 1fr;
+          gap: 14px;
+        }
+        .p-card {
+          padding: 18px;
         }
       }
     </style>
