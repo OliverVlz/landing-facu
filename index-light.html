@@ -757,19 +757,246 @@
         line-height: 1.4;
       }
 
-      /* Footer */
+      /* ═══════════════════════════════════════════════════════════════════════════
+         FOOTER ESPECTACULAR
+         ═══════════════════════════════════════════════════════════════════════════ */
       footer {
-        padding: 22px 0 40px;
-        color: rgba(12, 22, 40, 0.62);
-        font-size: 12px;
+        padding: 80px 0 40px;
+        background: 
+          radial-gradient(ellipse 80% 50% at 50% 0%, rgba(31, 123, 255, 0.08), transparent),
+          linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 100%);
+        border-top: 1px solid rgba(12, 22, 40, 0.1);
+        position: relative;
+        overflow: hidden;
       }
-      .foot {
+
+      footer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(31, 123, 255, 0.3), transparent);
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 60px;
+        margin-bottom: 50px;
+      }
+
+      .footer-brand {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .footer-logo {
+        font-size: 28px;
+        font-weight: 900;
+        letter-spacing: -0.5px;
+        color: rgba(12, 22, 40, 0.96);
+        margin: 0;
+      }
+
+      .footer-tagline {
+        font-size: 16px;
+        line-height: 1.7;
+        color: rgba(12, 22, 40, 0.75);
+        margin: 0;
+      }
+
+      .footer-gratitude {
+        font-size: 14px;
+        font-style: italic;
+        color: rgba(12, 22, 40, 0.65);
+        margin-top: 8px;
+      }
+
+      .footer-gratitude strong {
+        color: var(--brand);
+        font-weight: 600;
+      }
+
+      .footer-section {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .footer-section-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: rgba(12, 22, 40, 0.9);
+        margin: 0;
+        letter-spacing: 0.2px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-links a {
+        color: rgba(12, 22, 40, 0.72);
+        text-decoration: none;
+        font-size: 14px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .footer-links a:hover {
+        color: var(--brand);
+        transform: translateX(4px);
+      }
+
+      .footer-links a::before {
+        content: '→';
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .footer-links a:hover::before {
+        opacity: 1;
+      }
+
+      .footer-social {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .social-link {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        background: #ffffff;
+        border: 1px solid rgba(12, 22, 40, 0.08);
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 12px;
+        justify-content: center;
+        text-decoration: none;
+        color: rgba(12, 22, 40, 0.75);
+        transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+        box-shadow: 0 2px 6px rgba(20, 40, 90, 0.06);
+      }
+
+      .social-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(20, 40, 90, 0.12);
+        border-color: rgba(12, 22, 40, 0.12);
+        background: #ffffff;
+        color: rgba(12, 22, 40, 0.9);
+      }
+
+      .social-link svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .social-link svg path,
+      .social-link svg rect,
+      .social-link svg circle,
+      .social-link svg line {
+        fill: none;
+        stroke: currentColor;
+      }
+
+      /* Para iconos que usan fill */
+      .social-link[aria-label="WhatsApp"] svg,
+      .social-link[aria-label="YouTube"] svg {
+        fill: currentColor;
+      }
+
+      .social-link[aria-label="WhatsApp"] svg path,
+      .social-link[aria-label="YouTube"] svg path {
+        fill: currentColor;
+        stroke: none;
+      }
+
+      .footer-bottom {
+        padding-top: 40px;
         border-top: 1px solid rgba(12, 22, 40, 0.08);
-        padding-top: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .footer-copyright {
+        font-size: 13px;
+        color: rgba(12, 22, 40, 0.6);
+      }
+
+      .footer-back-top {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: rgba(12, 22, 40, 0.72);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px 18px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(12, 22, 40, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .footer-back-top:hover {
+        color: var(--brand);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(31, 123, 255, 0.15);
+        border-color: rgba(31, 123, 255, 0.2);
+      }
+
+      /* Responsive Footer */
+      @media (max-width: 968px) {
+        .footer-content {
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+        }
+
+        .footer-brand {
+          grid-column: 1 / -1;
+        }
+      }
+
+      @media (max-width: 640px) {
+        footer {
+          padding: 60px 0 30px;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+        }
       }
 
       /* Focus states */
@@ -830,10 +1057,6 @@
         }
         .section-head {
           margin-bottom: 12px;
-        }
-        .foot {
-          flex-direction: column;
-          align-items: flex-start;
         }
       }
 
@@ -1485,426 +1708,1325 @@
         </div>
       </section>
 
-      <!-- TESTIMONIOS -->
-      <section id="testimonios" aria-label="Sección de testimonios">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <h2>Testimonios</h2>
-              <p>
-                Historias cortas, impacto grande. Lo que cambia no es solo el
-                entorno: cambia el corazón.
-              </p>
-            </div>
-            <a class="btn ghost" href="#antes">Ver el cambio</a>
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           SECCIÓN 1: GALERÍA DE TESTIMONIOS - CARRUSEL DE CAPTURAS
+           ────────────────────────────────────────────────────────────────────────────
+           Descripción: Sección con carruseles horizontales infinitos mostrando 
+           capturas de conversaciones reales de personas que han trabajado con Faku.
+           Coach: Faku - Entrenador privado / Vida saludable / Cursos
+           ────────────────────────────────────────────────────────────────────────────
+      ═══════════════════════════════════════════════════════════════════════════ -->
+
+<section id="galeria" class="testimonios-gallery">
+  
+  <!-- ══════════ ESTILOS CSS DE LA GALERÍA DE TESTIMONIOS ══════════ -->
+  <style>
+    /* ══════════ SECCIÓN PRINCIPAL ══════════ */
+    .testimonios-gallery {
+      padding: 80px 0 0px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .testimonios-gallery::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse 80% 50% at 20% 40%, rgba(31, 123, 255, 0.06), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(60, 92, 255, 0.04), transparent);
+      pointer-events: none;
+    }
+
+    /* ══════════ HEADER DE LA GALERÍA ══════════ */
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .gallery-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(31, 123, 255, 0.08);
+      border: 1px solid rgba(31, 123, 255, 0.2);
+      color: rgba(12, 22, 40, 0.88);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      margin-bottom: 16px;
+    }
+
+    .pulse-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #1f7bff;
+      animation: pulse-gallery 2s ease-in-out infinite;
+      box-shadow: 0 0 0 0 rgba(31, 123, 255, 0.4);
+    }
+
+    @keyframes pulse-gallery {
+      0%, 100% { 
+        box-shadow: 0 0 0 0 rgba(31, 123, 255, 0.4);
+        transform: scale(1);
+      }
+      50% { 
+        box-shadow: 0 0 0 8px rgba(31, 123, 255, 0);
+        transform: scale(1.1);
+      }
+    }
+
+    .gallery-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      margin: 0 auto 20px;
+      color: rgba(12, 22, 40, 0.96);
+      line-height: 1.1;
+      position: relative;
+      display: block;
+      width: fit-content;
+      transition: transform 0.3s ease;
+    }
+
+    /* Línea decorativa debajo del título */
+    .gallery-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(12, 22, 40, 0.2), transparent);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    /* Efecto hover en el título */
+    .gallery-header:hover .gallery-title {
+      transform: translateY(-2px);
+    }
+
+    .gallery-header:hover .gallery-title::after {
+      width: 240px;
+      background: linear-gradient(90deg, transparent, rgba(31, 123, 255, 0.4), transparent);
+    }
+
+    .gallery-subtitle {
+      font-size: 17px;
+      color: rgba(12, 22, 40, 0.72);
+      max-width: 680px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    .gallery-cta {
+      margin-top: 50px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ══════════ CONTENEDOR DEL TRACK ══════════ */
+    .screenshots-track-wrapper {
+      position: relative;
+      margin-bottom: 16px;
+    }
+
+    .screenshots-track-wrapper::before,
+    .screenshots-track-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 120px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .screenshots-track-wrapper::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--bg0, #f6f9ff) 0%, transparent 100%);
+    }
+
+    .screenshots-track-wrapper::after {
+      right: 0;
+      background: linear-gradient(270deg, var(--bg0, #f6f9ff) 0%, transparent 100%);
+    }
+
+    /* ══════════ TRACK DE SCROLL ══════════ */
+    .screenshots-track {
+      display: flex;
+      width: fit-content;
+    }
+
+    .screenshots-slider {
+      display: flex;
+      gap: 16px;
+      padding: 10px 8px;
+    }
+
+    .track-left {
+      animation: scrollLeft-gallery 45s linear infinite;
+    }
+
+    .track-right {
+      animation: scrollRight-gallery 50s linear infinite;
+    }
+
+    @keyframes scrollLeft-gallery {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes scrollRight-gallery {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    .screenshots-track-wrapper:hover .screenshots-track {
+      animation-play-state: paused;
+    }
+
+    /* ══════════ TARJETAS DE SCREENSHOT ══════════ */
+    .screenshot-card {
+      position: relative;
+      flex-shrink: 0;
+      width: 280px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(12, 22, 40, 0.1);
+      box-shadow: 
+        0 4px 20px rgba(20, 40, 90, 0.08),
+        0 1px 3px rgba(20, 40, 90, 0.06);
+      transition: 
+        transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .screenshot-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .card-glow {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(31, 123, 255, 0.15) 0%,
+        transparent 50%,
+        rgba(60, 92, 255, 0.1) 100%
+      );
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    /* ══════════ HOVER EFFECTS ══════════ */
+    .screenshot-card:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 
+        0 20px 50px rgba(31, 123, 255, 0.18),
+        0 8px 25px rgba(20, 40, 90, 0.12);
+      border-color: rgba(31, 123, 255, 0.3);
+      z-index: 20;
+    }
+
+    .screenshot-card:hover img {
+      transform: scale(1.02);
+    }
+
+    .screenshot-card:hover .card-glow {
+      opacity: 1;
+    }
+
+    /* ══════════ BARRA DE SOCIAL PROOF ══════════ */
+    .social-proof-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+      padding: 24px 32px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(12, 22, 40, 0.1);
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(20, 40, 90, 0.08);
+      flex-wrap: wrap;
+    }
+
+    .proof-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      text-align: center;
+    }
+
+    .proof-number {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #1f7bff, #3c5cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .proof-label {
+      font-size: 13px;
+      color: rgba(12, 22, 40, 0.65);
+      font-weight: 500;
+    }
+
+    .proof-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(12, 22, 40, 0.12);
+    }
+
+    /* ══════════ RESPONSIVE ══════════ */
+    @media (max-width: 768px) {
+      .testimonios-gallery {
+        padding: 40px 0 36px;
+      }
+      
+      .gallery-header {
+        margin-bottom: 30px;
+        padding: 0 16px;
+      }
+      
+      .gallery-title {
+        font-size: 24px;
+      }
+      
+      .gallery-subtitle {
+        font-size: 14px;
+      }
+
+      .gallery-cta {
+        margin-top: 30px;
+      }
+
+      .before-cta {
+        margin-top: 24px;
+      }
+      
+      .screenshot-card {
+        width: 220px;
+      }
+      
+      .screenshots-track-wrapper::before,
+      .screenshots-track-wrapper::after {
+        width: 60px;
+      }
+      
+      .social-proof-bar {
+        gap: 20px;
+        padding: 20px 24px;
+        margin: 30px 16px 0;
+      }
+      
+      .proof-number {
+        font-size: 24px;
+      }
+      
+      .proof-divider {
+        display: none;
+      }
+      
+      .proof-item {
+        min-width: 100px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .screenshot-card {
+        width: 200px;
+      }
+      
+      .screenshots-slider {
+        gap: 12px;
+      }
+    }
+
+    /* ══════════ REDUCED MOTION ══════════ */
+    @media (prefers-reduced-motion: reduce) {
+      .track-left,
+      .track-right {
+        animation: none;
+      }
+      
+      .pulse-dot {
+        animation: none;
+      }
+      
+      .screenshot-card,
+      .screenshot-card img,
+      .card-glow {
+        transition: none;
+      }
+    }
+
+    /* ══════════ SECCIÓN ANTES - HISTORIA DE FAKU ══════════ */
+    .before-section {
+      padding: 80px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .before-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header de la sección */
+    .before-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .before-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      margin: 0 0 16px;
+      color: rgba(12, 22, 40, 0.96);
+      line-height: 1.1;
+      position: relative;
+      display: block;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .before-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 180px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(12, 22, 40, 0.2), transparent);
+      border-radius: 2px;
+    }
+
+    .before-subtitle {
+      font-size: 17px;
+      color: rgba(12, 22, 40, 0.72);
+      max-width: 680px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
+    }
+
+    .before-cta {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    /* Layout de dos columnas */
+    .before-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    /* Columna izquierda - Galería horizontal */
+    .before-image-wrapper {
+      position: relative;
+      height: 100%;
+      min-height: 600px;
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    /* Galería en columna derecha - dirección normal (izquierda a derecha) */
+    #gallery-wrapper-after {
+      flex-direction: row;
+    }
+
+    .gallery-item-horizontal {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(12, 22, 40, 0.1);
+      box-shadow: 0 4px 20px rgba(20, 40, 90, 0.08);
+      flex: 0 0 80px;
+      overflow: hidden;
+    }
+
+    .gallery-item-horizontal img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Estado activo y hover: imagen expandida */
+    .gallery-item-horizontal.active,
+    .gallery-item-horizontal:hover {
+      flex: 1 1 500px;
+      z-index: 10;
+      box-shadow: 
+        0 25px 80px rgba(31, 123, 255, 0.25),
+        0 12px 40px rgba(20, 40, 90, 0.18);
+      border-color: rgba(31, 123, 255, 0.4);
+      transform: scale(1.02) translateY(-4px);
+    }
+
+    .gallery-item-horizontal.active img,
+    .gallery-item-horizontal:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Efecto de brillo al hover y activo */
+    .gallery-item-horizontal::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(31, 123, 255, 0.1) 0%,
+        transparent 50%,
+        rgba(60, 92, 255, 0.08) 100%
+      );
+      opacity: 0;
+      transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .gallery-item-horizontal.active::before,
+    .gallery-item-horizontal:hover::before {
+      opacity: 1;
+    }
+
+    /* Columna derecha - Historia */
+    .before-story {
+      padding: 20px 0;
+    }
+
+    .story-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1f7bff, #3c5cff);
+      box-shadow: 0 0 0 4px rgba(31, 123, 255, 0.15);
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 20px;
+      width: 2px;
+      height: calc(100% + 16px);
+      background: linear-gradient(180deg, rgba(31, 123, 255, 0.3), transparent);
+    }
+
+    .timeline-item:last-child::after {
+      display: none;
+    }
+
+    .timeline-year {
+      font-size: 14px;
+      font-weight: 700;
+      color: rgba(31, 123, 255, 0.9);
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .timeline-content {
+      color: rgba(12, 22, 40, 0.86);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .timeline-content strong {
+      color: rgba(12, 22, 40, 0.96);
+      font-weight: 700;
+    }
+
+    /* Responsive: Tablet */
+    @media (max-width: 900px) {
+      .before-section {
+        padding: 60px 0;
+      }
+
+      .before-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .before-image-wrapper {
+        min-height: 400px;
+        order: 1;
+      }
+
+      .gallery-item-horizontal {
+        flex: 0 0 60px;
+      }
+
+      .gallery-item-horizontal:hover {
+        flex: 1 1 350px;
+      }
+
+      .before-story {
+        order: 2;
+      }
+    }
+
+    /* Responsive: Móvil */
+    @media (max-width: 600px) {
+      .before-section {
+        padding: 50px 0;
+      }
+
+      .before-header {
+        margin-bottom: 40px;
+      }
+
+      .before-image-wrapper {
+        min-height: 300px;
+        gap: 8px;
+      }
+
+      .gallery-item-horizontal {
+        flex: 0 0 50px;
+        border-radius: 12px;
+      }
+
+      .gallery-item-horizontal:hover {
+        flex: 1 1 250px;
+      }
+
+      .story-timeline {
+        gap: 24px;
+      }
+
+      .timeline-content {
+        font-size: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .gallery-item-horizontal,
+      .gallery-item-horizontal img,
+      .gallery-item-horizontal::before {
+        transition: none;
+      }
+    }
+
+  </style>
+  
+  <!-- ══════════ HEADER PRINCIPAL - TÍTULO Y DESCRIPCIÓN ══════════ -->
+  <div class="container">
+    <div class="gallery-header">
+      <div class="gallery-badge">
+        <span class="pulse-dot"></span>
+        Resultados reales
+      </div>
+      <h2 class="gallery-title">Lo que dicen quienes ya empezaron</h2>
+      <p class="gallery-subtitle">
+        Testimonios de personas que decidieron transformar su vida. 
+        Sin filtros, sin edición — solo resultados.
+      </p>
+      
+    </div>
+  </div>
+
+</section>
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     FIN SECCIÓN 1: GALERÍA DE TESTIMONIOS (HEADER)
+═══════════════════════════════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     FIN SECCIÓN 1: GALERÍA DE TESTIMONIOS
+═══════════════════════════════════════════════════════════════════════════ -->
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SECCIÓN 2: VIDEOS VERTICALES - GRID DE VIDEOS DE VIMEO
+     ────────────────────────────────────────────────────────────────────────────
+     Descripción: Grid de 3 columnas con videos verticales embebidos de Vimeo.
+     Formato: Videos en formato vertical (9:16) con efecto hover elegante.
+     ────────────────────────────────────────────────────────────────────────────
+═══════════════════════════════════════════════════════════════════════════ -->
+
+<section class="videos-vertical-section" id="videos" aria-label="Videos">
+  
+  <!-- ══════════ ESTILOS CSS DE LOS VIDEOS VERTICALES ══════════ -->
+  <style>
+    /* ─────────────────────────────────────────────────────────────────────────
+       CONTENEDOR PRINCIPAL DE LA SECCIÓN
+       ───────────────────────────────────────────────────────────────────────── */
+    .videos-vertical-section {
+      padding: 60px 0;
+      background: transparent;
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       HEADER DE LA SECCIÓN (Título y subtítulo)
+       ───────────────────────────────────────────────────────────────────────── */
+    .videos-vertical-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .videos-vertical-title {
+      font-size: clamp(28px, 4vw, 38px);
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin: 0 0 12px;
+      color: rgba(12, 22, 40, 0.94);
+    }
+
+    .videos-vertical-subtitle {
+      font-size: 15px;
+      color: rgba(12, 22, 40, 0.68);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       GRID DE VIDEOS (3 columnas en desktop)
+       ───────────────────────────────────────────────────────────────────────── */
+    .videos-vertical-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 12px;
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       TARJETA DE VIDEO INDIVIDUAL
+       ───────────────────────────────────────────────────────────────────────── */
+    .video-vertical-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid rgba(12, 22, 40, 0.1);
+      box-shadow: 
+        0 10px 40px rgba(20, 40, 90, 0.12),
+        0 2px 10px rgba(20, 40, 90, 0.08);
+      transition: 
+        transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+        border-color 0.35s ease;
+    }
+
+    .video-vertical-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 
+        0 30px 80px rgba(31, 123, 255, 0.35),
+        0 15px 40px rgba(20, 40, 90, 0.2),
+        0 0 0 4px rgba(31, 123, 255, 0.15);
+      border-color: rgba(31, 123, 255, 0.7);
+      z-index: 10;
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       CONTENEDOR DEL VIDEO (mantiene proporción 9:16 vertical)
+       ───────────────────────────────────────────────────────────────────────── */
+    .video-vertical-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 177.78%; /* 9:16 aspect ratio (vertical) */
+      height: 0;
+      overflow: hidden;
+      background: rgba(12, 22, 40, 0.05);
+    }
+
+    .video-vertical-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       PLACEHOLDER PARA VIDEOS PENDIENTES
+       ───────────────────────────────────────────────────────────────────────── */
+    .video-vertical-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(
+        135deg,
+        rgba(31, 123, 255, 0.1),
+        rgba(60, 92, 255, 0.06)
+      );
+      color: rgba(12, 22, 40, 0.7);
+    }
+
+    .video-vertical-placeholder span {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .video-vertical-placeholder::before {
+      content: "▶";
+      font-size: 48px;
+      opacity: 0.4;
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       EFECTO DE BRILLO AL HOVER (solo en el borde, no cubre el video)
+       ───────────────────────────────────────────────────────────────────────── */
+    .video-vertical-glow {
+      display: none; /* Desactivado para no cubrir el video */
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       RESPONSIVE: TABLET (2 columnas)
+       ───────────────────────────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .videos-vertical-section {
+        padding: 50px 0;
+      }
+
+      .videos-vertical-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        max-width: 600px;
+        padding: 0 16px;
+      }
+
+      .video-vertical-card {
+        border-radius: 16px;
+      }
+
+      .video-vertical-card:hover {
+        transform: translateY(-6px) scale(1.02);
+      }
+    }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       RESPONSIVE: MÓVIL (CARRUSEL HORIZONTAL)
+       ───────────────────────────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .videos-vertical-section {
+        padding: 36px 0;
+      }
+
+      .videos-vertical-section .container {
+        padding: 0;
+        max-width: 100%;
+      }
+
+      .videos-vertical-grid {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        grid-template-columns: none !important;
+        gap: 16px;
+        max-width: 100%;
+        padding: 0 20px 10px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(31, 123, 255, 0.3) transparent;
+      }
+
+      .videos-vertical-grid::before,
+      .videos-vertical-grid::after {
+        content: '';
+        flex: 0 0 0;
+      }
+
+      .videos-vertical-grid::-webkit-scrollbar {
+        height: 6px;
+      }
+
+      .videos-vertical-grid::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .videos-vertical-grid::-webkit-scrollbar-thumb {
+        background: rgba(31, 123, 255, 0.3);
+        border-radius: 3px;
+      }
+
+      .videos-vertical-grid::-webkit-scrollbar-thumb:hover {
+        background: rgba(31, 123, 255, 0.5);
+      }
+
+      .video-vertical-card {
+        flex: 0 0 280px !important;
+        width: 280px !important;
+        min-width: 280px;
+        max-width: 280px;
+        border-radius: 14px;
+        border-width: 1px;
+        scroll-snap-align: center;
+      }
+
+      .video-vertical-card:hover {
+        transform: translateY(-4px) scale(1.01);
+        box-shadow: 
+          0 20px 50px rgba(31, 123, 255, 0.25),
+          0 10px 25px rgba(20, 40, 90, 0.15);
+      }
+
+      .videos-vertical-title {
+        font-size: 22px;
+      }
+
+      .videos-vertical-subtitle {
+        font-size: 14px;
+        padding: 0 16px;
+      }
+    }
+  </style>
+  
+  <!-- ══════════ CONTENEDOR DE VIDEOS ══════════ -->
+  <div class="container">
+    <div class="videos-vertical-grid">
+      
+      <!-- VIDEO 1 - Vimeo: 1100821230 -->
+      <div class="video-vertical-card">
+        <div class="video-vertical-wrapper">
+          <iframe 
+            src="https://player.vimeo.com/video/1100821230?title=0&byline=0&portrait=0" 
+            frameborder="0" 
+            allow="autoplay; fullscreen; picture-in-picture" 
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="video-vertical-glow"></div>
+      </div>
+      
+      <!-- VIDEO 2 - Vimeo: 1100821207 -->
+      <div class="video-vertical-card">
+        <div class="video-vertical-wrapper">
+          <iframe 
+            src="https://player.vimeo.com/video/1100821207?title=0&byline=0&portrait=0" 
+            frameborder="0" 
+            allow="autoplay; fullscreen; picture-in-picture" 
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="video-vertical-glow"></div>
+      </div>
+      
+      <!-- VIDEO 3 - Vimeo: 1100821246 -->
+      <div class="video-vertical-card">
+        <div class="video-vertical-wrapper">
+          <iframe 
+            src="https://player.vimeo.com/video/1100821246?title=0&byline=0&portrait=0#t=67s" 
+            frameborder="0" 
+            allow="autoplay; fullscreen; picture-in-picture" 
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="video-vertical-glow"></div>
+      </div>
+      
+      
+    </div>
+
+    <div class="gallery-cta">
+        <a href="#precios" class="btn primary">Quiero transformar mi vida</a>
+      </div>
+  </div>
+</section>
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     FIN SECCIÓN 2: VIDEOS VERTICALES
+═══════════════════════════════════════════════════════════════════════════ -->
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SECCIÓN 3: CARRUSEL DE CAPTURAS - TESTIMONIOS EN IMÁGENES
+     ────────────────────────────────────────────────────────────────────────────
+     Descripción: Carrusel horizontal infinito con capturas de conversaciones
+     reales de personas que han trabajado con Faku.
+     ────────────────────────────────────────────────────────────────────────────
+═══════════════════════════════════════════════════════════════════════════ -->
+
+<section class="testimonios-gallery" id="capturas">
+  
+  <!-- ══════════ HEADER ELEGANTE ══════════ -->
+  <div class="container">
+    <div class="gallery-header">
+      <h2 class="gallery-title">Transformaciones Reales</h2>
+      <p class="gallery-subtitle">
+        Personas reales que decidieron cambiar su vida con Faku están logrando resultados extraordinarios a través de entrenamientos personalizados, hábitos saludables y una mentalidad ganadora. ¿Listo para unirte a ellos?
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════ CARRUSEL ÚNICO (izquierda a derecha) ══════════ -->
+  <div class="screenshots-track-wrapper">
+    <div class="screenshots-track track-left">
+      <div class="screenshots-slider">
+        
+        <!-- TARJETA 1 - REEMPLAZA src CON TU IMAGEN -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+        <!-- TARJETA 2 -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+        <!-- TARJETA 3 -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+        <!-- TARJETA 4 -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+        <!-- TARJETA 5 -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+        <!-- TARJETA 6 -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+        <!-- TARJETA 7 -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+        <!-- TARJETA 8 -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+      </div>
+      <!-- Duplicado para efecto infinito (no tocar) -->
+      <div class="screenshots-slider" aria-hidden="true">
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA después del carrusel -->
+  <div class="container">
+    <div class="gallery-cta">
+      <a href="#precios" class="btn primary">Ver planes disponibles</a>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     FIN SECCIÓN 4: GALERÍA GRID DE CAPTURAS
+═══════════════════════════════════════════════════════════════════════════ -->
+
+
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           SECCIÓN: ANTES - HISTORIA DE FAKU
+           ────────────────────────────────────────────────────────────────────────────
+           Descripción: Sección que muestra el "antes" de Faku con su imagen 
+           difuminada y su historia de transformación resumida.
+      ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="antes" aria-label="Sección antes" class="before-section">
+        <div class="before-container">
+          <div class="before-header">
+            <h2 class="before-title">¿Quién era antes?</h2>
+            <p class="before-subtitle">
+              Una mirada honesta al camino recorrido. No para juzgar: para entender 
+              desde dónde empezamos y hacia dónde podemos llegar.
+            </p>
           </div>
 
-          <div class="grid-3">
-            <article class="t-card">
-              <p class="t-quote">
-                “Pasé de sentirme sin rumbo a tener claridad. No fue magia: fue
-                constancia y una guía correcta.”
-              </p>
-              <div class="t-meta">
-                <span class="t-name">María</span><span>2 meses</span>
+          <div class="before-content">
+            <!-- COLUMNA IZQUIERDA: GALERÍA HORIZONTAL -->
+            <div class="before-image-wrapper" id="gallery-wrapper">
+              <div class="gallery-item-horizontal" data-gallery-item="0">
+                <img src="assets/before1.png" alt="Antes - Período inicial" loading="lazy">
               </div>
-            </article>
-            <article class="t-card">
-              <p class="t-quote">
-                “El enfoque es simple: pasos pequeños. Eso me ayudó a sostener
-                cambios reales en mi día a día.”
-              </p>
-              <div class="t-meta">
-                <span class="t-name">Lucas</span><span>5 semanas</span>
+              <div class="gallery-item-horizontal" data-gallery-item="1">
+                <img src="assets/before2.png" alt="Antes - Momento bisagra" loading="lazy">
               </div>
-            </article>
-            <article class="t-card">
-              <p class="t-quote">
-                “Sentí paz de nuevo. Empecé por una decisión, y esa decisión
-                ordenó lo demás.”
-              </p>
-              <div class="t-meta">
-                <span class="t-name">Ana</span><span>3 meses</span>
+              <div class="gallery-item-horizontal" data-gallery-item="2">
+                <img src="assets/before3.png" alt="Antes - Transformación" loading="lazy">
               </div>
-            </article>
+              <div class="gallery-item-horizontal" data-gallery-item="3">
+                <img src="assets/before4.png" alt="Antes - Nuevo comienzo" loading="lazy">
+              </div>
+            </div>
+
+            <!-- COLUMNA DERECHA: HISTORIA -->
+            <div class="before-story">
+              <div class="story-timeline">
+                
+                <div class="timeline-item">
+                  <div class="timeline-year">2008 - 2021</div>
+                  <div class="timeline-content">
+                    Jugué básquet profesional en Argentina, Suecia y Chile. Los partidos se transmitían por televisión nacional. <strong>Por fuera todo era perfecto, pero por dentro me sentía vacío.</strong> Tenía auto, podía viajar, comer donde quisiera, pero no era feliz. "Tiene que haber algo más", me decía.
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-year">2020 - Pandemia</div>
+                  <div class="timeline-content">
+                    <strong>El momento bisagra:</strong> abrí mi corazón, me hice responsable de mis traumas. Empecé mi proceso de desarrollo personal y autoconocimiento. Crisis existencial. "¿Y ahora quién soy?" Me había identificado tanto con ser jugador que ese personaje ya no tenía lugar. Jugué un año y medio más, y renuncié.
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-year">2022</div>
+                  <div class="timeline-content">
+                    <strong>Vendí todo y con vértigo terrible, me fui a India con ticket de ida.</strong> Seis meses viajando, haciendo yoga, meditación. Fue otro antes y después. Mi deseo de ayudar a las personas empezó a despertar.
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-year">2022 - Junio</div>
+                  <div class="timeline-content">
+                    Me mudé a Tenerife. Fui camarero, fotógrafo en barcos, hice voluntariados. <strong>Hace ocho meses, tomé la mejor decisión de mi vida:</strong> dejar el azúcar refinado y todas las drogas, y empezar a levantarme a las 5 am todos los días sin fallar. Empecé a documentar absolutamente todo mi día.
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-year">2025</div>
+                  <div class="timeline-content">
+                    En enero me hackearon la cuenta bancaria y me quedé con 70 euros. <strong>El 11 de enero, empecé a dar mis primeras mentorías 1:1</strong> y creé la sala de amor propio. Mi vida se transformó completamente. Hoy tengo más de 230.000 personas en Instagram. Mi intuición tenía razón: había algo más, y ese algo más es poder ayudar a otros a transformar su vida como yo lo hice conmigo.
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- ANTES -->
-      <section id="antes" aria-label="Sección antes">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <h2>¿Quién era antes?</h2>
-              <p>
-                Una mirada honesta. No para juzgar: para entender desde dónde
-                empezamos.
-              </p>
-            </div>
+      <!-- ═══════════════════════════════════════════════════════════════════════════
+           SECCIÓN: DESPUÉS - TRANSFORMACIÓN Y PROPÓSITO
+           ────────────────────────────────────────────────────────────────────────────
+           Descripción: Sección que muestra el "después" de Faku con su galería
+           de imágenes y su propósito actual: marca personal, amor propio y coaching.
+      ═══════════════════════════════════════════════════════════════════════════ -->
+      <section id="despues" aria-label="Sección después" class="before-section">
+        <div class="before-container">
+          <div class="before-header">
+            <h2 class="before-title">¿Quién soy ahora?</h2>
+            <p class="before-subtitle">
+              El objetivo no es "ser perfecto", sino caminar con esperanza y dirección. 
+              Hoy mi propósito es ayudar a otros a transformar su vida.
+            </p>
+            
           </div>
 
-          <div class="two-col">
-            <div class="split">
-              <div class="split-media" aria-hidden="true">
-                <svg
-                  class="svg-wrap"
-                  viewBox="0 0 900 520"
-                  preserveAspectRatio="xMidYMid slice"
-                >
-                  <defs>
-                    <linearGradient id="b4" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0" stop-color="#E7F0FF" />
-                      <stop offset="1" stop-color="#F6F9FF" />
-                    </linearGradient>
-                    <radialGradient id="b5" cx="28%" cy="22%" r="70%">
-                      <stop
-                        offset="0"
-                        stop-color="#1F7BFF"
-                        stop-opacity=".18"
-                      />
-                      <stop offset="1" stop-color="#1F7BFF" stop-opacity="0" />
-                    </radialGradient>
-                  </defs>
-                  <rect width="900" height="520" fill="url(#b4)" />
-                  <circle cx="260" cy="140" r="240" fill="url(#b5)" />
-                  <path
-                    d="M0,420 C160,320 280,520 440,420 C580,330 660,450 900,360"
-                    fill="none"
-                    stroke="rgba(12,22,40,.14)"
-                    stroke-width="6"
-                  />
-                  <path
-                    d="M50,400 C210,305 310,500 470,400 C610,315 700,420 900,345"
-                    fill="none"
-                    stroke="rgba(31,123,255,.38)"
-                    stroke-width="4"
-                  />
-                  <text
-                    x="70"
-                    y="120"
-                    fill="rgba(12,22,40,.86)"
-                    font-size="44"
-                    font-weight="900"
-                  >
-                    ANTES
-                  </text>
-                  <text x="70" y="165" fill="rgba(12,22,40,.62)" font-size="18">
-                    Ruido, carga, cansancio
-                  </text>
-                </svg>
-              </div>
-              <div class="split-body">
-                <h3>Cuando todo pesa</h3>
-                <p>
-                  A veces la vida se siente como una lista interminable. Hay
-                  prisa, presión y poca paz. Este bloque está pensado para que
-                  el lector se vea reflejado y siga leyendo.
-                </p>
-                <div class="divider"></div>
-                <ul class="list">
-                  <li>Decisiones impulsivas y poca claridad.</li>
-                  <li>Ansiedad por el futuro y culpa por el pasado.</li>
-                  <li>Rutina sin dirección, sin propósito.</li>
-                </ul>
+          <div class="before-content">
+            <!-- COLUMNA IZQUIERDA: HISTORIA -->
+            <div class="before-story">
+              <div class="story-timeline">
+                
+                <div class="timeline-item">
+                  <div class="timeline-year">Amor Propio</div>
+                  <div class="timeline-content">
+                    Creé la <strong>Sala de Amor Propio</strong>, un espacio donde trabajamos el desarrollo personal, eliminar vicios y conectar con el ser. Es un lugar seguro donde las personas pueden transformar su vida desde adentro hacia afuera.
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-year">Marca Personal</div>
+                  <div class="timeline-content">
+                    Ayudo a las personas a <strong>crecer en redes sociales</strong> y construir su marca personal auténtica. No se trata de seguir tendencias, sino de mostrar quién realmente eres y el valor que aportas al mundo.
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-year">Coaching 1:1 VIP</div>
+                  <div class="timeline-content">
+                    Ofrezco <strong>mentorías personalizadas</strong> donde trabajo uno a uno con personas que quieren transformar su vida. Es un acompañamiento profundo, honesto y transformador basado en mi propia experiencia.
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-year">Impacto</div>
+                  <div class="timeline-content">
+                    Hoy tengo más de <strong>135.000 personas</strong> en Instagram que confían en mi mensaje. Mi intuición tenía razón: había algo más, y ese algo más es poder ayudar a otros a transformar su vida como yo lo hice conmigo.
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-year">Gratitud</div>
+                  <div class="timeline-content">
+                    <strong>Gracias Dios por esta oportunidad. Gracias todos los días.</strong> Cada día es una nueva oportunidad de servir, de crecer y de ayudar a otros a encontrar su camino. Esta es mi misión. <strong>— FACU</strong>
+                  </div>
+                </div>
+
               </div>
             </div>
 
-            <div class="split">
-              <div class="split-media" aria-hidden="true">
-                <svg
-                  class="svg-wrap"
-                  viewBox="0 0 900 520"
-                  preserveAspectRatio="xMidYMid slice"
-                >
-                  <defs>
-                    <linearGradient id="b6" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0" stop-color="#F6F9FF" />
-                      <stop offset="1" stop-color="#E7F0FF" />
-                    </linearGradient>
-                  </defs>
-                  <rect width="900" height="520" fill="url(#b6)" />
-                  <g opacity=".92">
-                    <rect
-                      x="70"
-                      y="90"
-                      width="340"
-                      height="90"
-                      rx="18"
-                      fill="rgba(255,255,255,.82)"
-                      stroke="rgba(12,22,40,.12)"
-                    />
-                    <rect
-                      x="110"
-                      y="125"
-                      width="240"
-                      height="12"
-                      rx="10"
-                      fill="rgba(31,123,255,.28)"
-                    />
-                    <rect
-                      x="110"
-                      y="148"
-                      width="180"
-                      height="12"
-                      rx="10"
-                      fill="rgba(12,22,40,.12)"
-                    />
-                  </g>
-                  <g opacity=".92">
-                    <rect
-                      x="70"
-                      y="210"
-                      width="420"
-                      height="210"
-                      rx="18"
-                      fill="rgba(255,255,255,.72)"
-                      stroke="rgba(12,22,40,.12)"
-                    />
-                    <rect
-                      x="110"
-                      y="250"
-                      width="320"
-                      height="12"
-                      rx="10"
-                      fill="rgba(31,123,255,.32)"
-                    />
-                    <rect
-                      x="110"
-                      y="280"
-                      width="260"
-                      height="12"
-                      rx="10"
-                      fill="rgba(12,22,40,.14)"
-                    />
-                    <rect
-                      x="110"
-                      y="310"
-                      width="220"
-                      height="12"
-                      rx="10"
-                      fill="rgba(12,22,40,.12)"
-                    />
-                    <rect
-                      x="110"
-                      y="340"
-                      width="190"
-                      height="12"
-                      rx="10"
-                      fill="rgba(12,22,40,.10)"
-                    />
-                  </g>
-                </svg>
+            <!-- COLUMNA DERECHA: GALERÍA HORIZONTAL -->
+            <div class="before-image-wrapper" id="gallery-wrapper-after">
+              <div class="gallery-item-horizontal" data-gallery-item-after="0">
+                <img src="assets/after1.png" alt="Después - Transformación" loading="lazy">
               </div>
-              <div class="split-body">
-                <h3>Necesidad de un mapa</h3>
-                <p>
-                  Aquí puedes explicar el “problema” con empatía y sin
-                  dramatizar. Diseño UX: texto corto, bullets, lectura fácil.
-                </p>
-                <div class="divider"></div>
-                <ul class="list">
-                  <li>Falta de hábitos sostenibles.</li>
-                  <li>Relaciones frías o rotas.</li>
-                  <li>Fe sin práctica diaria.</li>
-                </ul>
+              <div class="gallery-item-horizontal" data-gallery-item-after="1">
+                <img src="assets/after2.png" alt="Después - Propósito" loading="lazy">
+              </div>
+              <div class="gallery-item-horizontal" data-gallery-item-after="2">
+                <img src="assets/after3.png" alt="Después - Crecimiento" loading="lazy">
+              </div>
+              <div class="gallery-item-horizontal" data-gallery-item-after="3">
+                <img src="assets/after4.png" alt="Después - Impacto" loading="lazy">
               </div>
             </div>
           </div>
         </div>
-      </section>
-
-      <!-- DESPUÉS -->
-      <section id="despues" aria-label="Sección después">
-        <div class="container">
-          <div class="section-head">
-            <div>
-              <h2>¿Quién era después?</h2>
-              <p>
-                El objetivo no es “ser perfecto”, sino caminar con esperanza y
-                dirección.
-              </p>
-            </div>
-            <a class="btn primary" href="#precios">Empezar con un plan</a>
-          </div>
-
-          <div class="two-col">
-            <div class="split">
-              <div class="split-media" aria-hidden="true">
-                <svg
-                  class="svg-wrap"
-                  viewBox="0 0 900 520"
-                  preserveAspectRatio="xMidYMid slice"
-                >
-                  <defs>
-                    <linearGradient id="a1" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0" stop-color="#E7F0FF" />
-                      <stop offset="1" stop-color="#F6F9FF" />
-                    </linearGradient>
-                    <radialGradient id="a2" cx="70%" cy="30%" r="70%">
-                      <stop
-                        offset="0"
-                        stop-color="#1F7BFF"
-                        stop-opacity=".18"
-                      />
-                      <stop offset="1" stop-color="#1F7BFF" stop-opacity="0" />
-                    </radialGradient>
-                  </defs>
-                  <rect width="900" height="520" fill="url(#a1)" />
-                  <circle cx="640" cy="160" r="260" fill="url(#a2)" />
-                  <path
-                    d="M-20,360 C120,260 240,460 410,360 C570,265 640,430 900,300"
-                    fill="none"
-                    stroke="rgba(31,123,255,.55)"
-                    stroke-width="6"
-                  />
-                  <text
-                    x="70"
-                    y="120"
-                    fill="rgba(12,22,40,.90)"
-                    font-size="44"
-                    font-weight="900"
-                  >
-                    DESPUÉS
-                  </text>
-                  <text x="70" y="165" fill="rgba(12,22,40,.62)" font-size="18">
-                    Claridad, paz, propósito
-                  </text>
-                </svg>
-              </div>
-              <div class="split-body">
-                <h3>Dirección y paz</h3>
-                <p>
-                  Después, la historia cambia: hay orden, intención, y una
-                  identidad nueva. No se trata de “no fallar”, sino de volver a
-                  empezar.
-                </p>
-                <div class="divider"></div>
-                <ul class="list">
-                  <li>Hábitos pequeños que sostienen grandes cambios.</li>
-                  <li>Decisiones con calma y enfoque.</li>
-                  <li>Un propósito que guía lo diario.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="split">
-              <div class="split-media" aria-hidden="true">
-                <svg
-                  class="svg-wrap"
-                  viewBox="0 0 900 520"
-                  preserveAspectRatio="xMidYMid slice"
-                >
-                  <defs>
-                    <linearGradient id="a3" x1="0" y1="0" x2="1" y2="1">
-                      <stop offset="0" stop-color="#F6F9FF" />
-                      <stop offset="1" stop-color="#E7F0FF" />
-                    </linearGradient>
-                  </defs>
-                  <rect width="900" height="520" fill="url(#a3)" />
-                  <g opacity=".92">
-                    <rect
-                      x="90"
-                      y="110"
-                      width="720"
-                      height="90"
-                      rx="18"
-                      fill="rgba(255,255,255,.82)"
-                      stroke="rgba(12,22,40,.12)"
-                    />
-                    <rect
-                      x="130"
-                      y="145"
-                      width="420"
-                      height="12"
-                      rx="10"
-                      fill="rgba(31,123,255,.32)"
-                    />
-                    <rect
-                      x="130"
-                      y="168"
-                      width="280"
-                      height="12"
-                      rx="10"
-                      fill="rgba(12,22,40,.14)"
-                    />
-                  </g>
-                  <g opacity=".92">
-                    <rect
-                      x="90"
-                      y="230"
-                      width="720"
-                      height="220"
-                      rx="18"
-                      fill="rgba(255,255,255,.72)"
-                      stroke="rgba(12,22,40,.12)"
-                    />
-                    <rect
-                      x="130"
-                      y="270"
-                      width="500"
-                      height="12"
-                      rx="10"
-                      fill="rgba(12,22,40,.16)"
-                    />
-                    <rect
-                      x="130"
-                      y="300"
-                      width="440"
-                      height="12"
-                      rx="10"
-                      fill="rgba(12,22,40,.14)"
-                    />
-                    <rect
-                      x="130"
-                      y="330"
-                      width="360"
-                      height="12"
-                      rx="10"
-                      fill="rgba(12,22,40,.12)"
-                    />
-                    <rect
-                      x="130"
-                      y="360"
-                      width="300"
-                      height="12"
-                      rx="10"
-                      fill="rgba(12,22,40,.10)"
-                    />
-                  </g>
-                </svg>
-              </div>
-              <div class="split-body">
-                <h3>Comunidades y soporte</h3>
-                <p>
-                  Esta columna puede reforzar “lo que obtienen”: acompañamiento,
-                  claridad en próximos pasos, y un lugar seguro para crecer.
-                </p>
-                <div class="divider"></div>
-                <ul class="list">
-                  <li>Seguimiento y metas alcanzables.</li>
-                  <li>Soporte (según plan) y recursos prácticos.</li>
-                  <li>Una ruta simple para mantener constancia.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div class="gallery-cta">
+          <a href="#precios" class="btn primary">Empezar mi transformación</a>
         </div>
       </section>
 
       <footer aria-label="Footer">
-        <div class="container foot">
-          <div>
-            © <span id="year"></span> Camino Nuevo · Hecho en HTML/CSS/JS (1
-            archivo)
+        <div class="footer-container">
+          <div class="footer-content">
+            <!-- Columna 1: Brand y Descripción -->
+            <div class="footer-brand">
+              <h3 class="footer-logo">FACU</h3>
+              <p class="footer-tagline">
+                Transformando vidas a través del desarrollo personal, la marca personal y el coaching. 
+                Mi misión es ayudarte a conectar con tu ser y crear la vida que realmente deseas.
+              </p>
+              <p class="footer-gratitude">
+                <strong>Gracias Dios por esta oportunidad. Gracias todos los días.</strong>
+              </p>
+            </div>
+
+            <!-- Columna 2: Servicios -->
+            <div class="footer-section">
+              <h4 class="footer-section-title">Servicios</h4>
+              <ul class="footer-links">
+                <li><a href="#precios">Amor Propio</a></li>
+                <li><a href="#precios">Marca Personal</a></li>
+                <li><a href="#precios">Coaching 1:1 VIP</a></li>
+                <li><a href="#antes">Mi Historia</a></li>
+                <li><a href="#despues">Transformación</a></li>
+              </ul>
+            </div>
+
+            <!-- Columna 3: Recursos -->
+            <div class="footer-section">
+              <h4 class="footer-section-title">Recursos</h4>
+              <ul class="footer-links">
+                <li><a href="#capturas">Testimonios</a></li>
+                <li><a href="#precios">Planes y Precios</a></li>
+                <li><a href="#top">Inicio</a></li>
+                <li><a href="#" onclick="alert('Acceso para alumnos próximamente'); return false;">Acceso Alumnos</a></li>
+              </ul>
+            </div>
+
+            <!-- Columna 4: Redes Sociales -->
+            <div class="footer-social">
+              <h4 class="footer-section-title">Conecta conmigo</h4>
+              <div class="social-links">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </a>
+                <a href="https://wa.me" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                  </svg>
+                </a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
-          <div>
-            <a
-              href="#top"
-              class="btn ghost"
-              style="padding: 10px 12px; border-radius: 12px"
-              >Volver arriba</a
-            >
+
+          <!-- Footer Bottom -->
+          <div class="footer-bottom">
+            <div class="footer-copyright">
+              © <span id="year"></span> FACU · Transformando vidas, un día a la vez
+            </div>
+            <a href="#top" class="footer-back-top">
+              <span>Volver arriba</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 15l-6-6-6 6"/>
+              </svg>
+            </a>
           </div>
         </div>
       </footer>
@@ -2089,6 +3211,206 @@
         const y = new Date().getFullYear();
         const year = $("#year");
         if (year) year.textContent = String(y);
+      })();
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // GALERÍA AUTOMÁTICA - Animación secuencial de imágenes
+      // ═══════════════════════════════════════════════════════════════════════════
+      (function() {
+        const galleryWrapper = document.getElementById('gallery-wrapper');
+        if (!galleryWrapper) return;
+
+        const items = galleryWrapper.querySelectorAll('.gallery-item-horizontal');
+        if (items.length === 0) return;
+
+        let currentIndex = 0;
+        let autoPlayInterval = null;
+        let isPaused = false;
+        const AUTO_PLAY_DURATION = 3000; // 3 segundos por imagen
+
+        // Función para activar una imagen específica
+        function activateImage(index) {
+          items.forEach((item, i) => {
+            if (i === index) {
+              item.classList.add('active');
+            } else {
+              item.classList.remove('active');
+            }
+          });
+        }
+
+        // Función para avanzar a la siguiente imagen
+        function nextImage() {
+          currentIndex = (currentIndex + 1) % items.length;
+          activateImage(currentIndex);
+        }
+
+        // Iniciar la animación automática
+        function startAutoPlay() {
+          if (autoPlayInterval) return;
+          
+          // Activar la primera imagen
+          activateImage(currentIndex);
+          
+          autoPlayInterval = setInterval(() => {
+            if (!isPaused) {
+              nextImage();
+            }
+          }, AUTO_PLAY_DURATION);
+        }
+
+        // Pausar la animación automática
+        function pauseAutoPlay() {
+          isPaused = true;
+        }
+
+        // Reanudar la animación automática
+        function resumeAutoPlay() {
+          isPaused = false;
+        }
+
+        // Detener la animación automática
+        function stopAutoPlay() {
+          if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = null;
+          }
+        }
+
+        // Event listeners para cada imagen
+        items.forEach((item, index) => {
+          // Cuando el mouse entra, pausar y activar esta imagen
+          item.addEventListener('mouseenter', () => {
+            pauseAutoPlay();
+            activateImage(index);
+            currentIndex = index;
+          });
+
+          // Cuando el mouse sale, reanudar la animación
+          item.addEventListener('mouseleave', () => {
+            resumeAutoPlay();
+          });
+        });
+
+        // Pausar cuando el mouse está sobre el contenedor completo
+        galleryWrapper.addEventListener('mouseenter', pauseAutoPlay);
+        galleryWrapper.addEventListener('mouseleave', resumeAutoPlay);
+
+        // Iniciar la animación cuando la página carga
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', startAutoPlay);
+        } else {
+          startAutoPlay();
+        }
+
+        // Limpiar cuando la página se oculta (para ahorrar recursos)
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            stopAutoPlay();
+          } else {
+            startAutoPlay();
+          }
+        });
+      })();
+
+      // ═══════════════════════════════════════════════════════════════════════════
+      // GALERÍA AUTOMÁTICA AFTER - Animación secuencial de imágenes
+      // ═══════════════════════════════════════════════════════════════════════════
+      (function() {
+        const galleryWrapper = document.getElementById('gallery-wrapper-after');
+        if (!galleryWrapper) return;
+
+        const items = galleryWrapper.querySelectorAll('.gallery-item-horizontal');
+        if (items.length === 0) return;
+
+        let currentIndex = 0;
+        let autoPlayInterval = null;
+        let isPaused = false;
+        const AUTO_PLAY_DURATION = 3000; // 3 segundos por imagen
+
+        // Función para activar una imagen específica
+        function activateImage(index) {
+          items.forEach((item, i) => {
+            if (i === index) {
+              item.classList.add('active');
+            } else {
+              item.classList.remove('active');
+            }
+          });
+        }
+
+        // Función para avanzar a la siguiente imagen
+        function nextImage() {
+          currentIndex = (currentIndex + 1) % items.length;
+          activateImage(currentIndex);
+        }
+
+        // Iniciar la animación automática
+        function startAutoPlay() {
+          if (autoPlayInterval) return;
+          
+          // Activar la primera imagen
+          activateImage(currentIndex);
+          
+          autoPlayInterval = setInterval(() => {
+            if (!isPaused) {
+              nextImage();
+            }
+          }, AUTO_PLAY_DURATION);
+        }
+
+        // Pausar la animación automática
+        function pauseAutoPlay() {
+          isPaused = true;
+        }
+
+        // Reanudar la animación automática
+        function resumeAutoPlay() {
+          isPaused = false;
+        }
+
+        // Detener la animación automática
+        function stopAutoPlay() {
+          if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = null;
+          }
+        }
+
+        // Event listeners para cada imagen
+        items.forEach((item, index) => {
+          // Cuando el mouse entra, pausar y activar esta imagen
+          item.addEventListener('mouseenter', () => {
+            pauseAutoPlay();
+            activateImage(index);
+            currentIndex = index;
+          });
+
+          // Cuando el mouse sale, reanudar la animación
+          item.addEventListener('mouseleave', () => {
+            resumeAutoPlay();
+          });
+        });
+
+        // Pausar cuando el mouse está sobre el contenedor completo
+        galleryWrapper.addEventListener('mouseenter', pauseAutoPlay);
+        galleryWrapper.addEventListener('mouseleave', resumeAutoPlay);
+
+        // Iniciar la animación cuando la página carga
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', startAutoPlay);
+        } else {
+          startAutoPlay();
+        }
+
+        // Limpiar cuando la página se oculta (para ahorrar recursos)
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            stopAutoPlay();
+          } else {
+            startAutoPlay();
+          }
+        });
       })();
     </script>
   </body>
