@@ -1,0 +1,364 @@
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SECCIÓN 1: HEADER / TOPBAR Y DRAWER
+     ────────────────────────────────────────────────────────────────────────────
+     Descripción: Barra de navegación superior y menú móvil (drawer)
+═══════════════════════════════════════════════════════════════════════════ -->
+
+<style>
+  /* ══════════ ESTILOS GLOBALES ══════════ */
+  :root {
+    --bg0: #f6f9ff;
+    --bg1: #eef4ff;
+    --card: rgba(255, 255, 255, 0.72);
+    --card2: rgba(255, 255, 255, 0.86);
+    --stroke: rgba(12, 22, 40, 0.1);
+    --stroke2: rgba(12, 22, 40, 0.16);
+    --text: rgba(12, 22, 40, 0.92);
+    --muted: rgba(12, 22, 40, 0.72);
+    --muted2: rgba(12, 22, 40, 0.56);
+    --brand: #1f7bff;
+    --brand2: #3c5cff;
+    --glow: rgba(31, 123, 255, 0.22);
+    --accent: #ff9a3c;
+    --radius: 18px;
+    --shadow: 0 18px 60px rgba(20, 40, 90, 0.14);
+    --shadow2: 0 10px 30px rgba(20, 40, 90, 0.12);
+    --max: 1100px;
+    --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  .container {
+    width: min(var(--max), calc(100% - 24px));
+    margin: 0 auto;
+  }
+
+  /* ══════════ TOPBAR ══════════ */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    backdrop-filter: blur(10px);
+    background: linear-gradient(180deg, rgba(246, 249, 255, 0.92), rgba(246, 249, 255, 0.72));
+    border-bottom: 1px solid rgba(12, 22, 40, 0.08);
+  }
+
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 12px 0;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .store-logo {
+    height: 34px;
+    width: auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 14px 34px rgba(20, 40, 90, 0.12);
+    border: 1px solid rgba(12, 22, 40, 0.12);
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .brand strong {
+    font-weight: 900;
+    letter-spacing: 0.2px;
+  }
+
+  .brand span {
+    color: var(--muted2);
+    font-size: 12px;
+    display: block;
+    margin-top: 2px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .nav a {
+    text-decoration: none;
+    font-size: 13px;
+    color: rgba(12, 22, 40, 0.78);
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition: background 0.15s var(--ease), border-color 0.15s var(--ease), transform 0.15s var(--ease);
+  }
+
+  .nav a:hover {
+    background: rgba(31, 123, 255, 0.08);
+    border-color: rgba(31, 123, 255, 0.18);
+    transform: translateY(-1px);
+  }
+
+  #btnMenu {
+    display: none;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(12, 22, 40, 0.14);
+    background: rgba(255, 255, 255, 0.72);
+    color: rgba(12, 22, 40, 0.92);
+    text-decoration: none;
+    font-weight: 900;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    transition: transform 0.15s var(--ease), background 0.15s var(--ease), border-color 0.15s var(--ease), box-shadow 0.15s var(--ease);
+    user-select: none;
+    box-shadow: 0 10px 26px rgba(20, 40, 90, 0.08);
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(12, 22, 40, 0.22);
+  }
+
+  .btn.primary {
+    background: linear-gradient(135deg, rgba(31, 123, 255, 0.95), rgba(60, 92, 255, 0.9));
+    border-color: rgba(31, 123, 255, 0.52);
+    color: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 10px 30px rgba(31, 123, 255, 0.26), 0 0 0 1px rgba(255, 255, 255, 0.18) inset;
+  }
+
+  .btn.primary:hover {
+    box-shadow: 0 14px 42px rgba(31, 123, 255, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.24) inset;
+  }
+
+  .btn.ghost {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(12, 22, 40, 0.12);
+    color: rgba(12, 22, 40, 0.86);
+    box-shadow: none;
+  }
+
+  /* ══════════ DRAWER (MENÚ MÓVIL) ══════════ */
+  body.no-scroll {
+    overflow: hidden;
+  }
+
+  .drawer {
+    position: fixed;
+    inset: 0;
+    z-index: 70;
+    display: none;
+  }
+
+  .drawer.open {
+    display: block;
+  }
+
+  .drawer-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(12, 22, 40, 0.35);
+    backdrop-filter: blur(2px);
+  }
+
+  .drawer-panel {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: min(380px, calc(100% - 24px));
+    border-radius: 18px;
+    border: 1px solid rgba(12, 22, 40, 0.14);
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 22px 80px rgba(20, 40, 90, 0.2);
+    padding: 12px;
+    transform: translateX(10px);
+    opacity: 0;
+    animation: drawerIn 0.18s var(--ease) forwards;
+  }
+
+  @keyframes drawerIn {
+    to {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+
+  .drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 6px 6px 10px;
+    border-bottom: 1px solid rgba(12, 22, 40, 0.1);
+    margin-bottom: 10px;
+  }
+
+  .drawer-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .drawer-title strong {
+    font-size: 14px;
+    letter-spacing: 0.2px;
+  }
+
+  .drawer-links {
+    display: grid;
+    gap: 10px;
+    padding: 6px;
+  }
+
+  .drawer-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 12px;
+    border-radius: 14px;
+    text-decoration: none;
+    border: 1px solid rgba(12, 22, 40, 0.12);
+    background: rgba(255, 255, 255, 0.78);
+    color: rgba(12, 22, 40, 0.9);
+    transition: transform 0.15s var(--ease), background 0.15s var(--ease);
+  }
+
+  .drawer-link:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .xbtn {
+    border: 1px solid rgba(12, 22, 40, 0.14);
+    background: rgba(255, 255, 255, 0.7);
+    color: rgba(12, 22, 40, 0.86);
+    border-radius: 12px;
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: background 0.15s var(--ease), transform 0.15s var(--ease);
+    flex: 0 0 auto;
+  }
+
+  .xbtn:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-1px);
+  }
+
+  /* ══════════ RESPONSIVE ══════════ */
+  @media (max-width: 760px) {
+    .topbar-inner {
+      gap: 10px;
+    }
+    .nav a {
+      display: none;
+    }
+    #btnMenu {
+      display: inline-flex;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .brand span {
+      display: none;
+    }
+  }
+</style>
+
+<header class="topbar" aria-label="Barra de navegación">
+  <div class="container topbar-inner">
+    <a class="brand" href="#top" aria-label="Inicio">
+      <img
+        class="store-logo"
+        src="https://bu-cdn.tiendup.com/business/49614/images/logo_687caa58da9b6_medium.png"
+        alt="FACU ZÁRATE"
+      />
+      <div>
+        <strong>FACU ZÁRATE</strong>
+        <span>Acceso alumnos</span>
+      </div>
+    </a>
+
+    <nav class="nav" aria-label="Accesos">
+      <a href="https://facu-zarate.tiendup.com/login">Acceso alumnos</a>
+      <button
+        class="btn ghost"
+        id="btnMenu"
+        type="button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="drawer"
+      >
+        Menú
+      </button>
+    </nav>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
+  <div
+    class="drawer-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menú"
+  >
+    <div class="drawer-head">
+      <div class="drawer-title">
+        <img
+          class="store-logo"
+          aria-hidden="true"
+          src="https://bu-cdn.tiendup.com/business/49614/images/logo_687caa58da9b6_medium.png"
+          alt=""
+          style="height: 28px; border-radius: 10px"
+        />
+        <strong>FACU ZÁRATE</strong>
+      </div>
+      <button
+        class="xbtn"
+        type="button"
+        id="drawerClose"
+        aria-label="Cerrar menú"
+      >
+        Cerrar
+      </button>
+    </div>
+
+    <div class="drawer-links">
+      <a class="drawer-link" href="https://facu-zarate.tiendup.com/login"
+        >Acceso alumnos <span aria-hidden="true">→</span></a
+      >
+      <button class="btn primary" type="button" id="drawerCta">
+        Ver planes
+      </button>
+    </div>
+  </div>
+</div>
+

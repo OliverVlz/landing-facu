@@ -1,0 +1,177 @@
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SECCIÓN 4: GALERÍA DE TESTIMONIOS - HEADER
+     ────────────────────────────────────────────────────────────────────────────
+     Descripción: Header de la sección de testimonios con título y descripción
+═══════════════════════════════════════════════════════════════════════════ -->
+
+<style>
+  /* ══════════ ESTILOS GLOBALES ══════════ */
+  :root {
+    --bg0: #f6f9ff;
+    --brand: #1f7bff;
+    --brand2: #3c5cff;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+
+  .container {
+    width: min(1100px, calc(100% - 24px));
+    margin: 0 auto;
+  }
+
+  /* ══════════ GALERÍA DE TESTIMONIOS ══════════ */
+  .testimonios-gallery {
+    padding: 80px 0 0px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .testimonios-gallery::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(ellipse 80% 50% at 20% 40%, rgba(31, 123, 255, 0.06), transparent),
+      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(60, 92, 255, 0.04), transparent);
+    pointer-events: none;
+  }
+
+  .gallery-header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .gallery-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: rgba(31, 123, 255, 0.08);
+    border: 1px solid rgba(31, 123, 255, 0.2);
+    color: rgba(12, 22, 40, 0.88);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: 16px;
+  }
+
+  .pulse-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #1f7bff;
+    animation: pulse-gallery 2s ease-in-out infinite;
+    box-shadow: 0 0 0 0 rgba(31, 123, 255, 0.4);
+  }
+
+  @keyframes pulse-gallery {
+    0%, 100% { 
+      box-shadow: 0 0 0 0 rgba(31, 123, 255, 0.4);
+      transform: scale(1);
+    }
+    50% { 
+      box-shadow: 0 0 0 8px rgba(31, 123, 255, 0);
+      transform: scale(1.1);
+    }
+  }
+
+  .gallery-title {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 900;
+    letter-spacing: -0.8px;
+    margin: 0 auto 20px;
+    color: rgba(12, 22, 40, 0.96);
+    line-height: 1.1;
+    position: relative;
+    display: block;
+    width: fit-content;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, rgba(12, 22, 40, 0.2), transparent);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  .gallery-header:hover .gallery-title {
+    transform: translateY(-2px);
+  }
+
+  .gallery-header:hover .gallery-title::after {
+    width: 240px;
+    background: linear-gradient(90deg, transparent, rgba(31, 123, 255, 0.4), transparent);
+  }
+
+  .gallery-subtitle {
+    font-size: 17px;
+    color: rgba(12, 22, 40, 0.72);
+    max-width: 680px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+  }
+
+  /* ══════════ RESPONSIVE ══════════ */
+  @media (max-width: 768px) {
+    .testimonios-gallery {
+      padding: 40px 0 36px;
+    }
+    .gallery-header {
+      margin-bottom: 30px;
+      padding: 0 16px;
+    }
+    .gallery-title {
+      font-size: 24px;
+    }
+    .gallery-subtitle {
+      font-size: 14px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pulse-dot {
+      animation: none;
+    }
+  }
+</style>
+
+<section id="galeria" class="testimonios-gallery">
+  
+  <!-- ══════════ HEADER PRINCIPAL - TÍTULO Y DESCRIPCIÓN ══════════ -->
+  <div class="container">
+    <div class="gallery-header">
+      <div class="gallery-badge">
+        <span class="pulse-dot"></span>
+        Resultados reales
+      </div>
+      <h2 class="gallery-title">Lo que dicen quienes ya empezaron</h2>
+      <p class="gallery-subtitle">
+        Testimonios de personas que decidieron transformar su vida. 
+        Sin filtros, sin edición — solo resultados.
+      </p>
+      
+    </div>
+  </div>
+
+</section>
+

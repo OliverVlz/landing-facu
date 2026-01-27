@@ -1,0 +1,336 @@
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SECCIÓN 6: CARRUSEL DE CAPTURAS
+     ────────────────────────────────────────────────────────────────────────────
+     Descripción: Carrusel horizontal infinito con capturas de conversaciones reales
+═══════════════════════════════════════════════════════════════════════════ -->
+
+<style>
+  /* ══════════ ESTILOS GLOBALES ══════════ */
+  :root {
+    --bg0: #f6f9ff;
+    --brand: #1f7bff;
+    --brand2: #3c5cff;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+
+  .container {
+    width: min(1100px, calc(100% - 24px));
+    margin: 0 auto;
+  }
+
+  .testimonios-gallery {
+    padding: 80px 0 0px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .gallery-header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .gallery-title {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 900;
+    letter-spacing: -0.8px;
+    margin: 0 auto 20px;
+    color: rgba(12, 22, 40, 0.96);
+    line-height: 1.1;
+    position: relative;
+    display: block;
+    width: fit-content;
+  }
+
+  .gallery-subtitle {
+    font-size: 17px;
+    color: rgba(12, 22, 40, 0.72);
+    max-width: 680px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+  }
+
+  .gallery-cta {
+    margin-top: 50px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(12, 22, 40, 0.14);
+    background: rgba(255, 255, 255, 0.72);
+    color: rgba(12, 22, 40, 0.92);
+    text-decoration: none;
+    font-weight: 900;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 10px 26px rgba(20, 40, 90, 0.08);
+  }
+
+  .btn.primary {
+    background: linear-gradient(135deg, rgba(31, 123, 255, 0.95), rgba(60, 92, 255, 0.9));
+    border-color: rgba(31, 123, 255, 0.52);
+    color: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 10px 30px rgba(31, 123, 255, 0.26), 0 0 0 1px rgba(255, 255, 255, 0.18) inset;
+  }
+
+  .btn.primary:hover {
+    box-shadow: 0 14px 42px rgba(31, 123, 255, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.24) inset;
+  }
+
+  /* ══════════ CARRUSEL ══════════ */
+  .screenshots-track-wrapper {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .screenshots-track-wrapper::before,
+  .screenshots-track-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .screenshots-track-wrapper::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--bg0, #f6f9ff) 0%, transparent 100%);
+  }
+
+  .screenshots-track-wrapper::after {
+    right: 0;
+    background: linear-gradient(270deg, var(--bg0, #f6f9ff) 0%, transparent 100%);
+  }
+
+  .screenshots-track {
+    display: flex;
+    width: fit-content;
+  }
+
+  .screenshots-slider {
+    display: flex;
+    gap: 16px;
+    padding: 10px 8px;
+  }
+
+  .track-left {
+    animation: scrollLeft-gallery 45s linear infinite;
+  }
+
+  @keyframes scrollLeft-gallery {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .screenshots-track-wrapper:hover .screenshots-track {
+    animation-play-state: paused;
+  }
+
+  .screenshot-card {
+    position: relative;
+    flex-shrink: 0;
+    width: 280px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(12, 22, 40, 0.1);
+    box-shadow: 
+      0 4px 20px rgba(20, 40, 90, 0.08),
+      0 1px 3px rgba(20, 40, 90, 0.06);
+    transition: 
+      transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+      box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    cursor: pointer;
+  }
+
+  .screenshot-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .card-glow {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background: linear-gradient(135deg, rgba(31, 123, 255, 0.15) 0%, transparent 50%, rgba(60, 92, 255, 0.1) 100%);
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .screenshot-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 
+      0 20px 50px rgba(31, 123, 255, 0.18),
+      0 8px 25px rgba(20, 40, 90, 0.12);
+    border-color: rgba(31, 123, 255, 0.3);
+    z-index: 20;
+  }
+
+  .screenshot-card:hover img {
+    transform: scale(1.02);
+  }
+
+  .screenshot-card:hover .card-glow {
+    opacity: 1;
+  }
+
+  /* ══════════ RESPONSIVE ══════════ */
+  @media (max-width: 768px) {
+    .testimonios-gallery {
+      padding: 40px 0 36px;
+    }
+    .gallery-header {
+      margin-bottom: 30px;
+      padding: 0 16px;
+    }
+    .gallery-title {
+      font-size: 24px;
+    }
+    .gallery-subtitle {
+      font-size: 14px;
+    }
+    .gallery-cta {
+      margin-top: 30px;
+    }
+    .screenshot-card {
+      width: 220px;
+    }
+    .screenshots-track-wrapper::before,
+    .screenshots-track-wrapper::after {
+      width: 60px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .screenshot-card {
+      width: 200px;
+    }
+    .screenshots-slider {
+      gap: 12px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .track-left {
+      animation: none;
+    }
+    .screenshot-card,
+    .screenshot-card img,
+    .card-glow {
+      transition: none;
+    }
+  }
+</style>
+
+<section class="testimonios-gallery" id="capturas">
+  
+  <!-- ══════════ HEADER ELEGANTE ══════════ -->
+  <div class="container">
+    <div class="gallery-header">
+      <h2 class="gallery-title">Transformaciones Reales</h2>
+      <p class="gallery-subtitle">
+        Personas reales que decidieron cambiar su vida con Faku están logrando resultados extraordinarios a través de entrenamientos personalizados, hábitos saludables y una mentalidad ganadora. ¿Listo para unirte a ellos?
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════ CARRUSEL ÚNICO (izquierda a derecha) ══════════ -->
+  <div class="screenshots-track-wrapper">
+    <div class="screenshots-track track-left">
+      <div class="screenshots-slider">
+        
+        <!-- TARJETA 1 - REEMPLAZA src CON TU IMAGEN -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+        <!-- TARJETA 2 -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+        <!-- TARJETA 3 -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+        <!-- TARJETA 4 -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+        <!-- TARJETA 5 -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+        <!-- TARJETA 6 -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+        <!-- TARJETA 7 -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+        <!-- TARJETA 8 -->
+        <div class="screenshot-card">
+          <img src="assets/t1.png" alt="Testimonio" loading="lazy">
+          <div class="card-glow"></div>
+        </div>
+        
+      </div>
+      <!-- Duplicado para efecto infinito (no tocar) -->
+      <div class="screenshots-slider" aria-hidden="true">
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+        <div class="screenshot-card"><img src="assets/t1.png" alt="" loading="lazy"><div class="card-glow"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA después del carrusel -->
+  <div class="container">
+    <div class="gallery-cta">
+      <a href="#precios" class="btn primary">Ver planes disponibles</a>
+    </div>
+  </div>
+
+</section>
+

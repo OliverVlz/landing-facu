@@ -1,0 +1,594 @@
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     SECCIÓN 3: PRECIOS
+     ────────────────────────────────────────────────────────────────────────────
+     Descripción: Sección de precios con tres planes: Amor Propio, Marca Personal y Coaching 1:1 VIP
+═══════════════════════════════════════════════════════════════════════════ -->
+
+<style>
+  /* ══════════ ESTILOS GLOBALES ══════════ */
+  :root {
+    --bg0: #f6f9ff;
+    --text: rgba(12, 22, 40, 0.92);
+    --brand: #1f7bff;
+    --brand2: #3c5cff;
+    --radius: 18px;
+    --shadow2: 0 10px 30px rgba(20, 40, 90, 0.12);
+    --max: 1100px;
+    --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--text);
+  }
+
+  .container {
+    width: min(var(--max), calc(100% - 24px));
+    margin: 0 auto;
+  }
+
+  section {
+    padding: 34px 0;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .section-head h2 {
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: -0.2px;
+  }
+
+  .section-head p {
+    margin: 0;
+    color: rgba(12, 22, 40, 0.68);
+    max-width: 56ch;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  #precios .section-head {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #btnComparar {
+    display: none;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(12, 22, 40, 0.14);
+    background: rgba(255, 255, 255, 0.72);
+    color: rgba(12, 22, 40, 0.92);
+    text-decoration: none;
+    font-weight: 900;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    transition: transform 0.15s var(--ease), background 0.15s var(--ease), border-color 0.15s var(--ease), box-shadow 0.15s var(--ease);
+    box-shadow: 0 10px 26px rgba(20, 40, 90, 0.08);
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(12, 22, 40, 0.22);
+  }
+
+  /* ══════════ PRICING ══════════ */
+  .pricing-wrap {
+    width: min(var(--max), calc(100% - 24px));
+    margin: 0 auto;
+    padding: 8px 0 18px;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  .p-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(12, 22, 40, 0.12);
+    color: rgba(12, 22, 40, 0.92);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.74));
+    backdrop-filter: blur(8px);
+    box-shadow: var(--shadow2);
+    overflow: hidden;
+    transition: transform 0.18s var(--ease), box-shadow 0.18s var(--ease), border-color 0.18s var(--ease), background 0.18s var(--ease);
+  }
+
+  .p-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(12, 22, 40, 0.22);
+    box-shadow: 0 18px 56px rgba(20, 40, 90, 0.16);
+  }
+
+  .p-card.featured {
+    border-color: rgba(31, 123, 255, 0.34);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.76));
+    box-shadow: 0 0 0 1px rgba(31, 123, 255, 0.16) inset, 0 18px 60px rgba(31, 123, 255, 0.16);
+  }
+
+  .p-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .p-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 0.1px;
+    text-align: left;
+  }
+
+  .p-badge {
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-weight: 900;
+    background: rgba(31, 123, 255, 0.08);
+    color: rgba(12, 22, 40, 0.68);
+    border: 1px solid rgba(31, 123, 255, 0.16);
+    white-space: nowrap;
+  }
+
+  .p-switch {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 6px;
+    border-radius: 999px;
+    border: 1px solid rgba(12, 22, 40, 0.12);
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .p-term-btn {
+    font-size: 12px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: transparent;
+    color: rgba(12, 22, 40, 0.78);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s var(--ease), background 0.15s var(--ease), border-color 0.15s var(--ease), box-shadow 0.15s var(--ease);
+  }
+
+  .p-term-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(12, 22, 40, 0.06);
+    border-color: rgba(12, 22, 40, 0.12);
+  }
+
+  .p-term-btn.active {
+    background: rgba(31, 123, 255, 0.18);
+    border-color: rgba(31, 123, 255, 0.32);
+    color: rgba(12, 22, 40, 0.92);
+    box-shadow: 0 10px 26px rgba(31, 123, 255, 0.14);
+  }
+
+  .p-desc {
+    margin: 0;
+    color: rgba(12, 22, 40, 0.72);
+    line-height: 1.55;
+    font-size: 14px;
+  }
+
+  .p-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 2px 0 0;
+  }
+
+  .p-price strong {
+    font-size: clamp(34px, 3.6vw, 44px);
+    letter-spacing: -0.6px;
+    line-height: 1.05;
+  }
+
+  .p-price span {
+    color: rgba(12, 22, 40, 0.64);
+    font-size: 14px;
+  }
+
+  .p-hr {
+    height: 1px;
+    background: rgba(12, 22, 40, 0.1);
+    margin: 10px 0 0;
+  }
+
+  .p-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+    color: rgba(12, 22, 40, 0.86);
+    font-size: 14px;
+    flex: 1 1 auto;
+  }
+
+  .p-li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .p-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(31, 123, 255, 0.12);
+    border: 1px solid rgba(31, 123, 255, 0.22);
+    color: rgba(12, 22, 40, 0.9);
+    flex: 0 0 auto;
+    margin-top: 1px;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .p-btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-weight: 900;
+    border: 1px solid rgba(12, 22, 40, 0.14);
+    color: rgba(12, 22, 40, 0.92);
+    background: rgba(255, 255, 255, 0.8);
+    transition: transform 0.15s var(--ease), background 0.15s var(--ease), border-color 0.15s var(--ease), box-shadow 0.15s var(--ease);
+    box-shadow: 0 10px 26px rgba(20, 40, 90, 0.1);
+    margin-top: 6px;
+  }
+
+  .p-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.96);
+    border-color: rgba(12, 22, 40, 0.22);
+  }
+
+  .p-btn.primary {
+    background: linear-gradient(135deg, rgba(31, 123, 255, 0.95), rgba(60, 92, 255, 0.9));
+    border-color: rgba(31, 123, 255, 0.5);
+    color: rgba(255, 255, 255, 0.96);
+  }
+
+  .p-btn.primary:hover {
+    box-shadow: 0 14px 42px rgba(31, 123, 255, 0.28);
+  }
+
+  .p-foot {
+    margin-top: 10px;
+    font-size: 12px;
+    color: rgba(12, 22, 40, 0.62);
+    line-height: 1.45;
+  }
+
+  /* ══════════ RESPONSIVE ══════════ */
+  @media (max-width: 1024px) {
+    .pricing-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .pricing-wrap {
+      padding: 6px 0 14px;
+    }
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .p-card {
+      padding: 18px;
+    }
+  }
+
+  @media (max-width: 960px) {
+    .section-head {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+
+<section id="precios" aria-label="Sección de precios">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>Planes simples, decisión rápida</h2>
+        <p>
+          Elige el plan que se ajuste a tu momento. Puedes cambiarlo
+          cuando quieras.
+        </p>
+      </div>
+      <button class="btn" type="button" id="btnComparar">
+        Comparar beneficios
+      </button>
+    </div>
+  </div>
+
+  <div class="pricing-wrap">
+    <div class="pricing-grid">
+      <div class="p-card" data-price-1="44 €|/mes">
+        <div class="p-top">
+          <span class="p-badge">Mensual</span>
+          <h3 class="p-title">Amor Propio</h3>
+        </div>
+
+        <p class="p-desc">
+          Mentoría en vivo con Facu todos los domingos. Comunidad privada,
+          hábitos saludables y transformación integral.
+        </p>
+
+        <div class="p-price">
+          <strong class="p-price-value">44 €</strong
+          ><span class="p-price-period">/mes</span>
+        </div>
+
+        <a class="p-btn" href="#" data-plan="Amor Propio">Elegir plan</a>
+
+        <div class="p-hr"></div>
+
+        <ul class="p-list">
+          <li class="p-li">
+            <span class="p-check">☎️</span> Mentorías domingo en vivo con
+            Facu
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Comunidad privada (grupo
+            WhatsApp)
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Hábitos saludables / Disciplina
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Nuevo entorno / Nuevas personas
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Relación con Dios
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Mejorar relación con la comida
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Eliminar porro / Tabaco /
+            Alcohol
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> +100 hs. de mentorías grabadas
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Clases grabadas
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Eliminar miedos / Creencias
+            limitantes
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Dejar adición al azúcar
+            refinada
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Transformar tu físico
+          </li>
+        </ul>
+
+        <div class="p-foot">
+          ⏰ Domingos 13 hs ESP / 9 AM ARG via ZOOM (queda grabada).
+          Suscripción mensual (cancela cuando quieras).
+        </div>
+      </div>
+
+      <div
+        class="p-card featured"
+        data-price-3="450 €|/ 3 meses"
+        data-price-6="600 €|/ 6 meses"
+      >
+        <div class="p-top">
+          <div class="p-switch" role="group" aria-label="Duración">
+            <button class="p-term-btn" data-term="3">3 meses</button>
+            <button class="p-term-btn active" data-term="6">
+              6 meses
+            </button>
+          </div>
+          <h3 class="p-title">Marca Personal</h3>
+        </div>
+
+        <p class="p-desc">
+          Mentoría grupal todos los sábados. Crea o crece tu marca
+          personal, encuentra tu propósito y aprende a comunicar tu
+          oferta.
+        </p>
+
+        <div class="p-price">
+          <strong class="p-price-value">600 €</strong
+          ><span class="p-price-period">/ 6 meses</span>
+        </div>
+
+        <a class="p-btn primary" href="#" data-plan="Marca Personal"
+          >Empezar ahora</a
+        >
+
+        <div class="p-hr"></div>
+
+        <ul class="p-list">
+          <li class="p-li">
+            <span class="p-check">☎️</span> Mentoría grupal todos los
+            sábados
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Crea o crece tu marca personal
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Comunidad privada vía WhatsApp
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Clases grabadas
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Autenticidad
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Crea tu comunidad
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Encuentra tu propósito de vida
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Crece tu marca de forma
+            orgánica
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Lanza tu servicio / oferta
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Impacta en la vida de las
+            personas
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Mejora tu relación con Dios
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Pierde el miedo a la cámara
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Elimina tus miedos y creencias
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Aprende a comunicar
+          </li>
+          <li class="p-li">
+            <span class="p-check">🎁</span> Pack mentorías grabadas
+          </li>
+        </ul>
+
+        <div class="p-foot">
+          Suscripción en paquetes (3 o 6 meses). Mentorías vía ZOOM.
+        </div>
+      </div>
+
+      <div
+        class="p-card featured"
+        data-price-3="750 €|/ 3 meses"
+        data-price-6="1299 €|/ 6 meses"
+        data-price-12="1800 €|/ 1 año"
+      >
+        <div class="p-top">
+          <div class="p-switch" role="group" aria-label="Duración">
+            <button class="p-term-btn" data-term="3">3 meses</button>
+            <button class="p-term-btn" data-term="6">6 meses</button>
+            <button class="p-term-btn active" data-term="12">
+              1 año
+            </button>
+          </div>
+          <h3 class="p-title">Coaching 1:1 VIP</h3>
+        </div>
+
+        <p class="p-desc">
+          Coaching personalizado 1:1 con Facu. Atención preferencial vía
+          WhatsApp 24/7, transformación integral y acceso a todas nuestras
+          formaciones.
+        </p>
+
+        <div class="p-price">
+          <strong class="p-price-value">1800 €</strong
+          ><span class="p-price-period">/ 1 año</span>
+        </div>
+
+        <a class="p-btn" href="#" data-plan="Coaching 1:1 VIP"
+          >Empezar ahora</a
+        >
+
+        <div class="p-hr"></div>
+
+        <ul class="p-list">
+          <li class="p-li">
+            <span class="p-check">☎️</span> Coaching 1:1 personalizado con
+            Facu
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Soporte vía WhatsApp 24/7
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Crea o crece tu marca personal
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Elimina todo tipo de vicios
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Descubre quién sos
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Mindset y espiritualidad
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Relación con Dios
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Encuentra tu propósito de vida
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Transforma tu físico
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Elimina azúcar refinada
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Elimina los atracones
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Acceso SALA Marca Personal
+          </li>
+          <li class="p-li">
+            <span class="p-check">✓</span> Acceso SALA Amor Propio
+          </li>
+          <li class="p-li">
+            <span class="p-check">🎁</span> Acceso a formación Marca
+            Personal
+          </li>
+        </ul>
+
+        <div class="p-foot">
+          Planes de 3, 6 o 12 meses. Pago en pesos por Mercado Pago
+          disponible para Argentina.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
