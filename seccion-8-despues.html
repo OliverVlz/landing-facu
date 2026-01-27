@@ -101,7 +101,7 @@
     transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(12, 22, 40, 0.1);
-    box-shadow: 0 4px 20px rgba(20, 40, 90, 0.08);
+    box-shadow: none !important;
     flex: 0 0 80px;
   }
 
@@ -117,10 +117,8 @@
   .gallery-item-horizontal:hover {
     flex: 1 1 500px;
     z-index: 10;
-    box-shadow: 
-      0 25px 80px rgba(31, 123, 255, 0.25),
-      0 12px 40px rgba(20, 40, 90, 0.18);
-    border-color: rgba(31, 123, 255, 0.4);
+    box-shadow: none !important;
+    border-color: rgba(12, 22, 40, 0.2);
     transform: scale(1.02) translateY(-4px);
   }
 
@@ -133,7 +131,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(31, 123, 255, 0.1) 0%, transparent 50%, rgba(60, 92, 255, 0.08) 100%);
+    background: transparent;
     opacity: 0;
     transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     z-index: 1;
@@ -142,7 +140,7 @@
 
   .gallery-item-horizontal.active::before,
   .gallery-item-horizontal:hover::before {
-    opacity: 1;
+    opacity: 0;
   }
 
   .before-story {
@@ -225,19 +223,21 @@
     font-weight: 900;
     letter-spacing: 0.2px;
     cursor: pointer;
-    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-    box-shadow: 0 10px 26px rgba(20, 40, 90, 0.08);
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    box-shadow: none !important;
   }
 
   .btn.primary {
-    background: linear-gradient(135deg, rgba(31, 123, 255, 0.95), rgba(60, 92, 255, 0.9));
-    border-color: rgba(31, 123, 255, 0.52);
+    background: #1f7bff;
+    border-color: #1f7bff;
     color: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 10px 30px rgba(31, 123, 255, 0.26), 0 0 0 1px rgba(255, 255, 255, 0.18) inset;
+    box-shadow: none !important;
   }
 
   .btn.primary:hover {
-    box-shadow: 0 14px 42px rgba(31, 123, 255, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.24) inset;
+    background: #1a6ae6;
+    border-color: #1a6ae6;
+    box-shadow: none !important;
   }
 
   /* ══════════ RESPONSIVE ══════════ */
@@ -374,4 +374,106 @@
     <a href="#precios" class="btn primary">Empezar mi transformación</a>
   </div>
 </section>
+
+<script>
+  // ═══════════════════════════════════════════════════════════════════════════
+  // GALERÍA AUTOMÁTICA AFTER - Animación secuencial de imágenes
+  // ═══════════════════════════════════════════════════════════════════════════
+  (function() {
+    const galleryWrapper = document.getElementById('gallery-wrapper-after');
+    if (!galleryWrapper) return;
+
+    const items = galleryWrapper.querySelectorAll('.gallery-item-horizontal');
+    if (items.length === 0) return;
+
+    let currentIndex = 0;
+    let autoPlayInterval = null;
+    let isPaused = false;
+    const AUTO_PLAY_DURATION = 3000; // 3 segundos por imagen
+
+    // Función para activar una imagen específica
+    function activateImage(index) {
+      items.forEach((item, i) => {
+        if (i === index) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+
+    // Función para avanzar a la siguiente imagen
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % items.length;
+      activateImage(currentIndex);
+    }
+
+    // Iniciar la animación automática
+    function startAutoPlay() {
+      if (autoPlayInterval) return;
+      
+      // Activar la primera imagen
+      activateImage(currentIndex);
+      
+      autoPlayInterval = setInterval(() => {
+        if (!isPaused) {
+          nextImage();
+        }
+      }, AUTO_PLAY_DURATION);
+    }
+
+    // Pausar la animación automática
+    function pauseAutoPlay() {
+      isPaused = true;
+    }
+
+    // Reanudar la animación automática
+    function resumeAutoPlay() {
+      isPaused = false;
+    }
+
+    // Detener la animación automática
+    function stopAutoPlay() {
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = null;
+      }
+    }
+
+    // Event listeners para cada imagen
+    items.forEach((item, index) => {
+      // Cuando el mouse entra, pausar y activar esta imagen
+      item.addEventListener('mouseenter', () => {
+        pauseAutoPlay();
+        activateImage(index);
+        currentIndex = index;
+      });
+
+      // Cuando el mouse sale, reanudar la animación
+      item.addEventListener('mouseleave', () => {
+        resumeAutoPlay();
+      });
+    });
+
+    // Pausar cuando el mouse está sobre el contenedor completo
+    galleryWrapper.addEventListener('mouseenter', pauseAutoPlay);
+    galleryWrapper.addEventListener('mouseleave', resumeAutoPlay);
+
+    // Iniciar la animación cuando la página carga
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', startAutoPlay);
+    } else {
+      startAutoPlay();
+    }
+
+    // Limpiar cuando la página se oculta (para ahorrar recursos)
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoPlay();
+      } else {
+        startAutoPlay();
+      }
+    });
+  })();
+</script>
 

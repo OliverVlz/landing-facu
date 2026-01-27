@@ -1,22 +1,11 @@
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SECCIÓN 2: HERO
-     ────────────────────────────────────────────────────────────────────────────
-     Descripción: Sección principal con título, versículo bíblico, CTA y video
-═══════════════════════════════════════════════════════════════════════════ -->
-
 <style>
-  /* ══════════ ESTILOS GLOBALES ══════════ */
   :root {
     --bg0: #f6f9ff;
-    --bg1: #eef4ff;
     --text: rgba(12, 22, 40, 0.92);
     --muted: rgba(12, 22, 40, 0.72);
+    --muted2: rgba(12, 22, 40, 0.56);
     --brand: #1f7bff;
-    --brand2: #3c5cff;
-    --radius: 18px;
-    --shadow: 0 18px 60px rgba(20, 40, 90, 0.14);
-    --shadow2: 0 10px 30px rgba(20, 40, 90, 0.12);
-    --max: 1100px;
+    --max: 1000px;
     --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   }
 
@@ -26,118 +15,143 @@
 
   body {
     margin: 0;
-    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
     color: var(--text);
-  }
-
-  .container {
-    width: min(var(--max), calc(100% - 24px));
-    margin: 0 auto;
+    background: var(--bg0);
   }
 
   /* ══════════ HERO ══════════ */
   .hero {
-    position: relative;
-    padding: 40px 0 26px;
+    padding: 60px 20px 80px;
   }
 
-  .hero-center {
-    max-width: 920px;
+  .hero-content {
+    max-width: var(--max);
     margin: 0 auto;
-  }
-
-  .hero-simple {
-    padding: 26px;
     text-align: center;
   }
 
-  .hero-card {
-    border-radius: var(--radius);
-    border: 1px solid rgba(12, 22, 40, 0.12);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    position: relative;
-  }
-
-  h1 {
-    margin: 14px 0 10px;
-    font-size: clamp(28px, 4.2vw, 46px);
-    line-height: 1.05;
-    letter-spacing: -0.6px;
-  }
-
-  .verse {
-    margin: 14px 0 0;
-    padding: 14px 14px;
-    border-radius: 14px;
-    border: 1px solid rgba(12, 22, 40, 0.12);
-    background: rgba(31, 123, 255, 0.06);
-  }
-
-  .verse q {
-    display: block;
-    font-size: 15px;
-    line-height: 1.5;
-    color: rgba(12, 22, 40, 0.86);
-  }
-
-  .verse cite {
-    display: block;
-    margin-top: 8px;
-    font-style: normal;
-    color: rgba(12, 22, 40, 0.6);
+  /* ══════════ BADGE ══════════ */
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px 8px 12px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(12, 22, 40, 0.08);
     font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 40px;
   }
 
+  .hero-badge-icon {
+    font-size: 14px;
+  }
+
+  /* ══════════ VERSÍCULO ══════════ */
+  .verse-card {
+    position: relative;
+    padding: 48px 40px 40px;
+    border-radius: 24px;
+    margin-bottom: 48px;
+    
+    /* Glass sutil */
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(12, 22, 40, 0.08);
+    box-shadow: 0 4px 24px rgba(20, 40, 90, 0.06);
+  }
+
+  .verse-quote-mark {
+    position: absolute;
+    top: 24px;
+    left: 32px;
+    font-size: 80px;
+    line-height: 1;
+    font-family: Georgia, "Times New Roman", serif;
+    color: rgba(31, 123, 255, 0.12);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .verse-text {
+    position: relative;
+    font-size: clamp(20px, 3.5vw, 28px);
+    font-weight: 500;
+    line-height: 1.55;
+    letter-spacing: -0.2px;
+    color: var(--text);
+    margin: 0 0 24px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .verse-cite {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 100px;
+    background: rgba(31, 123, 255, 0.06);
+    border: 1px solid rgba(31, 123, 255, 0.12);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--brand);
+  }
+
+  .verse-cite-icon {
+    font-size: 14px;
+  }
+
+  /* ══════════ TÍTULO ══════════ */
+  .hero-title {
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin: 0 0 16px;
+    color: rgba(12, 22, 40, 0.96);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(15px, 2vw, 18px);
+    font-weight: 400;
+    color: var(--muted);
+    margin: 0 0 32px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.65;
+  }
+
+  /* ══════════ BOTONES ══════════ */
   .hero-actions {
     display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-top: 18px;
+    gap: 12px;
     justify-content: center;
-  }
-
-  .hero-video-wrap {
-    margin-top: 16px;
-  }
-
-  .hero-video {
-    width: 100%;
-    max-width: 980px;
-    aspect-ratio: 16 / 9;
-    margin: 0 auto;
-    border-radius: 16px;
-    border: 1px solid rgba(12, 22, 40, 0.12);
-    background: rgba(255, 255, 255, 0.7);
-    box-shadow: var(--shadow2);
-    overflow: hidden;
-  }
-
-  .hero-video iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-    display: block;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
   }
 
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 12px 14px;
+    gap: 8px;
+    padding: 14px 28px;
     border-radius: 14px;
     border: 1px solid rgba(12, 22, 40, 0.14);
     background: rgba(255, 255, 255, 0.72);
     color: rgba(12, 22, 40, 0.92);
-    text-decoration: none;
-    font-weight: 900;
-    letter-spacing: 0.2px;
+    font-weight: 700;
+    font-size: 15px;
     cursor: pointer;
-    transition: transform 0.15s var(--ease), background 0.15s var(--ease), border-color 0.15s var(--ease), box-shadow 0.15s var(--ease);
-    box-shadow: 0 10px 26px rgba(20, 40, 90, 0.08);
+    transition: all 0.2s var(--ease);
+    text-decoration: none;
   }
 
   .btn:hover {
@@ -147,80 +161,155 @@
   }
 
   .btn.primary {
-    background: linear-gradient(135deg, rgba(31, 123, 255, 0.95), rgba(60, 92, 255, 0.9));
-    border-color: rgba(31, 123, 255, 0.52);
-    color: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 10px 30px rgba(31, 123, 255, 0.26), 0 0 0 1px rgba(255, 255, 255, 0.18) inset;
+    background: var(--brand);
+    border-color: var(--brand);
+    color: #fff;
   }
 
   .btn.primary:hover {
-    box-shadow: 0 14px 42px rgba(31, 123, 255, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.24) inset;
+    background: #1a6ae6;
+    border-color: #1a6ae6;
+  }
+
+  /* ══════════ VIDEO ══════════ */
+  .hero-video-container {
+    max-width: 900px;
+    margin: 0 auto 48px;
+  }
+
+  .hero-video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(12, 22, 40, 0.1);
+    box-shadow: 0 10px 40px rgba(20, 40, 90, 0.1);
+  }
+
+  .hero-video iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  /* ══════════ STATS ══════════ */
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: rgba(12, 22, 40, 0.92);
+    letter-spacing: -1px;
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: var(--muted2);
+    margin-top: 4px;
   }
 
   /* ══════════ RESPONSIVE ══════════ */
   @media (max-width: 760px) {
     .hero {
-      padding: 26px 0 14px;
+      padding: 40px 16px 60px;
     }
-    .hero-actions .btn {
-      width: 100%;
+
+    .verse-card {
+      padding: 36px 24px 32px;
+      border-radius: 20px;
     }
+
+    .verse-quote-mark {
+      font-size: 56px;
+      top: 16px;
+      left: 20px;
+    }
+
     .hero-actions {
+      flex-direction: column;
       width: 100%;
+    }
+
+    .btn {
+      width: 100%;
+    }
+
+    .hero-stats {
+      gap: 32px;
     }
   }
 
-  @media (max-width: 520px) {
-    h1 {
-      letter-spacing: -0.3px;
+  @media (max-width: 480px) {
+    .verse-card {
+      padding: 32px 20px 28px;
     }
-    .verse q {
-      font-size: 14px;
+
+    .stat-value {
+      font-size: 28px;
+    }
+
+    .hero-stats {
+      gap: 24px;
     }
   }
 </style>
 
-<section class="hero" aria-label="Hero">
-  <div class="hero-card hero-simple">
-    <div class="hero-center">
-      <h1>Transformación real, paso a paso.</h1>
-
-      <div class="verse" role="note" aria-label="Versículo">
-        <q
-          >Porque yo sé los planes que tengo para vosotros —dice el
-          Señor— planes de bienestar y no de calamidad, para daros un
-          futuro y una esperanza.</q
-        >
-        <cite>Jeremías 29:11</cite>
-      </div>
-
-      <div class="hero-actions">
-        <a class="btn primary" href="#precios" id="ctaHero"
-          >Ver planes</a
-        >
-      </div>
-
-      <div class="hero-video-wrap" aria-label="Video">
-        <div class="hero-video">
-          <iframe
-            src="https://www.youtube.com/embed/VIDEO_ID?rel=0"
-            title="Video"
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allow="
-              accelerometer;
-              autoplay;
-              clipboard-write;
-              encrypted-media;
-              gyroscope;
-              picture-in-picture;
-              web-share;
-            "
-            allowfullscreen
-          ></iframe>
-        </div>
+<section class="hero">
+  <div class="hero-content">
+    
+    <!-- VERSÍCULO -->
+    <div class="verse-card">
+      <span class="verse-quote-mark">"</span>
+      <p class="verse-text">
+        Porque yo sé los planes que tengo para vosotros —dice el Señor— planes de bienestar y no de calamidad, para daros un futuro y una esperanza.
+      </p>
+      <div class="verse-cite">
+        <span class="verse-cite-icon">📖</span>
+        Jeremías 29:11
       </div>
     </div>
+
+    <!-- Título y subtítulo -->
+    <h1 class="hero-title">Transformación real,<br>paso a paso</h1>
+    <p class="hero-subtitle">
+      Un camino de crecimiento personal guiado por principios eternos. Descubre tu potencial y construye el futuro que Dios tiene preparado para ti.
+    </p>
+
+   
+
+    <!-- Video -->
+    <div class="hero-video-container">
+      <div class="hero-video">
+        <iframe
+          src="https://www.youtube.com/watch?v=fTEab-LUGZw"
+          title="Video de presentación"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
+
+     <!-- Acciones -->
+    <div class="hero-actions">
+      <a href="#precios" class="btn primary">
+        Ver planes
+      </a>
+    </div>
+
+    
+
   </div>
 </section>
-

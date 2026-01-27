@@ -1,28 +1,13 @@
-<!-- ═══════════════════════════════════════════════════════════════════════════
-     SECCIÓN 1: HEADER / TOPBAR Y DRAWER
-     ────────────────────────────────────────────────────────────────────────────
-     Descripción: Barra de navegación superior y menú móvil (drawer)
-═══════════════════════════════════════════════════════════════════════════ -->
-
 <style>
   /* ══════════ ESTILOS GLOBALES ══════════ */
   :root {
     --bg0: #f6f9ff;
     --bg1: #eef4ff;
-    --card: rgba(255, 255, 255, 0.72);
-    --card2: rgba(255, 255, 255, 0.86);
-    --stroke: rgba(12, 22, 40, 0.1);
-    --stroke2: rgba(12, 22, 40, 0.16);
     --text: rgba(12, 22, 40, 0.92);
     --muted: rgba(12, 22, 40, 0.72);
     --muted2: rgba(12, 22, 40, 0.56);
     --brand: #1f7bff;
     --brand2: #3c5cff;
-    --glow: rgba(31, 123, 255, 0.22);
-    --accent: #ff9a3c;
-    --radius: 18px;
-    --shadow: 0 18px 60px rgba(20, 40, 90, 0.14);
-    --shadow2: 0 10px 30px rgba(20, 40, 90, 0.12);
     --max: 1100px;
     --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   }
@@ -33,87 +18,109 @@
 
   body {
     margin: 0;
-    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", ui-sans-serif, system-ui, sans-serif;
     color: var(--text);
     min-height: 100vh;
+    background: linear-gradient(135deg, #e8f0ff 0%, #f6f9ff 50%, #fff5f0 100%);
   }
 
   a {
     color: inherit;
   }
 
-  .container {
-    width: min(var(--max), calc(100% - 24px));
-    margin: 0 auto;
-  }
-
-  /* ══════════ TOPBAR ══════════ */
-  .topbar {
+  /* ══════════ TOPBAR LIQUID GLASS ══════════ */
+  .topbar-wrapper {
     position: sticky;
     top: 0;
     z-index: 30;
-    backdrop-filter: blur(10px);
-    background: linear-gradient(180deg, rgba(246, 249, 255, 0.92), rgba(246, 249, 255, 0.72));
-    border-bottom: 1px solid rgba(12, 22, 40, 0.08);
+    padding: 14px 16px;
   }
+
+  .topbar {
+    max-width: var(--max);
+    margin: 0 auto;
+    
+    /* Liquid Glass Effect */
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.6) 100%
+    );
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 22px;
+    
+    /* Sombra suave tipo iOS */
+    box-shadow: 
+      0 8px 32px rgba(31, 38, 135, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    
+    transition: all 0.3s var(--ease);
+  }
+
 
   .topbar-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 14px;
-    padding: 12px 0;
+    padding: 10px 12px 10px 16px;
   }
 
   .brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     text-decoration: none;
   }
 
   .store-logo {
-    height: 34px;
+    height: 36px;
     width: auto;
     display: block;
-    border-radius: 12px;
-    box-shadow: 0 14px 34px rgba(20, 40, 90, 0.12);
-    border: 1px solid rgba(12, 22, 40, 0.12);
-    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   .brand strong {
-    font-weight: 900;
-    letter-spacing: 0.2px;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: -0.2px;
   }
 
   .brand span {
     color: var(--muted2);
     font-size: 12px;
+    font-weight: 500;
     display: block;
-    margin-top: 2px;
+    margin-top: 1px;
+    letter-spacing: -0.1px;
   }
 
   .nav {
     display: flex;
-    gap: 10px;
+    gap: 8px;
     align-items: center;
   }
 
-  .nav a {
+  .nav-link {
     text-decoration: none;
-    font-size: 13px;
-    color: rgba(12, 22, 40, 0.78);
-    padding: 8px 10px;
-    border-radius: 999px;
-    border: 1px solid transparent;
-    transition: background 0.15s var(--ease), border-color 0.15s var(--ease), transform 0.15s var(--ease);
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(12, 22, 40, 0.7);
+    padding: 10px 16px;
+    border-radius: 14px;
+    transition: all 0.2s var(--ease);
+    letter-spacing: -0.1px;
   }
 
-  .nav a:hover {
-    background: rgba(31, 123, 255, 0.08);
-    border-color: rgba(31, 123, 255, 0.18);
-    transform: translateY(-1px);
+  .nav-link:hover {
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--text);
   }
 
   #btnMenu {
@@ -124,46 +131,52 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 12px 14px;
+    gap: 8px;
+    padding: 10px 20px;
     border-radius: 14px;
-    border: 1px solid rgba(12, 22, 40, 0.14);
-    background: rgba(255, 255, 255, 0.72);
-    color: rgba(12, 22, 40, 0.92);
-    text-decoration: none;
-    font-weight: 900;
-    letter-spacing: 0.2px;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
     cursor: pointer;
-    transition: transform 0.15s var(--ease), background 0.15s var(--ease), border-color 0.15s var(--ease), box-shadow 0.15s var(--ease);
+    transition: all 0.2s var(--ease);
     user-select: none;
-    box-shadow: 0 10px 26px rgba(20, 40, 90, 0.08);
-  }
-
-  .btn:hover {
-    transform: translateY(-1px);
-    background: rgba(255, 255, 255, 0.92);
-    border-color: rgba(12, 22, 40, 0.22);
-  }
-
-  .btn.primary {
-    background: linear-gradient(135deg, rgba(31, 123, 255, 0.95), rgba(60, 92, 255, 0.9));
-    border-color: rgba(31, 123, 255, 0.52);
-    color: rgba(255, 255, 255, 0.96);
-    box-shadow: 0 10px 30px rgba(31, 123, 255, 0.26), 0 0 0 1px rgba(255, 255, 255, 0.18) inset;
-  }
-
-  .btn.primary:hover {
-    box-shadow: 0 14px 42px rgba(31, 123, 255, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.24) inset;
-  }
-
-  .btn.ghost {
-    background: rgba(255, 255, 255, 0.4);
-    border-color: rgba(12, 22, 40, 0.12);
-    color: rgba(12, 22, 40, 0.86);
+    letter-spacing: -0.1px;
     box-shadow: none;
   }
 
-  /* ══════════ DRAWER (MENÚ MÓVIL) ══════════ */
+  .btn.primary {
+    background: #1f7bff;
+    border-color: #1f7bff;
+    color: #fff;
+    box-shadow: none !important;
+  }
+
+  .btn.primary:hover {
+    transform: scale(1.02);
+    background: #1a6ae6;
+    border-color: #1a6ae6;
+    box-shadow: none !important;
+  }
+
+  .btn.primary:active {
+    transform: scale(0.98);
+  }
+
+  .btn.ghost {
+    /* Glass button */
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: rgba(12, 22, 40, 0.8);
+    box-shadow: none !important;
+    padding: 10px 14px;
+  }
+
+  .btn.ghost:hover {
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  /* ══════════ DRAWER LIQUID GLASS ══════════ */
   body.no-scroll {
     overflow: hidden;
   }
@@ -182,30 +195,42 @@
   .drawer-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(12, 22, 40, 0.35);
-    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
 
   .drawer-panel {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    bottom: 12px;
-    width: min(380px, calc(100% - 24px));
-    border-radius: 18px;
-    border: 1px solid rgba(12, 22, 40, 0.14);
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 22px 80px rgba(20, 40, 90, 0.2);
-    padding: 12px;
-    transform: translateX(10px);
+    top: 14px;
+    right: 14px;
+    bottom: 14px;
+    width: min(340px, calc(100% - 28px));
+    
+    /* Liquid Glass */
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0.5) 100%
+    );
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 24px;
+    box-shadow: 
+      0 24px 80px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    
+    padding: 20px;
+    transform: translateX(20px);
     opacity: 0;
-    animation: drawerIn 0.18s var(--ease) forwards;
+    animation: drawerIn 0.25s var(--ease) forwards;
   }
 
   @keyframes drawerIn {
     to {
-      transform: translateX(0px);
+      transform: translateX(0);
       opacity: 1;
     }
   }
@@ -214,70 +239,84 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
-    padding: 6px 6px 10px;
-    border-bottom: 1px solid rgba(12, 22, 40, 0.1);
-    margin-bottom: 10px;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    margin-bottom: 16px;
   }
 
   .drawer-title {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
 
   .drawer-title strong {
-    font-size: 14px;
-    letter-spacing: 0.2px;
+    font-size: 15px;
+    font-weight: 600;
   }
 
   .drawer-links {
     display: grid;
-    gap: 10px;
-    padding: 6px;
+    gap: 12px;
   }
 
   .drawer-link {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
-    padding: 12px 12px;
-    border-radius: 14px;
+    gap: 12px;
+    padding: 16px 18px;
+    border-radius: 16px;
     text-decoration: none;
-    border: 1px solid rgba(12, 22, 40, 0.12);
-    background: rgba(255, 255, 255, 0.78);
-    color: rgba(12, 22, 40, 0.9);
-    transition: transform 0.15s var(--ease), background 0.15s var(--ease);
+    font-weight: 500;
+    font-size: 15px;
+    
+    /* Glass link */
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    color: rgba(12, 22, 40, 0.85);
+    box-shadow: 
+      0 2px 8px rgba(0, 0, 0, 0.03),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    
+    transition: all 0.2s var(--ease);
   }
 
   .drawer-link:hover {
-    transform: translateY(-1px);
-    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 
+      0 8px 24px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
   }
 
   .xbtn {
-    border: 1px solid rgba(12, 22, 40, 0.14);
-    background: rgba(255, 255, 255, 0.7);
-    color: rgba(12, 22, 40, 0.86);
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    color: rgba(12, 22, 40, 0.6);
     border-radius: 12px;
-    padding: 8px 10px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 500;
     cursor: pointer;
-    transition: background 0.15s var(--ease), transform 0.15s var(--ease);
-    flex: 0 0 auto;
+    transition: all 0.15s var(--ease);
   }
 
   .xbtn:hover {
-    background: rgba(255, 255, 255, 0.95);
-    transform: translateY(-1px);
+    background: rgba(0, 0, 0, 0.08);
+    color: rgba(12, 22, 40, 0.8);
   }
 
   /* ══════════ RESPONSIVE ══════════ */
   @media (max-width: 760px) {
-    .topbar-inner {
-      gap: 10px;
+    .topbar-wrapper {
+      padding: 12px;
     }
-    .nav a {
+    .topbar-inner {
+      padding: 8px 10px 8px 14px;
+    }
+    .nav-link {
       display: none;
     }
     #btnMenu {
@@ -289,76 +328,65 @@
     .brand span {
       display: none;
     }
+    .store-logo {
+      height: 32px;
+    }
   }
 </style>
 
-<header class="topbar" aria-label="Barra de navegación">
-  <div class="container topbar-inner">
-    <a class="brand" href="#top" aria-label="Inicio">
-      <img
-        class="store-logo"
-        src="https://bu-cdn.tiendup.com/business/49614/images/logo_687caa58da9b6_medium.png"
-        alt="FACU ZÁRATE"
-      />
-      <div>
-        <strong>FACU ZÁRATE</strong>
-        <span>Acceso alumnos</span>
-      </div>
-    </a>
+<div class="topbar-wrapper">
+  <header class="topbar" aria-label="Barra de navegación">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="Inicio">
+        <img
+          class="store-logo"
+          src="https://bu-cdn.tiendup.com/business/49614/images/logo_687caa58da9b6_medium.png"
+          alt="FACU ZÁRATE"
+        />
+        <div>
+          <strong>FACU ZÁRATE</strong>
+          <span>Acceso alumnos</span>
+        </div>
+      </a>
 
-    <nav class="nav" aria-label="Accesos">
-      <a href="https://facu-zarate.tiendup.com/login">Acceso alumnos</a>
-      <button
-        class="btn ghost"
-        id="btnMenu"
-        type="button"
-        aria-label="Abrir menú"
-        aria-expanded="false"
-        aria-controls="drawer"
-      >
-        Menú
-      </button>
-    </nav>
-  </div>
-</header>
+      <nav class="nav" aria-label="Accesos">
+        <a class="nav-link" href="https://facu-zarate.tiendup.com/login">Acceso alumnos</a>
+        <button class="btn primary">Ver planes</button>
+        <button
+          class="btn ghost"
+          id="btnMenu"
+          type="button"
+          aria-label="Abrir menú"
+        >
+          ☰
+        </button>
+      </nav>
+    </div>
+  </header>
+</div>
 
 <div class="drawer" id="drawer" aria-hidden="true">
-  <div class="drawer-backdrop" id="drawerBackdrop" aria-hidden="true"></div>
-  <div
-    class="drawer-panel"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Menú"
-  >
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <div class="drawer-panel" role="dialog" aria-modal="true" aria-label="Menú">
     <div class="drawer-head">
       <div class="drawer-title">
         <img
           class="store-logo"
-          aria-hidden="true"
           src="https://bu-cdn.tiendup.com/business/49614/images/logo_687caa58da9b6_medium.png"
           alt=""
-          style="height: 28px; border-radius: 10px"
+          style="height: 32px"
         />
         <strong>FACU ZÁRATE</strong>
       </div>
-      <button
-        class="xbtn"
-        type="button"
-        id="drawerClose"
-        aria-label="Cerrar menú"
-      >
-        Cerrar
-      </button>
+      <button class="xbtn" type="button" id="drawerClose">Cerrar</button>
     </div>
-
     <div class="drawer-links">
-      <a class="drawer-link" href="https://facu-zarate.tiendup.com/login"
-        >Acceso alumnos <span aria-hidden="true">→</span></a
-      >
-      <button class="btn primary" type="button" id="drawerCta">
+      <a class="drawer-link" href="https://facu-zarate.tiendup.com/login">
+        Acceso alumnos <span>→</span>
+      </a>
+      <button class="btn primary" style="width: 100%; justify-content: center; padding: 14px 20px;">
         Ver planes
       </button>
     </div>
   </div>
 </div>
-
